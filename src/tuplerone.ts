@@ -27,6 +27,7 @@ export function tuple<A, B, C, D, E>(values: [A, B, C, D, E]): Tuple5<A, B, C, D
 export function tuple<A, B, C, D>(values: [A, B, C, D]): Tuple4<A, B, C, D>
 export function tuple<A, B, C>(values: [A, B, C]): Tuple3<A, B, C>
 export function tuple<A, B>(values: [A, B]): Tuple2<A, B>
+export function tuple<A>(values: [A]): Tuple<A>
 export function tuple(values: any[]): Tuple<any> {
   return getSet(objectKey, makeTuple(values), getLastNode(values))
 }

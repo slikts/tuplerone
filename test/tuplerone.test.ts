@@ -5,6 +5,10 @@ describe('tuple', () => {
   const b = { b: 2 }
   const c = { c: 3 }
 
+  it('1-tuple objects compare', () => {
+    expect(tuple([a])).toBe(tuple([a]))
+  })
+
   it('2-tuple objects compare', () => {
     expect(tuple([a, b])).toBe(tuple([a, b]))
   })
