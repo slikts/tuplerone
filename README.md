@@ -14,13 +14,13 @@ Tuple implementation in JavaScript using `WeakMap`.
 
 import { tuple } from "tuplerone";
 
-const a = Object("a")
-const b = Object("b")
-const c = Object("c")
+const a = Object("a");
+const b = Object("b");
+const c = Object("c");
 
-console.log(tuple([a, b, c]) === tuple([a, b, c])) // -> true
+console.log(tuple([a, b, c]) === tuple([a, b, c])); // -> true
 
-const map = new Map()
+const map = new Map();
 
-console.log(map.set(tuple([a, b, c]), 123).get(tuple([a, b, c]))) // -> 123
+console.log(map.set(tuple([a, b, c]), 123).get(tuple([a, b, c]))); // -> 123
 ```

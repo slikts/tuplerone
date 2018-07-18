@@ -20,6 +20,8 @@ describe('WeakishMap', () => {
 
   it('test object membership', () => {
     const o = {}
-    expect(new WeakishMap().set(o, 1).has(o)).toBe(true)
+    const m = new WeakishMap().set(o, 1)
+    expect(m.has(o)).toBe(true)
+    expect(m.has({})).toBe(false)
   })
 })
