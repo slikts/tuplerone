@@ -22,3 +22,49 @@ export const getDefault = <A, B>(key: A, defaultValue: B, target: GenericMap<A, 
 /** Test if a value is an object. */
 export const isObject = (x: any): x is object =>
   x !== null && (typeof x === 'object' || typeof x === 'function')
+
+export const forEach = <A>(iterator: Iterator<A>, callback: (value: A) => void) => {
+  do {
+    const { value, done } = iterator.next()
+    if (done) {
+      break
+    }
+    callback(value)
+  } while (true)
+}
+
+export const assignArraylike = <A>(iterator: Iterator<A>, target: any): number => {
+  let i = 0
+  forEach(iterator, (value: A) => {
+    target[i] = value
+    i += 1
+  })
+  return i
+}
+
+export const arraylikeToIterable = <A>(source: ArrayLike<A>): IterableIterator<A> => {
+  let i = 0
+  return {
+    next() {
+      let done
+      let value
+      if (i < source.length) {
+        done = false
+        value = source[i]
+        i += 1
+      } else {
+        done = true
+        // Issue: https://github.com/Microsoft/TypeScript/issues/2983
+        value = <any>undefined
+      }
+      return {
+        done,
+        value,
+      }
+    },
+
+    [Symbol.iterator]() {
+      return arraylikeToIterable(source)
+    },
+  }
+}

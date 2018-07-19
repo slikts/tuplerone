@@ -74,7 +74,8 @@
   },
   "prettier": {
     "semi": false,
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "all"
   },
   "devDependencies": {
     "@types/jest": "^22.0.0",
