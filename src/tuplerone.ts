@@ -1,5 +1,5 @@
 import WeakishMap from './WeakishMap'
-import { getSetInit, getSet, isObject } from './helpers'
+import { getDefaultLazy, getDefault, isObject } from './helpers'
 import { Tuple, Tuple2, Tuple3, Tuple4, Tuple5, Tuple6, Tuple7 } from './tuplerone.d'
 
 const init = () => new WeakishMap()
@@ -15,8 +15,8 @@ const getLastNode = (values: any[]): WeakishMap<any, any> => {
   if (!rootValue) {
     throw TypeError('At least one value must be of type object')
   }
-  const root = getSetInit(rootValue, init, cache)
-  return values.reduce((p, c) => getSetInit(c, init, p), root)
+  const root = getDefaultLazy(rootValue, init, cache)
+  return values.reduce((p, c) => getDefaultLazy(c, init, p), root)
 }
 
 export function tuple<A, B, C, D, E, F, G>(
@@ -29,8 +29,8 @@ export function tuple<A, B, C>(values: [A, B, C]): Tuple3<A, B, C>
 export function tuple<A, B>(values: [A, B]): Tuple2<A, B>
 export function tuple<A>(values: [A]): Tuple<A>
 export function tuple(values: any[]): Tuple<any> {
-  return getSet(objectKey, makeTuple(values), getLastNode(values))
+  return getDefault(objectKey, makeTuple(values), getLastNode(values))
 }
 
 export const tupleSymbol = (values: any[]): symbol =>
-  getSet(symbolKey, makeSymbol(values), getLastNode(values))
+  getDefault(symbolKey, makeSymbol(values), getLastNode(values))

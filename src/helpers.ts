@@ -1,10 +1,24 @@
 import { GenericMap } from './tuplerone.d'
 
-export const getSetInit = <A, B>(key: A, init: () => B, target: GenericMap<A, B>): B =>
-  getSet(key, init(), target)
+/** Get a map element, initializing it with a lazy default value. */
+export const getDefaultLazy = <A, B>(key: A, init: () => B, target: GenericMap<A, B>): B => {
+  if (!target.has(key)) {
+    const value = init()
+    target.set(key, value)
+    return value
+  }
+  return <B>target.get(key)
+}
 
-export const getSet = <A, B>(key: A, value: B, target: GenericMap<A, B>): B =>
-  <B>(target.has(key) ? target : target.set(key, value)).get(key)
+/** Get a map element, initializing it with a default value. */
+export const getDefault = <A, B>(key: A, defaultValue: B, target: GenericMap<A, B>): B => {
+  if (!target.has(key)) {
+    target.set(key, defaultValue)
+    return defaultValue
+  }
+  return <B>target.get(key)
+}
 
+/** Test if a value is an object. */
 export const isObject = (x: any): x is object =>
   x !== null && (typeof x === 'object' || typeof x === 'function')
