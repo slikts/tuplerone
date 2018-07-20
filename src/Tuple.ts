@@ -8,6 +8,7 @@ import {
   Tuple5,
   Tuple6,
   Tuple7,
+  Tuple8,
   TupleSymbol,
   TupleSymbol2,
   TupleSymbol3,
@@ -15,6 +16,7 @@ import {
   TupleSymbol5,
   TupleSymbol6,
   TupleSymbol7,
+  TupleSymbol8,
 } from './tuplerone.d'
 import {
   assignArraylike,
@@ -59,6 +61,16 @@ export default class Tuple<A> extends arrayConstructor implements ArrayLike<A>, 
     Object.freeze(this)
   }
 
+  static tuple<A, B, C, D, E, F, G, H>(
+    a: A,
+    b: B,
+    c: C,
+    d: D,
+    e: E,
+    f: F,
+    g: G,
+    h: H,
+  ): Tuple8<A, B, C, D, E, F, G, H>
   static tuple<A, B, C, D, E, F, G>(
     a: A,
     b: B,
