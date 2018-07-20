@@ -16,7 +16,7 @@ export type GetSettable<A, B> = Settable<A, B> & Gettable<A, B>
 
 export type Primitive = boolean | undefined | null | number | string | symbol
 
-export interface Tuple0 extends Tuple<never> {
+export interface Tuple0 extends Tuple<any> {
   readonly length: 0
 }
 
@@ -70,3 +70,11 @@ export interface Tuple7<A, B, C, D, E, F, G> extends Tuple<A | B | C | D | E | F
   readonly 6: G
   readonly length: 7
 }
+
+export type TupleSymbol<A> = symbol
+export type TupleSymbol2<A, B> = TupleSymbol<A | B>
+export type TupleSymbol3<A, B, C> = TupleSymbol<A | B | C>
+export type TupleSymbol4<A, B, C, D> = TupleSymbol<A | B | C | D>
+export type TupleSymbol5<A, B, C, D, E> = TupleSymbol<A | B | C | D | E>
+export type TupleSymbol6<A, B, C, D, E, F> = TupleSymbol<A | B | C | D | E | F>
+export type TupleSymbol7<A, B, C, D, E, F, G> = TupleSymbol<A | B | C | D | E | F | G>
