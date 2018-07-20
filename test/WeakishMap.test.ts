@@ -24,4 +24,13 @@ describe('WeakishMap', () => {
     expect(m.has(o)).toBe(true)
     expect(m.has({})).toBe(false)
   })
+
+  it('set twice', () => {
+    expect(
+      new WeakishMap()
+        .set('a', 1)
+        .set('b', 2)
+        .get('b'),
+    ).toBe(2)
+  })
 })

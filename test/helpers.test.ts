@@ -12,6 +12,11 @@ describe('helpers', () => {
     expect(getDefault(1, 2, m)).toBe(2)
   })
 
+  it('getDefault existing', () => {
+    const m = new Map().set(1, 2)
+    expect(getDefault(1, 3, m)).toBe(2)
+  })
+
   it('getDefaultLazy', () => {
     const m = new Map()
     expect(getDefaultLazy(1, () => 2, m)).toBe(2)
