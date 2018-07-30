@@ -17,7 +17,7 @@ import {
   TupleSymbol6,
   TupleSymbol7,
   TupleSymbol8,
-} from './tuplerone.d'
+} from './types'
 import {
   assignArraylike,
   arraylikeToIterable,
@@ -25,6 +25,7 @@ import {
   getDefaultLazy,
   isObject,
 } from './helpers'
+import { blockParams } from 'handlebars'
 
 const arrayConstructor: {
   new (): any
@@ -52,6 +53,9 @@ export default class Tuple<A> extends arrayConstructor implements ArrayLike<A>, 
   [i: number]: A
   length: number = 0
 
+  /**
+   * @throws {TypeError} Will throw if called non-locally; use the tuple() method instead.
+   */
   constructor(iterable: Iterable<A>, confirm: typeof localToken) {
     super()
     if (confirm !== localToken) {
@@ -61,6 +65,9 @@ export default class Tuple<A> extends arrayConstructor implements ArrayLike<A>, 
     Object.freeze(this)
   }
 
+  /**
+   * Constructs a tuple.
+   */
   static tuple<A, B, C, D, E, F, G, H>(
     a: A,
     b: B,
@@ -88,8 +95,8 @@ export default class Tuple<A> extends arrayConstructor implements ArrayLike<A>, 
   static tuple<A>(a: A): Tuple1<A>
   static tuple(): Tuple0
   static tuple(...values: any[]): any {
-    if (!values.length) {
-      if (!tuple0) {
+    if (values.length === 0) {
+      if (tuple0 === undefined) {
         tuple0 = new Tuple([], localToken) as any
       }
       return tuple0
@@ -110,6 +117,7 @@ Object.getOwnPropertyNames(Array.prototype).forEach((key: any) => {
   if (key === 'constructor') {
     return
   }
+  // Blank all the array methods since most of them don't work on a frozen array
   Tuple.prototype[key] = undefined
 })
 
