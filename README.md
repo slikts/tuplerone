@@ -10,7 +10,7 @@ A tuple data structure implementation in JavaScript based on [ES2015 `WeakMap`][
 
 ***
 
-[Tuples] are finite ordered sequences of values, and languages commonly implement tuples to allow grouping heterogenous data types and to provide immutability. JavaScript arrays can already include all types, but the purpose of having tuples in JavaScript is to simplify equality testing for groups of values and to use groups of values as keys in maps ([`Map`][Map], [`WeakMap`][WeakMap]).
+[Tuples] are finite ordered sequences of values, and languages commonly implement tuples to allow grouping heterogenous data types and to provide immutability. JavaScript arrays can already include any types, but the purpose of having tuples in JavaScript is to simplify equality testing for groups of values and to use groups of values as keys in maps ([`Map`][Map], [`WeakMap`][WeakMap]).
 
 This library is:
 * tiny (a couple of kilobytes minified), with no dependencies,
@@ -19,7 +19,7 @@ This library is:
 
 The tuple objects are:
 * [frozen] – tuple object properties cannot be added, removed or changed,
-* [array-like] – tuple members can be accessed by indexing, and there's a `length` property, but no `Array` methods,
+* [array-like] – tuple members can be accessed by indexing, and there's a `length` property, but no `Array` prototype methods,
 * [iterable] – tuple members can be iterated over using [`for-of`][for-of] loops or spread syntax.
 
 There exists a [stage-1 proposal][composite] for adding a similar feature to tuples to the base language.
@@ -59,6 +59,9 @@ tuple(a, b)[1]; // → Object("b")
 
 // Checking arity
 tuple(a, b).length; // → 2
+
+// Failing to mutate
+tuple(a, b)[0] = c; // throws an error
 ```
 
 ## Advantages
