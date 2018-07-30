@@ -1,6 +1,8 @@
-import { GenericMap } from './tuplerone.d'
+import { GenericMap, Indexable } from './types'
 
-/** Get a map element, initializing it with a lazy default value. */
+/**
+ * Gets a map element, lazily initializing it with a default value.
+ */
 export const getDefaultLazy = <A, B>(key: A, init: () => B, target: GenericMap<A, B>): B => {
   if (!target.has(key)) {
     const value = init()
@@ -10,7 +12,9 @@ export const getDefaultLazy = <A, B>(key: A, init: () => B, target: GenericMap<A
   return <B>target.get(key)
 }
 
-/** Get a map element, initializing it with a default value. */
+/**
+ * Gets a map element, initializing it with a default value.
+ */
 export const getDefault = <A, B>(key: A, defaultValue: B, target: GenericMap<A, B>): B => {
   if (!target.has(key)) {
     target.set(key, defaultValue)
@@ -19,7 +23,9 @@ export const getDefault = <A, B>(key: A, defaultValue: B, target: GenericMap<A, 
   return <B>target.get(key)
 }
 
-/** Test if a value is an object. */
+/**
+ * Tests if a value is an object.
+ */
 export const isObject = (x: any): x is object =>
   x !== null && (typeof x === 'object' || typeof x === 'function')
 
@@ -33,7 +39,10 @@ export const forEach = <A>(iterator: Iterator<A>, callback: (value: A) => void) 
   } while (true)
 }
 
-export const assignArraylike = <A>(iterator: Iterator<A>, target: any): number => {
+/**
+ * Sets all items from an iterable as index properties on the target object.
+ */
+export const assignArraylike = <A>(iterator: Iterator<A>, target: Indexable<A>): number => {
   let i = 0
   forEach(iterator, (value: A) => {
     target[i] = value

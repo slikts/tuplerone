@@ -1,8 +1,18 @@
 {
   "name": "tuplerone",
-  "version": "0.0.0",
+  "version": "2.0.0-beta",
   "description": "A yet another tuple implementation",
-  "keywords": ["tuple", "weakmap", "identity", "objects", "maps"],
+  "keywords": [
+    "tuple",
+    "weakmap",
+    "identity",
+    "objects",
+    "maps",
+    "data structures",
+    "immutability",
+    "memoization",
+    "hashing"
+  ],
   "main": "dist/tuplerone.umd.js",
   "module": "dist/tuplerone.es5.js",
   "typings": "dist/types/tuplerone.d.ts",
@@ -12,7 +22,7 @@
   "author": "slikts <dabas@untu.ms>",
   "repository": {
     "type": "git",
-    "url": "git@github.com:slikts/tuplerone.git"
+    "url": "https:git@github.com:slikts/tuplerone.git"
   },
   "license": "MIT",
   "engines": {
@@ -31,7 +41,9 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prepush": "npm run test:prod && npm run build",
+    "commitmsg": "validate-commit-msg"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -99,7 +111,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.11.1",
-    "semantic-release": "^15.7.0",
+    "semantic-release": "^15.8.1",
     "ts-jest": "^22.0.0",
     "ts-node": "^6.2.0",
     "tslint": "^5.8.0",

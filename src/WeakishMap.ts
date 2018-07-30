@@ -1,6 +1,10 @@
-import { GenericMap, Primitive } from './tuplerone.d'
+import { GenericMap } from './types'
 import { isObject } from './helpers'
 
+/**
+ * A generic wrapper to Map and WeakMap that can use both objects and primitives as keys,
+ * creating the underlying storage as needed.
+ */
 export default class WeakishMap<A, B> implements GenericMap<A, B> {
   private weakMap?: WeakMap<object, B>
   private map?: Map<A, B>

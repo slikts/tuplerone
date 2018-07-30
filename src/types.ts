@@ -19,25 +19,25 @@ export type Primitive = boolean | undefined | null | number | string | symbol
 export interface Tuple0 extends Tuple<never> {
   readonly length: 0
 }
-// Singleton
+/** Singleton */
 export interface Tuple1<A> extends Tuple<A> {
   readonly 0: A
   readonly length: 1
 }
-// Pair
+/** Pair */
 export interface Tuple2<A, B> extends Tuple<A | B> {
   readonly 0: A
   readonly 1: B
   readonly length: 2
 }
-// Triple
+/** Triple */
 export interface Tuple3<A, B, C> extends Tuple<A | B | C> {
   readonly 0: A
   readonly 1: B
   readonly 2: C
   readonly length: 3
 }
-// Quadruple
+/** Quadruple */
 export interface Tuple4<A, B, C, D> extends Tuple<A | B | C | D> {
   readonly 0: A
   readonly 1: B
@@ -45,7 +45,7 @@ export interface Tuple4<A, B, C, D> extends Tuple<A | B | C | D> {
   readonly 3: D
   readonly length: 4
 }
-// Quintuple
+/** Quintuple */
 export interface Tuple5<A, B, C, D, E> extends Tuple<A | B | C | D | E> {
   readonly 0: A
   readonly 1: B
@@ -54,7 +54,7 @@ export interface Tuple5<A, B, C, D, E> extends Tuple<A | B | C | D | E> {
   readonly 4: E
   readonly length: 5
 }
-// Sextuple
+/** Sextuple */
 export interface Tuple6<A, B, C, D, E, F> extends Tuple<A | B | C | D | E | F> {
   readonly 0: A
   readonly 1: B
@@ -64,7 +64,7 @@ export interface Tuple6<A, B, C, D, E, F> extends Tuple<A | B | C | D | E | F> {
   readonly 5: F
   readonly length: 6
 }
-// Septuple
+/** Septuple */
 export interface Tuple7<A, B, C, D, E, F, G> extends Tuple<A | B | C | D | E | F | G> {
   readonly 0: A
   readonly 1: B
@@ -75,7 +75,7 @@ export interface Tuple7<A, B, C, D, E, F, G> extends Tuple<A | B | C | D | E | F
   readonly 6: G
   readonly length: 7
 }
-// Octuple
+/** Octuple */
 export interface Tuple8<A, B, C, D, E, F, G, H> extends Tuple<A | B | C | D | E | F | G | H> {
   readonly 0: A
   readonly 1: B
@@ -96,3 +96,7 @@ export type TupleSymbol5<A, B, C, D, E> = TupleSymbol<A | B | C | D | E>
 export type TupleSymbol6<A, B, C, D, E, F> = TupleSymbol<A | B | C | D | E | F>
 export type TupleSymbol7<A, B, C, D, E, F, G> = TupleSymbol<A | B | C | D | E | F | G>
 export type TupleSymbol8<A, B, C, D, E, F, G, H> = TupleSymbol<A | B | C | D | E | F | G | H>
+
+export interface Indexable<A> {
+  [i: number]: A
+}
