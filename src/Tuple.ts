@@ -18,14 +18,7 @@ import {
   TupleSymbol7,
   TupleSymbol8,
 } from './types'
-import {
-  assignArraylike,
-  arraylikeToIterable,
-  getDefault,
-  getDefaultLazy,
-  isObject,
-} from './helpers'
-import { blockParams } from 'handlebars'
+import { assignArraylike, arraylikeToIterable, getDefaultLazy, isObject } from './helpers'
 
 const arrayConstructor: {
   new (): any
@@ -43,8 +36,10 @@ let tuple0: Tuple0
 const getLastNode = (values: any[]): WeakishMap<any, any> => {
   const rootValue = values.find(isObject)
   if (!rootValue) {
+    // Throw since it's not possible to weak-reference objects by primitives, only by other objects
     throw TypeError('At least one value must be of type object')
   }
+  // If the first value is not an object, pad the values with the first object
   const root = rootValue === values[0] ? cache : getDefaultLazy(rootValue, initWeakish, cache)
   return values.reduce((p, c) => getDefaultLazy(c, initWeakish, p), root)
 }
@@ -58,6 +53,7 @@ export default class Tuple<A> extends arrayConstructor implements ArrayLike<A>, 
    */
   constructor(iterable: Iterable<A>, confirm: typeof localToken) {
     super()
+    // TODO make configurable or remove? it currently breaks subclassing
     if (confirm !== localToken) {
       throw TypeError('The `Tuple.tuple()` method must be used to construct')
     }
