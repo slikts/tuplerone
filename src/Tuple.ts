@@ -33,7 +33,7 @@ const localToken = Symbol()
 const initWeakish = () => new WeakishMap()
 let tuple0: Tuple0
 
-const getLastNode = (values: any[]): WeakishMap<any, any> => {
+export const getLastNode = (values: any[]): WeakishMap<any, any> => {
   const rootValue = values.find(isObject)
   if (!rootValue) {
     // Throw since it's not possible to weak-reference objects by primitives, only by other objects
@@ -91,6 +91,7 @@ export default class Tuple<A> extends arrayConstructor implements ArrayLike<A>, 
   static tuple<A>(a: A): Tuple1<A>
   static tuple(): Tuple0
   static tuple(...values: any[]): any {
+    // Special case for 0-tuples
     if (values.length === 0) {
       if (tuple0 === undefined) {
         tuple0 = new Tuple([], localToken) as any
