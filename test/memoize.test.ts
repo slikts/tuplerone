@@ -20,4 +20,11 @@ describe('memoize', () => {
     expect(f(1, 2, 3)).toBe(o)
     expect(f(2, 3, 4)).not.toBe(o)
   })
+
+  it('supports setting receiver', () => {
+    const f = memoize(function() {
+      return this
+    })
+    expect(f.call(123)).toBe(123)
+  })
 })
