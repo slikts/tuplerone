@@ -15,7 +15,6 @@ describe('memoize', () => {
 
   it('supports multiple arguments', () => {
     const f = memoize((a, b, c) => ({}))
-    console.log(f.name)
     const o = f(1, 2, 3)
     expect(f(1, 2, 3)).toBe(o)
     expect(f(1, 2, 3)).toBe(o)
