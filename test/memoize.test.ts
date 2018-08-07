@@ -27,4 +27,16 @@ describe('memoize', () => {
     })
     expect(f.call(123)).toBe(123)
   })
+
+  it('receiver is memoized', () => {
+    let n = 0
+    const f = memoize(x => {
+      n += x
+      return n
+    })
+    const o = {}
+    expect(f.call(o, 1)).toBe(1)
+    expect(f.call(o, 1)).toBe(1)
+    expect(f.call(o, 2)).toBe(3)
+  })
 })
