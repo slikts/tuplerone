@@ -6,7 +6,7 @@ describe('memoize', () => {
   })
 
   it('returns the same object', () => {
-    const f = memoize(a => ({}))
+    const f = memoize((a: any) => ({}))
     const o = f(1)
     expect(f(1)).toBe(o)
     expect(f(1)).toBe(o)
@@ -14,7 +14,7 @@ describe('memoize', () => {
   })
 
   it('supports multiple arguments', () => {
-    const f = memoize((a, b, c) => ({}))
+    const f = memoize((a: any, b: any, c: any) => ({}))
     const o = f(1, 2, 3)
     expect(f(1, 2, 3)).toBe(o)
     expect(f(1, 2, 3)).toBe(o)
@@ -22,7 +22,7 @@ describe('memoize', () => {
   })
 
   it('supports setting receiver', () => {
-    const f = memoize(function() {
+    const f = memoize(function(this: any) {
       return this
     })
     expect(f.call(123)).toBe(123)
@@ -30,7 +30,7 @@ describe('memoize', () => {
 
   it('receiver is memoized', () => {
     let n = 0
-    const f = memoize(x => {
+    const f = memoize((x: any) => {
       n += x
       return n
     })

@@ -3,7 +3,7 @@ import Tuple from '../src/Tuple'
 describe('Tuple', () => {
   const a = Object('a')
   it('constructor throws', () => {
-    expect(() => new Tuple([1, {}], null)).toThrow()
+    expect(() => new (Tuple as any)([1, {}], null)).toThrow()
   })
 
   it('static method constructs', () => {
