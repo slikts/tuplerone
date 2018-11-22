@@ -1,28 +1,61 @@
-# tuplerone
+<h1 align="center"><a href="https://github.com/slikts/tuplerone"><img width="550" src="https://raw.githubusercontent.com/slikts/tuplerone/master/logo.svg" alt="tuplerone"></a></h1>
 
 [![Travis](https://img.shields.io/travis/slikts/tuplerone.svg)](https://travis-ci.org/slikts/tuplerone)
 [![Coveralls](https://img.shields.io/coveralls/slikts/tuplerone.svg)](https://coveralls.io/github/slikts/tuplerone)
 [![Dev Dependencies](https://david-dm.org/slikts/tuplerone/dev-status.svg)](https://david-dm.org/slikts/tuplerone?type=dev)
 
-![logo][logo]
-
-A tuple data structure implementation in JavaScript based on [ES2015 `WeakMap`][WeakMap].
+A lightweight, efficient tuple data structure implementation for JavaScript.
 
 ***
 
-[Tuples] are finite ordered sequences of values, and languages commonly implement tuples to allow grouping heterogenous data types and to provide immutability. JavaScript arrays can already include any types, but the purpose of having tuples in JavaScript is to simplify equality testing for groups of values and to use groups of values as keys in maps ([`Map`][Map], [`WeakMap`][WeakMap]).
-
 This library is:
-* tiny (a couple of kilobytes minified), with no dependencies,
-* well-typed using TypeScript,
+* tiny (bundle size is [under one kilobyte][tiny]), with no dependencies,
+* well-typed using TypeScript, but can still be used from JavaScript,
 * fully covered by tests.
 
 The tuple objects are:
 * [frozen] – tuple object properties cannot be added, removed or changed,
 * [array-like] – tuple members can be accessed by indexing, and there's a `length` property, but no `Array` prototype methods,
-* [iterable] – tuple members can be iterated over using [`for-of`][for-of] loops or spread syntax.
+* [iterable] – tuple members can be iterated over, for example, using [`for-of`][for-of] loops or spread syntax.
 
 There exists a [stage-1 proposal][composite] for adding a similar feature to tuples to the base language.
+
+## About
+
+[Tuples] are **finite ordered sequences of values** that serve two main purposes in programming languages:
+* grouping together heterogenous (mixed) data types within a static type system (this doesn't apply to a dynamically typed language like JavaScript),
+* simplifying value-semantic comparisons of lists, which is what this library is mainly about.
+
+### Value semantics
+
+A simple way to explain value semantics is to look at the difference between primitive values (like numbers and strings) and object values in JavaScript. Primitives are value-semantic by default, 
+meaning that the default comparison methods (`==`, `===` and `Object.is()`) compare primitive values by their contents, so, for example, any string is equal to any other string created with the same contents:
+
+```js
+"abc" === "abc"; // → true, because both string literals create a value with the same contents
+```
+
+The contents of primitive values are also immutable (can't change at runtime), so the results of comparing primitive value equality can't be invalidated by the contents of the values changing.
+
+Meanwhile, each object value (instance) in JavaScript has a unique identity, so each instance is only equal to itself and not any other instances:
+```js
+[1, 2, 3] === [1, 2, 3]; // → false, because both array literals create separate array instances
+```
+
+Objects by default can't be thought of as their contents since the contents can change, and this is called reference semantics, since objects essentially represent a place in memory. The downside is that it makes reasoning about a program harder, since the programmer has to consider potential changes.
+
+A more direct practical consequence of reference semantics is that comparing instances requires *deep comparisons*, such as [`_.isEqual()`][isEqual] in lodash or serializing the object values to JSON:
+```js
+let a = [1, 2, 3];
+let b = [1, 2, 3];
+let result = JSON.stringify(a) === JSON.stringify(b); // → true, because it's a deep comparison
+a.push(4); // a and b contents are now different, so the cached comparison result is invalid
+```
+Deep comparison results can't be reliably cached since the compared instances can change, and it's also less efficient than just being able to use `===` directly. An another thing that's not possible with reference semantics is combining different values to use as a composite key (such as with `Map` or `WeakMap`).
+
+### Directed acyclic graphs
+
+Directed acyclic graphs (DAGs) are a data structure that allows efficiently mapping a sequence of values to a unique object containing them, which is how this library is implemented. Specifically, it uses a `WeakMap` object (optionally a `Map` as well if mapping primitives) for each node, and the nodes are re-used for overlapping paths in the graph. Map access has constant time complexity, so the number of tuples created doesn't slow down access speed. Using `WeakMap` ensures that if the values used to create the tuple are dereferenced, the tuple object gets garbage collected.
 
 ## Installation
 
@@ -64,23 +97,7 @@ tuple(a, b).length; // → 2
 tuple(a, b)[0] = c; // throws an error
 ```
 
-## Advantages
-
-Tuples simplify deep equality testing and can replace functions like [`isEqual()`][isEqual] in lodash or having to stringify data to JSON to make it comparable, which can be difficult due to recursive references. Tuples can be compared efficiently, in constant time with the `===` identity operator.
-
-This library uses a tree of [`WeakMap`][WeakMap] (for objects) or [`Map`][Map] (for primitives) maps. The average time complexity of the access operations of JavaScript maps is O(1), so the access speed isn't reduced with the number of tuples created.
-
-Using `WeakMap` for objects ensures that tuples and their members can be garbage collected once they become unreachable. For example:
-
-```javascript
-let o = {};
-// Create a new tuple that weakly references the object
-tuple(o);
-// Makes the object unreachable and thus also the tuple garbage collectable
-a = null;
-```
-
-The tuple function can be thought of as memoizing the arguments to produce the same tuple object on each call.
+In essence, the tuple function can be thought of as memoizing the arguments to produce the same tuple object on each call.
 
 ### Types
 
@@ -112,7 +129,7 @@ tuple(1, 2); // throws TypeError
 tuple(1, 2, {}); // works
 ```
 
-`WeakMap` is an ES2015 feature which is difficult to polyfill, so this library is best used in environments like node or browser extensions where legacy support may not be needed.
+`WeakMap` is an ES2015 feature which is difficult to polyfill (the [polyfills][polyfill] don't support frozen objects), but this applies less to environments like node or browser extensions.
 
 tuplerone tuples are not supported by the relation comparison operators like `<`, whereas in a language like Python the following (comparing tuples by arity) would evaluate to true: `(1,) < (1, 2)`.
 
@@ -139,7 +156,6 @@ slikts <dabas@untu.ms>
 
 [WeakMap]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
 [Map]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
-[logo]: https://i.imgur.com/hAUGWcW.png
 [tuples]: https://en.wiktionary.org/wiki/tuple
 [isEqual]: https://lodash.com/docs/4.17.10#isEqual
 [frozen]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
@@ -148,3 +164,8 @@ slikts <dabas@untu.ms>
 [tuple]: https://en.wiktionary.org/wiki/tuple
 [array-like]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections#Working_with_array-like_objects
 [for-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+[tiny]: https://bundlephobia.com/result?p=tuplerone
+[polyfill]: https://github.com/medikoo/es6-weak-map#readme
+[value semantics]: https://en.wikipedia.org/wiki/Value_semantics
+[value types]: https://en.wikipedia.org/wiki/Value_type_and_reference_type
+[isEqual]: https://lodash.com/docs/#isEqual
