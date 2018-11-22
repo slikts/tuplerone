@@ -1,8 +1,10 @@
 <h1 align="center"><a href="https://github.com/slikts/tuplerone"><img width="550" src="https://raw.githubusercontent.com/slikts/tuplerone/master/logo.svg?sanitize=true" alt="tuplerone"></a></h1>
 
-[![Travis](https://img.shields.io/travis/slikts/tuplerone.svg)](https://travis-ci.org/slikts/tuplerone)
-[![Coveralls](https://img.shields.io/coveralls/slikts/tuplerone.svg)](https://coveralls.io/github/slikts/tuplerone)
-[![Dev Dependencies](https://david-dm.org/slikts/tuplerone/dev-status.svg)](https://david-dm.org/slikts/tuplerone?type=dev)
+<p align="center">
+  <a href="https://travis-ci.org/slikts/tuplerone"><img src="https://img.shields.io/travis/slikts/tuplerone.svg" alt="Travis"></a>
+  <a href="https://coveralls.io/github/slikts/tuplerone"><img src="https://img.shields.io/coveralls/slikts/tuplerone.svg" alt="Coveralls"></a>
+  <a href="https://david-dm.org/slikts/tuplerone?type=dev"><img src="https://david-dm.org/slikts/tuplerone/dev-status.svg" alt="Dev Dependencies"></a>
+</p>
 
 A lightweight, efficient tuple data structure implementation for JavaScript.
 
