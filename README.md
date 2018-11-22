@@ -6,7 +6,7 @@
   <a href="https://david-dm.org/slikts/tuplerone?type=dev"><img src="https://david-dm.org/slikts/tuplerone/dev-status.svg" alt="Dev Dependencies"></a>
 </p>
 
-A lightweight, efficient tuple data structure implementation for JavaScript.
+<p align="center">A lightweight, efficient tuple data structure implementation for JavaScript.</p>
 
 ***
 
