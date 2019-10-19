@@ -53,7 +53,7 @@ export default class Tuple<A> extends arrayConstructor implements ArrayLike<A>, 
    */
   constructor(iterable: Iterable<A>, confirm: typeof localToken) {
     super()
-    // TODO make configurable or remove? it currently breaks subclassing
+    // TODO: make configurable or remove? it currently breaks subclassing
     if (confirm !== localToken) {
       throw TypeError('The `Tuple.tuple()` method must be used to construct')
     }
