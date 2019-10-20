@@ -157,7 +157,7 @@ The tuple function caches or memoizes its arguments to produce the same tuple ob
 
 The library is well-typed using TypeScript:
 
-```typescript
+```ts
 import { Tuple, Tuple0, Tuple1, Tuple2 } from 'tuplerone';
 
 // Dummy object for use as key
@@ -168,6 +168,9 @@ const tuple1: Tuple1<typeof o> = Tuple(o); // 1-tuple
 const tuple2: Tuple2<typeof o, number> = Tuple(o, 1); // 2-tuple
 
 Tuple(o) === Tuple(o, 1); // TS compile error due to different arities
+
+// Spreading a TypeScript tuple:
+Tuple(...([1, 2, 3] as const)); // -> Tuple3<1, 2, 3>
 ```
 
 In editors like VS Code, the type information is also available when the library is consumed as JavaScript.
@@ -180,7 +183,7 @@ Since this is a userspace implementation, there are a number of limitations.
 
 Due to `WeakMap` being limited to using objects as keys, there must be at least one member of a tuple with the object type, or the tuples would leak memory. Trying to create tuples with only primitive members will throw an error.
 
-```typescript
+```ts
 Tuple(1, 2); // throws TypeError
 Tuple(1, 2, {}); // works
 ```
