@@ -1,6 +1,7 @@
 <h1 align="center"><a href="https://github.com/slikts/tuplerone"><img width="550" src="https://raw.githubusercontent.com/slikts/tuplerone/master/logo.svg?sanitize=true" alt="tuplerone"></a></h1>
 
 <p align="center">
+  <a href="https://travis-ci.org/slikts/tuplerone"><img src="https://img.shields.io/npm/v/tuplerone.svg?style=flat" alt="View this project on npm"></a>
   <a href="https://travis-ci.org/slikts/tuplerone"><img src="https://img.shields.io/travis/slikts/tuplerone.svg" alt="Travis"></a>
   <a href="https://coveralls.io/github/slikts/tuplerone"><img src="https://img.shields.io/coveralls/slikts/tuplerone.svg" alt="Coveralls"></a>
   <a href="https://david-dm.org/slikts/tuplerone?type=dev"><img src="https://david-dm.org/slikts/tuplerone/dev-status.svg" alt="Dev Dependencies"></a>
@@ -30,19 +31,21 @@ You could alternatively use `"1,2,3"` and `String.split(",")`, but it's also not
 [1, 2, 3] === [1, 2, 3]; // -> false
 ```
 
-Each JavaScript array is a different object and so its value is the reference to that object. Tuples are a way to make that reference the same if the array members are the same. Using tuplerone:
+Each JavaScript array is a different object and so its value is the reference to that object. Tuples are a way to make that reference the same if the array members are the same. Using Tuplerone:
 
 ```js
 Tuple(1, 2, 3) === Tuple(1, 2, 3);
 ```
 
-Admittedly, this is something programmers can live without, but it's useful when dealing with memoization like React's [`memo()`][memo] or `PureComponent`, since you can pass lists as props to components without forcing re-renders or manually caching the list. It's also useful for using multiple values as keys with `Map()`. In general, it's just a nice thing to have in your toolbox.
+This may be something programmers can live without, but it's useful when dealing with memoization like React's [`memo()`][memo] or `PureComponent`, since you can pass lists as props to components without forcing re-renders or manually caching the list. It's also useful for using multiple values as keys with `Map()`. In general, it's just a nice thing to have in your toolbox.
+
+**[Try Tuplerone in a sandbox][sandbox]**
 
 ---
 
 This library is:
 
-- _tiny_ (bundle size is [under one kilobyte][tiny]), with no dependencies
+- _tiny_ (bundle size is [under one kilobyte][tiny] compressed), with no dependencies
 - _well-typed_ using TypeScript (but can still be used from JavaScript, of course)
 - _well-tested_ with full coverage
 - _efficient_ using an ES2015 [`WeakMap`][weakmap]-based directed acyclic graph
@@ -184,6 +187,16 @@ Tuple(1, 2, {}); // works
 
 `WeakMap` is an ES2015 feature which is difficult to polyfill (the [polyfills][polyfill] don't support frozen objects), but this applies less to environments like node or browser extensions.
 
+#### `UnsafeTuple`
+
+There is an `UnsafeTuple` type for advanced use cases where the values not being garbage-collectable is acceptable, so it doesn't require having an object member:
+
+```js
+import { UnsafeTuple as Tuple } from 'tuplerone';
+
+Tuple(1, 2, 3) === Tuple(1, 2, 3); // -> true
+```
+
 ### Can't be compared with operators like `<` or `>`
 
 tuplerone tuples are not supported by the relation comparison operators like `<`, whereas in a language like Python the following (comparing tuples by arity) would evaluate to true: `(1,) < (1, 2)`.
@@ -239,3 +252,4 @@ slikts <dabas@untu.ms>
 [proposal]: https://github.com/tc39/proposal-record-tuple
 [memo]: https://reactjs.org/docs/react-api.html#reactmemo
 [variadic generics]: https://github.com/microsoft/TypeScript/issues/5453
+[sandbox]: https://codesandbox.io/s/mystifying-dust-dm90w?expanddevtools=1
