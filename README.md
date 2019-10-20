@@ -212,8 +212,6 @@ import { UnsafeTuple as Tuple } from 'tuplerone';
 Tuple(1, 2, 3) === Tuple(1, 2, 3); // → true
 ```
 
-If any of the members are objects, `UnsafeTuple` will work the same as a regular `Tuple` and reuse the same cache.
-
 ### Can't be compared with operators like `<` or `>`
 
 tuplerone tuples are not supported by the relation comparison operators like `<`, whereas in a language like Python the following (comparing tuples by arity) would evaluate to true: `(1,) < (1, 2)`.

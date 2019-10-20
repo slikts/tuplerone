@@ -50,7 +50,7 @@ describe('tuple', () => {
 
 describe('tuple symbol', () => {
   it('is of type symbol', () => {
-    expect(typeof SymbolTuple(1, 2, {})).toBe('symbol');
+    expect(typeof SymbolTuple(1 as const, 2, {})).toBe('symbol');
   });
 
   it('compares', () => {

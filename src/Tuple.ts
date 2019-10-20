@@ -9,14 +9,16 @@ import {
   Tuple6,
   Tuple7,
   Tuple8,
-  TupleSymbol,
-  TupleSymbol2,
-  TupleSymbol3,
-  TupleSymbol4,
-  TupleSymbol5,
-  TupleSymbol6,
-  TupleSymbol7,
-  TupleSymbol8,
+  SymbolTuple,
+  SymbolTuple0,
+  SymbolTuple1,
+  SymbolTuple2,
+  SymbolTuple3,
+  SymbolTuple4,
+  SymbolTuple5,
+  SymbolTuple6,
+  SymbolTuple7,
+  SymbolTuple8,
 } from './types';
 import { assignArraylike, arraylikeToIterable, getDefaultLazy, isObject } from './helpers';
 
@@ -77,14 +79,47 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
     }
     return getDefaultLazy(tupleKey, () => new Tuple(values, localToken), getLeaf(values));
   }
-
-  static symbol(...values: any[]): symbol {
-    return getDefaultLazy(symbolKey, () => makeSymbol(values), getLeaf(values));
+  static symbol<A, B, C, D, E, F, G, H>(
+    a: A,
+    b: B,
+    c: C,
+    d: D,
+    e: E,
+    f: F,
+    g: G,
+    h: H,
+  ): SymbolTuple8<A, B, C, D, E, F, G, H>;
+  static symbol<A, B, C, D, E, F, G>(
+    a: A,
+    b: B,
+    c: C,
+    d: D,
+    e: E,
+    f: F,
+    g: G,
+  ): SymbolTuple7<A, B, C, D, E, F, G>;
+  static symbol<A, B, C, D, E, F>(
+    a: A,
+    b: B,
+    c: C,
+    d: D,
+    e: E,
+    f: F,
+  ): SymbolTuple6<A, B, C, D, E, F>;
+  static symbol<A, B, C, D, E>(a: A, b: B, c: C, d: D, e: E): SymbolTuple5<A, B, C, D, E>;
+  static symbol<A, B, C, D>(a: A, b: B, c: C, d: D): SymbolTuple4<A, B, C, D>;
+  static symbol<A, B, C>(a: A, b: B, c: C): SymbolTuple3<A, B, C>;
+  static symbol<A, B>(a: A, b: B): SymbolTuple2<A, B>;
+  static symbol<A>(a: A): SymbolTuple1<A>;
+  static symbol(): typeof SymbolTuple0;
+  static symbol(...values: any[]): any {
+    return getDefaultLazy(symbolKey, () => Symbol(), getLeaf(values));
   }
 
+  // The exported member is cast as the same type as Tuple.tuple() to avoid duplicating the overloads
   static unsafe(...values: any[]): any {
     return getDefaultLazy(
-      unsafeKey,
+      tupleKey,
       () => new UnsafeTuple(values, localToken),
       getUnsafeLeaf(values),
     );
@@ -95,16 +130,22 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
   }
 }
 
+// Cache keys for each tuple type
 const tupleKey = Symbol();
 const symbolKey = Symbol();
-const unsafeKey = Symbol();
-const typeOf = (x: unknown): string => typeof x;
-const makeSymbol = (values: any[]): symbol => Symbol(String(values.map(typeOf)));
+
 const cache = new WeakishMap();
+
+// Token used to prevent calling the constructor from other modules
 const localToken = Symbol();
+
 const initWeakish = () => new WeakishMap();
 let tuple0: Tuple0;
 
+/**
+ * Tries to use the first object from value list as the root key and throws
+ * if there's no objects.
+ */
 export const getLeaf = (values: any[]): WeakishMap<any, any> => {
   const rootValue = values.find(isObject);
   if (!rootValue) {
@@ -116,9 +157,12 @@ export const getLeaf = (values: any[]): WeakishMap<any, any> => {
   return values.reduce((p, c) => getDefaultLazy(c, initWeakish, p), root);
 };
 
+// Unsafe tuples aren't garbage collected so it's more efficient to just use a normal map
+const unsafeCache = new Map();
+const initUnsafe = () => new Map();
 class UnsafeTuple<A> extends Tuple<A> {}
 export const getUnsafeLeaf = (values: any[]): Map<any, any> =>
-  values.reduce((p, c) => getDefaultLazy(c, initWeakish, p), cache);
+  values.reduce((p, c) => getDefaultLazy(c, initUnsafe, p), unsafeCache);
 
 export const { tuple, symbol, unsafe } = Tuple;
 

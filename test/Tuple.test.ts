@@ -1,7 +1,7 @@
 import Tuple from '../src/Tuple';
 
 describe('Tuple', () => {
-  const a = Object('a');
+  const a = {};
   const { tuple } = Tuple;
   it('constructor throws', () => {
     expect(() => new (Tuple as any)([1, {}], null)).toThrow();
