@@ -1,6 +1,6 @@
 import { Tuple, SymbolTuple } from '../src/tuplerone';
 
-describe('tuple', () => {
+describe(Tuple.name, () => {
   const a = Object('a');
   const b = Object('b');
   const c = Object('c');

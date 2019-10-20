@@ -1,6 +1,6 @@
 import Tuple from '../src/Tuple';
 
-describe('Tuple', () => {
+describe(Tuple.name, () => {
   const a = {};
   const { tuple } = Tuple;
   it('constructor throws', () => {

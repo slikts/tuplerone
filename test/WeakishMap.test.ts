@@ -1,6 +1,6 @@
 import WeakishMap from '../src/WeakishMap';
 
-describe('WeakishMap', () => {
+describe(WeakishMap.name, () => {
   it('is instantiable', () => {
     expect(new WeakishMap()).toBeInstanceOf(WeakishMap);
   });

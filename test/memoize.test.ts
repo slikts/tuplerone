@@ -1,6 +1,6 @@
 import { memoize } from '../src/memoize';
 
-describe('memoize', () => {
+describe(memoize.name, () => {
   it('returns a function', () => {
     expect(memoize(() => {})).toBeInstanceOf(Function);
   });
