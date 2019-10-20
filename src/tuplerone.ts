@@ -3,6 +3,11 @@ import { unsafe, tuple } from './Tuple';
 export { symbol as SymbolTuple } from './Tuple';
 export { memoize } from './memoize';
 
+/**
+ * A tuple whose members are allowed to all be primitive,
+ * so it can't be garbage-collected and should only be used
+ * in advanced contexts.
+ */
 // tslint:disable-next-line: variable-name
 export const UnsafeTuple = unsafe as typeof tuple;
 
