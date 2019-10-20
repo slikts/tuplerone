@@ -1,6 +1,6 @@
 import { UnsafeTuple } from '../src/tuplerone';
 
-describe('UnsafeTuple', () => {
+describe(UnsafeTuple.name, () => {
   it('constructs', () => {
     expect(UnsafeTuple(1, 2)).toBeInstanceOf(UnsafeTuple.constructor);
   });

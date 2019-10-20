@@ -1,5 +1,6 @@
 import { unsafe, tuple, unsafeSymbol, symbol } from './Tuple';
-import UnsafeNamedSymbolTuple from './UnsafeNamedSymbolTuple';
+import DeepCompositeSymbol from './DeepCompositeSymbol';
+import ValueObject from './ValueObject';
 
 export { symbol as SymbolTuple } from './Tuple';
 export { memoize } from './memoize';
@@ -15,9 +16,7 @@ export const UnsafeTuple = unsafe as typeof tuple;
 // tslint:disable-next-line: variable-name
 export const UnsafeSymbolTuple = unsafeSymbol as typeof tuple;
 
-export { UnsafeNamedSymbolTuple };
-
-export { tuple as Tuple };
+export { DeepCompositeSymbol, ValueObject, tuple as Tuple };
 
 export {
   Tuple0,
