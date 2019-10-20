@@ -252,4 +252,4 @@ slikts <dabas@untu.ms>
 [proposal]: https://github.com/tc39/proposal-record-tuple
 [memo]: https://reactjs.org/docs/react-api.html#reactmemo
 [variadic generics]: https://github.com/microsoft/TypeScript/issues/5453
-[sandbox]: https://codesandbox.io/s/mystifying-dust-dm90w?expanddevtools=1
+[sandbox]: https://codesandbox.io/s/tuplerone-dm90w?expanddevtools=1
