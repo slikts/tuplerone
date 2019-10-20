@@ -14,18 +14,26 @@ describe('WeakishMap', () => {
     expect(new WeakishMap().set(o, 1).get(o)).toBe(1);
   });
 
-  it('test primitive membership', () => {
+  it('can test primitive membership', () => {
     expect(new WeakishMap().set('a', 1).has('a')).toBe(true);
   });
 
-  it('test object membership', () => {
+  it('can test object membership', () => {
     const o = {};
     const m = new WeakishMap().set(o, 1);
     expect(m.has(o)).toBe(true);
     expect(m.has({})).toBe(false);
   });
 
-  it('set twice', () => {
+  it('can get primitive', () => {
+    const m = new WeakishMap();
+    expect(m.get(1)).toBe(undefined);
+    m.set(1, 2);
+    expect(m.get(1)).toBe(2);
+    expect(m.get(2)).toBe(undefined);
+  });
+
+  it('can set twice', () => {
     expect(
       new WeakishMap()
         .set('a', 1)
