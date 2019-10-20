@@ -1,6 +1,5 @@
 {
   "name": "tuplerone",
-  "version": "2.1.2",
   "description": "A yet another tuple implementation",
   "keywords": [
     "tuple",
