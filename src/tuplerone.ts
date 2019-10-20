@@ -1,4 +1,5 @@
-import { unsafe, tuple } from './Tuple';
+import { unsafe, tuple, unsafeSymbol, symbol } from './Tuple';
+import UnsafeNamedSymbolTuple from './UnsafeNamedSymbolTuple';
 
 export { symbol as SymbolTuple } from './Tuple';
 export { memoize } from './memoize';
@@ -10,6 +11,11 @@ export { memoize } from './memoize';
  */
 // tslint:disable-next-line: variable-name
 export const UnsafeTuple = unsafe as typeof tuple;
+
+// tslint:disable-next-line: variable-name
+export const UnsafeSymbolTuple = unsafeSymbol as typeof tuple;
+
+export { UnsafeNamedSymbolTuple };
 
 export { tuple as Tuple };
 

@@ -125,6 +125,10 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
     );
   }
 
+  static unsafeSymbol(...values: any[]): any {
+    return getDefaultLazy(symbolKey, () => Symbol(), getUnsafeLeaf(values));
+  }
+
   [Symbol.iterator](): IterableIterator<A> {
     return arraylikeToIterable(this);
   }
@@ -164,7 +168,7 @@ class UnsafeTuple<A> extends Tuple<A> {}
 export const getUnsafeLeaf = (values: any[]): Map<any, any> =>
   values.reduce((p, c) => getDefaultLazy(c, initUnsafe, p), unsafeCache);
 
-export const { tuple, symbol, unsafe } = Tuple;
+export const { tuple, symbol, unsafe, unsafeSymbol } = Tuple;
 
 // Expose constructor to be used for `instanceof`
 tuple.constructor = Tuple;
