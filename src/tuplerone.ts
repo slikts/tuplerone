@@ -2,7 +2,7 @@ import { unsafe, tuple, unsafeSymbol, symbol } from './Tuple';
 import DeepCompositeSymbol from './DeepCompositeSymbol';
 import ValueObject from './ValueObject';
 
-export { symbol as SymbolTuple } from './Tuple';
+export { symbol as CompositeSymbol } from './Tuple';
 export { memoize } from './memoize';
 
 /**
@@ -14,7 +14,7 @@ export { memoize } from './memoize';
 export const UnsafeTuple = unsafe as typeof tuple;
 
 // tslint:disable-next-line: variable-name
-export const UnsafeSymbolTuple = unsafeSymbol as typeof tuple;
+export const UnsafeCompositeSymbol = unsafeSymbol as typeof tuple;
 
 export { DeepCompositeSymbol, ValueObject, tuple as Tuple };
 
@@ -28,14 +28,14 @@ export {
   Tuple6,
   Tuple7,
   Tuple8,
-  SymbolTuple as SymbolTupleType,
-  SymbolTuple0,
-  SymbolTuple1,
-  SymbolTuple2,
-  SymbolTuple3,
-  SymbolTuple4,
-  SymbolTuple5,
-  SymbolTuple6,
-  SymbolTuple7,
-  SymbolTuple8,
+  CompositeSymbol as CompositeSymbolType,
+  CompositeSymbol0,
+  CompositeSymbol1,
+  CompositeSymbol2,
+  CompositeSymbol3,
+  CompositeSymbol4,
+  CompositeSymbol5,
+  CompositeSymbol6,
+  CompositeSymbol7,
+  CompositeSymbol8,
 } from './types';

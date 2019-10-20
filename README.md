@@ -175,17 +175,17 @@ Tuple(...([1, 2, 3] as const)); // → Tuple3<1, 2, 3>
 
 In editors like VS Code, the type information is also available when the library is consumed as JavaScript.
 
-### `SymbolTuple`
+### `CompositeSymbol`
 
-It's possible to avoid creating an `Array`-like tuple for cases where iterating its contents isn't needed:
+It's possible to avoid creating an `Array`-like tuple for cases where iterating the tuple members isn't needed (for example, just to use it as a key):
 
 ```js
-import { SymbolTuple } from 'tuplerone';
+import { CompositeSymbol } from 'tuplerone';
 
-typeof SymbolTuple(1, 2, {}) === 'symbol'; // → true
+typeof CompositeSymbol(1, 2, {}) === 'symbol'; // → true
 ```
 
-A symbol tuple is more space efficient and can even be used as a key for plain objects.
+A symbol is more space efficient than a tuple and can be used as a key for plain objects.
 
 ## Caveats
 

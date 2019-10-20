@@ -9,16 +9,16 @@ import {
   Tuple6,
   Tuple7,
   Tuple8,
-  SymbolTuple,
-  SymbolTuple0,
-  SymbolTuple1,
-  SymbolTuple2,
-  SymbolTuple3,
-  SymbolTuple4,
-  SymbolTuple5,
-  SymbolTuple6,
-  SymbolTuple7,
-  SymbolTuple8,
+  CompositeSymbol,
+  CompositeSymbol0,
+  CompositeSymbol1,
+  CompositeSymbol2,
+  CompositeSymbol3,
+  CompositeSymbol4,
+  CompositeSymbol5,
+  CompositeSymbol6,
+  CompositeSymbol7,
+  CompositeSymbol8,
 } from './types';
 import { assignArraylike, arraylikeToIterable, getDefaultLazy, isObject } from './helpers';
 
@@ -88,7 +88,7 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
     f: F,
     g: G,
     h: H,
-  ): SymbolTuple8<A, B, C, D, E, F, G, H>;
+  ): CompositeSymbol8<A, B, C, D, E, F, G, H>;
   static symbol<A, B, C, D, E, F, G>(
     a: A,
     b: B,
@@ -97,7 +97,7 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
     e: E,
     f: F,
     g: G,
-  ): SymbolTuple7<A, B, C, D, E, F, G>;
+  ): CompositeSymbol7<A, B, C, D, E, F, G>;
   static symbol<A, B, C, D, E, F>(
     a: A,
     b: B,
@@ -105,13 +105,13 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
     d: D,
     e: E,
     f: F,
-  ): SymbolTuple6<A, B, C, D, E, F>;
-  static symbol<A, B, C, D, E>(a: A, b: B, c: C, d: D, e: E): SymbolTuple5<A, B, C, D, E>;
-  static symbol<A, B, C, D>(a: A, b: B, c: C, d: D): SymbolTuple4<A, B, C, D>;
-  static symbol<A, B, C>(a: A, b: B, c: C): SymbolTuple3<A, B, C>;
-  static symbol<A, B>(a: A, b: B): SymbolTuple2<A, B>;
-  static symbol<A>(a: A): SymbolTuple1<A>;
-  static symbol(): typeof SymbolTuple0;
+  ): CompositeSymbol6<A, B, C, D, E, F>;
+  static symbol<A, B, C, D, E>(a: A, b: B, c: C, d: D, e: E): CompositeSymbol5<A, B, C, D, E>;
+  static symbol<A, B, C, D>(a: A, b: B, c: C, d: D): CompositeSymbol4<A, B, C, D>;
+  static symbol<A, B, C>(a: A, b: B, c: C): CompositeSymbol3<A, B, C>;
+  static symbol<A, B>(a: A, b: B): CompositeSymbol2<A, B>;
+  static symbol<A>(a: A): CompositeSymbol1<A>;
+  static symbol(): typeof CompositeSymbol0;
   static symbol(...values: any[]): any {
     return getDefaultLazy(symbolKey, () => Symbol(), getLeaf(values));
   }

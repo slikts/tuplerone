@@ -1,4 +1,4 @@
-import { Tuple, SymbolTuple } from '../src/tuplerone';
+import { Tuple, CompositeSymbol } from '../src/tuplerone';
 
 describe(Tuple.name, () => {
   const a = Object('a');
@@ -50,12 +50,12 @@ describe(Tuple.name, () => {
 
 describe('tuple symbol', () => {
   it('is of type symbol', () => {
-    expect(typeof SymbolTuple(1 as const, 2, {})).toBe('symbol');
+    expect(typeof CompositeSymbol(1 as const, 2, {})).toBe('symbol');
   });
 
   it('compares', () => {
     const a = {};
-    expect(SymbolTuple(1, 2, a)).toBe(SymbolTuple(1, 2, a));
+    expect(CompositeSymbol(1, 2, a)).toBe(CompositeSymbol(1, 2, a));
   });
 });
 
