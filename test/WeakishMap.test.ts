@@ -1,29 +1,29 @@
-import WeakishMap from '../src/WeakishMap'
+import WeakishMap from '../src/WeakishMap';
 
 describe('WeakishMap', () => {
   it('is instantiable', () => {
-    expect(new WeakishMap()).toBeInstanceOf(WeakishMap)
-  })
+    expect(new WeakishMap()).toBeInstanceOf(WeakishMap);
+  });
 
   it('can set/get primitives', () => {
-    expect(new WeakishMap().set('a', 1).get('a')).toBe(1)
-  })
+    expect(new WeakishMap().set('a', 1).get('a')).toBe(1);
+  });
 
   it('can set/get objects', () => {
-    const o = {}
-    expect(new WeakishMap().set(o, 1).get(o)).toBe(1)
-  })
+    const o = {};
+    expect(new WeakishMap().set(o, 1).get(o)).toBe(1);
+  });
 
   it('test primitive membership', () => {
-    expect(new WeakishMap().set('a', 1).has('a')).toBe(true)
-  })
+    expect(new WeakishMap().set('a', 1).has('a')).toBe(true);
+  });
 
   it('test object membership', () => {
-    const o = {}
-    const m = new WeakishMap().set(o, 1)
-    expect(m.has(o)).toBe(true)
-    expect(m.has({})).toBe(false)
-  })
+    const o = {};
+    const m = new WeakishMap().set(o, 1);
+    expect(m.has(o)).toBe(true);
+    expect(m.has({})).toBe(false);
+  });
 
   it('set twice', () => {
     expect(
@@ -31,6 +31,6 @@ describe('WeakishMap', () => {
         .set('a', 1)
         .set('b', 2)
         .get('b'),
-    ).toBe(2)
-  })
-})
+    ).toBe(2);
+  });
+});
