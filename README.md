@@ -14,13 +14,13 @@
 A quick reminder about what tuples are (using Python):
 
 ```python
-(1, 2, 3) == (1, 2, 3) # -> True
+(1, 2, 3) == (1, 2, 3) # → True
 ```
 
 A JavaScript version of something similar looks like this:
 
 ```js
-'[1,2,3]' === '[1,2,3]'; // -> true
+'[1,2,3]' === '[1,2,3]'; // → true
 ```
 
 Except it's using a string and would need to be unserialized with `JSON.parse()` to allow accessing the separate members. Moreover, JSON is limited in what values can be serialized.
@@ -28,7 +28,7 @@ Except it's using a string and would need to be unserialized with `JSON.parse()`
 You could alternatively use `"1,2,3"` and `String.split(",")`, but it's also not very convenient. Just using an array doesn't work:
 
 ```js
-[1, 2, 3] === [1, 2, 3]; // -> false
+[1, 2, 3] === [1, 2, 3]; // → false
 ```
 
 Each JavaScript array is a different object and so its value is the reference to that object. Tuples are a way to make that reference the same if the array members are the same. Using Tuplerone:
@@ -170,10 +170,22 @@ const tuple2: Tuple2<typeof o, number> = Tuple(o, 1); // 2-tuple
 Tuple(o) === Tuple(o, 1); // TS compile error due to different arities
 
 // Spreading a TypeScript tuple:
-Tuple(...([1, 2, 3] as const)); // -> Tuple3<1, 2, 3>
+Tuple(...([1, 2, 3] as const)); // → Tuple3<1, 2, 3>
 ```
 
 In editors like VS Code, the type information is also available when the library is consumed as JavaScript.
+
+### `SymbolTuple`
+
+It's possible to avoid creating an `Array`-like tuple for cases where iterating its contents isn't needed:
+
+```js
+import { SymbolTuple } from 'tuplerone';
+
+typeof SymbolTuple(1, 2, {}) === 'symbol'; // → true
+```
+
+A symbol tuple is more space efficient and can even be used as a key for plain objects.
 
 ## Caveats
 
@@ -197,7 +209,7 @@ There is an `UnsafeTuple` type for advanced use cases where the values not being
 ```js
 import { UnsafeTuple as Tuple } from 'tuplerone';
 
-Tuple(1, 2, 3) === Tuple(1, 2, 3); // -> true
+Tuple(1, 2, 3) === Tuple(1, 2, 3); // → true
 ```
 
 If any of the members are objects, `UnsafeTuple` will work the same as a regular `Tuple` and reuse the same cache.
@@ -228,7 +240,7 @@ Tuples can be constructed without the `new` keyword to make them behave like oth
 (`Symbol`, `Boolean`, `String`, `Number`) that also don't require `new` and also are value-semantic. This means that `instanceof` doesn't work the same as for other objects, but can still be used like so:
 
 ```js
-Tuple() instanceof Tuple.constructor; // -> true
+Tuple() instanceof Tuple.constructor; // → true
 ```
 
 ## License
