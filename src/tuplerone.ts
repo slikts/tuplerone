@@ -3,6 +3,7 @@ import { unsafe, tuple } from './Tuple';
 export { symbol as SymbolTuple } from './Tuple';
 export { memoize } from './memoize';
 
+// tslint:disable-next-line: variable-name
 export const UnsafeTuple = unsafe as typeof tuple;
 
 export { tuple as Tuple };
