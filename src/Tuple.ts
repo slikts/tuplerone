@@ -84,7 +84,7 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
 
   static unsafe(...values: any[]): any {
     return getDefaultLazy(
-      tupleKey,
+      unsafeKey,
       () => new UnsafeTuple(values, localToken),
       getUnsafeLeaf(values),
     );
@@ -95,11 +95,12 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
   }
 }
 
-const tupleKey = Object.create(null);
-const symbolKey = Object.create(null);
+const tupleKey = Symbol();
+const symbolKey = Symbol();
+const unsafeKey = Symbol();
 const typeOf = (x: unknown): string => typeof x;
 const makeSymbol = (values: any[]): symbol => Symbol(String(values.map(typeOf)));
-const cache = new WeakMap();
+const cache = new WeakishMap();
 const localToken = Symbol();
 const initWeakish = () => new WeakishMap();
 let tuple0: Tuple0;
@@ -115,11 +116,9 @@ export const getLeaf = (values: any[]): WeakishMap<any, any> => {
   return values.reduce((p, c) => getDefaultLazy(c, initWeakish, p), root);
 };
 
-const unsafeCache = new Map();
-const initUnsafe = () => new Map();
 class UnsafeTuple<A> extends Tuple<A> {}
 export const getUnsafeLeaf = (values: any[]): Map<any, any> =>
-  values.reduce((p, c) => getDefaultLazy(c, initUnsafe, p), unsafeCache);
+  values.reduce((p, c) => getDefaultLazy(c, initWeakish, p), cache);
 
 export const { tuple, symbol, unsafe } = Tuple;
 
