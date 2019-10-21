@@ -48,7 +48,7 @@ This library is:
 - _tiny_ (bundle size is [under one kilobyte][tiny] compressed), with no dependencies
 - _well-typed_ using TypeScript (but can still be used from JavaScript, of course)
 - _well-tested_ with full coverage
-- _efficient_ using an ES2015 [`WeakMap`][weakmap]-based directed acyclic graph
+- _efficient_ using an ES2015 [`WeakMap`][weakmap]-based directed acyclic graph for lookups
 
 The `Tuple` objects are:
 
@@ -56,7 +56,7 @@ The `Tuple` objects are:
 - [array-like] – tuple members can be accessed by indexing, and there's a `length` property, but no `Array` prototype methods
 - [iterable] – tuple members can be iterated over, for example, using [`for-of`][for-of] loops or spread syntax
 
-There exists a [stage-1 proposal][proposal] for adding a tuple type to JavaScript and a [different stage-1 proposal][composite] for adding a more limited version a tuple-like type.
+There exists a [stage-1 proposal][proposal] for adding a tuple type to JavaScript and a [different stage-1 proposal][composite] for adding a more limited value-semantic type.
 
 ## Theory
 
