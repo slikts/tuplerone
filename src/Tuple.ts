@@ -9,7 +9,6 @@ import {
   Tuple6,
   Tuple7,
   Tuple8,
-  CompositeSymbol,
   CompositeSymbol0,
   CompositeSymbol1,
   CompositeSymbol2,
@@ -68,7 +67,7 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
   static tuple<A, B>(a: A, b: B): Tuple2<A, B>;
   static tuple<A>(a: A): Tuple1<A>;
   static tuple(): Tuple0;
-  static tuple(...values: any[]): any {
+  static tuple(...values: unknown[]): unknown {
     // Special case for 0-tuples
     if (values.length === 0) {
       // Only construct if needed
