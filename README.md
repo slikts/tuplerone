@@ -7,7 +7,7 @@
   <a href="https://david-dm.org/slikts/tuplerone?type=dev"><img src="https://david-dm.org/slikts/tuplerone/dev-status.svg" alt="Dev Dependencies"></a>
 </p>
 
-<p align="center">A lightweight, efficient tuple data structure implementation for JavaScript.</p>
+<p align="center">A lightweight, efficient tuple and value object implementation for JavaScript.</p>
 
 ---
 
@@ -119,6 +119,8 @@ https://unpkg.com/tuplerone/dist/tuplerone.umd.js
 
 ## Usage
 
+### `Tuple(…values)`
+
 ```js
 import { Tuple } from 'tuplerone';
 
@@ -175,7 +177,7 @@ Tuple(...([1, 2, 3] as const)); // → Tuple3<1, 2, 3>
 
 In editors like VS Code, the type information is also available when the library is consumed as JavaScript.
 
-### `CompositeSymbol`
+### `CompositeSymbol(…values)`
 
 It's possible to avoid creating an `Array`-like tuple for cases where iterating the tuple members isn't needed (for example, just to use it as a key):
 
@@ -186,6 +188,18 @@ typeof CompositeSymbol(1, 2, {}) === 'symbol'; // → true
 ```
 
 A symbol is more space efficient than a tuple and can be used as a key for plain objects.
+
+### `ValueObject(object)`
+
+Tuplerone also includes a simple [value object] implementation:
+
+```js
+import { ValueObject } from 'tuplerone';
+
+ValueObject({ a: 1, { b: { c: 2 } }}) === ValueObject({ a: 1, { b: { c: 2 } }}); // → true
+```
+
+Note that the passed objects are frozen with [`Object.freeze()`][frozen].
 
 ## Caveats
 
@@ -268,3 +282,4 @@ slikts <dabas@untu.ms>
 [memo]: https://reactjs.org/docs/react-api.html#reactmemo
 [variadic generics]: https://github.com/microsoft/TypeScript/issues/5453
 [sandbox]: https://codesandbox.io/s/tuplerone-dm90w?expanddevtools=1
+[value object]: https://en.wikipedia.org/wiki/Value_object
