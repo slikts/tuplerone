@@ -37,7 +37,7 @@ Each JavaScript array is a different object and so its value is the reference to
 Tuple(1, 2, 3) === Tuple(1, 2, 3);
 ```
 
-This may be something programmers can live without, but it's useful when dealing with memoization like React's [`memo()`][memo] or `PureComponent`, since you can pass lists as props to components without forcing re-renders or manually caching the list. It's also useful for using multiple values as keys with `Map()`. In general, it's just a nice thing to have in your toolbox.
+Example use case for tuples is dealing with memoization like React's [`memo()`][memo] or `PureComponent`, since you can pass lists as props to components without forcing re-renders or manually caching the list. It's also useful for using multiple values as keys with `Map()`. In general, it's just a nice thing to have in your toolbox.
 
 **[Try Tuplerone in a sandbox][sandbox]**
 
