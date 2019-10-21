@@ -9,7 +9,7 @@
   <img src="https://badgen.net/dependabot/slikts/tuplerone" alt="Dependabot">
 </p>
 
-<p align="center">A lightweight, efficient tuple and value object implementation for JavaScript.</p>
+<p align="center">A lightweight, efficient tuple and value object implementation for JavaScript and TypeScript.</p>
 
 ---
 
