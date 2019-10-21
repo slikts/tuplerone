@@ -5,6 +5,7 @@
   <a href="https://travis-ci.org/slikts/tuplerone"><img src="https://img.shields.io/travis/slikts/tuplerone.svg" alt="Travis"></a>
   <a href="https://coveralls.io/github/slikts/tuplerone"><img src="https://img.shields.io/coveralls/slikts/tuplerone.svg" alt="Coveralls"></a>
   <a href="https://david-dm.org/slikts/tuplerone?type=dev"><img src="https://david-dm.org/slikts/tuplerone/dev-status.svg" alt="Dev Dependencies"></a>
+  <img src="https://badgen.net/dependabot/slikts/tuplerone" alt="Dependabot">
 </p>
 
 <p align="center">A lightweight, efficient tuple and value object implementation for JavaScript.</p>
