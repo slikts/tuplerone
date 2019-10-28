@@ -88,7 +88,7 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.19",
+    "@types/jest": "^24.0.20",
     "@types/node": "^12.11.6",
     "babel-jest": "^24.9.0",
     "colors": "^1.4.0",
