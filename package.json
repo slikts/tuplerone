@@ -116,7 +116,7 @@
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-slikts": "^2.0.4",
-    "typedoc": "^0.15.0",
+    "typedoc": "^0.15.1",
     "typescript": "^3.6.4",
     "typestrict": "1.0.2",
     "validate-commit-msg": "^2.14.0"
