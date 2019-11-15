@@ -113,7 +113,7 @@
     "semantic-release": "^15.13.27",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.5.2",
-    "tslint": "^5.20.0",
+    "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-slikts": "^2.0.4",
     "typedoc": "^0.15.2",
