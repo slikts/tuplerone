@@ -93,7 +93,7 @@
     "babel-jest": "^24.9.0",
     "colors": "^1.4.0",
     "commitizen": "^4.0.3",
-    "coveralls": "^3.0.8",
+    "coveralls": "^3.0.9",
     "cross-env": "^6.0.3",
     "cz-conventional-changelog": "^3.0.2",
     "husky": "^3.1.0",
