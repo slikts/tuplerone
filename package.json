@@ -89,7 +89,7 @@
   },
   "devDependencies": {
     "@types/jest": "^25.1.0",
-    "@types/node": "^13.5.1",
+    "@types/node": "^13.7.0",
     "babel-jest": "^25.1.0",
     "colors": "^1.4.0",
     "commitizen": "^4.0.3",
