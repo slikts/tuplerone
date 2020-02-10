@@ -121,7 +121,7 @@
     "validate-commit-msg": "^2.14.0"
   },
   "dependencies": {
-    "@wessberg/rollup-plugin-ts": "^1.2.14"
+    "@wessberg/rollup-plugin-ts": "^1.2.16"
   },
   "bugs": "https://github.com/slikts/tuplerone/issues",
   "husky": {
