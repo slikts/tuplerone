@@ -1,21 +1,19 @@
 import DeepCompositeSymbol from './DeepCompositeSymbol';
 
+/**
+ * Works somewhat similarly to Record in the Record & Tuple proposal:
+ * https://github.com/tc39/proposal-record-tuple
+ */
 // tslint:disable-next-line: variable-name
-const ValueObject = <A extends object>(object: A): A => {
-  if (objectCache.has(object)) {
-    return keyCache.get(objectCache.get(object)) as A;
+const ValueObject = <A extends object>(object: A, filterKeys?: (key: string) => boolean): A => {
+  const key = DeepCompositeSymbol(object, filterKeys);
+  if (cache.has(key)) {
+    return cache.get(key) as A;
   }
-  const key = DeepCompositeSymbol(object);
-  if (keyCache.has(key)) {
-    Object.freeze(object);
-    objectCache.set(object, key);
-    return keyCache.get(key) as A;
-  }
-  keyCache.set(key, object);
+  cache.set(key, object);
   return object;
 };
 
-const keyCache = new Map<symbol, object>();
-const objectCache = new WeakMap<object, any>();
+const cache = new Map<symbol, object>();
 
 export default ValueObject;

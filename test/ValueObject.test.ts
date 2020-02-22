@@ -23,4 +23,14 @@ describe(ValueObject.name, () => {
     expect(ValueObject(o())).toBe(ValueObject(o()));
     expect(ValueObject(o())).not.toBe(ValueObject({}));
   });
+
+  it('changes reference if value changes', () => {
+    const o = { a: { c: 1 }, b: 2 };
+    const vO1 = ValueObject(o);
+    o.b = 3;
+    const vO2 = ValueObject(o);
+
+    expect(vO1).not.toBe(vO2);
+    expect(ValueObject(vO2)).toBe(ValueObject(vO2));
+  });
 });
