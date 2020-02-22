@@ -4,7 +4,7 @@ import { isObject } from './helpers';
 // tslint:disable-next-line: variable-name
 const DeepCompositeSymbol: typeof Tuple.symbol = ((object: any) => {
   const entries = Object.entries(object);
-  // Recursively replace non-tuple object values with
+  // Recursively replace non-tuple object values with tuples
   entries.forEach(update);
   return Tuple.unsafeSymbol(...Array.prototype.concat.apply([], entries));
 }) as any;

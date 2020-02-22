@@ -125,7 +125,7 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
   }
 
   static unsafeSymbol(...values: any[]): any {
-    return getDefaultLazy(symbolKey, () => Symbol(), getUnsafeLeaf(values));
+    return getDefaultLazy(symbolKey, Symbol, getUnsafeLeaf(values));
   }
 
   [Symbol.iterator](): IterableIterator<A> {
@@ -133,7 +133,7 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
   }
 }
 
-// Cache keys for each tuple type
+// Root cache keys for each tuple type
 const tupleKey = Symbol();
 const symbolKey = Symbol();
 
