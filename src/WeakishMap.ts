@@ -1,16 +1,17 @@
 import { GenericMap } from './types';
-import { isObject } from './helpers';
+import { isNotPrimitive } from './helpers';
 
 /**
- * A generic wrapper to Map and WeakMap that can use both objects and primitives as keys,
- * creating the underlying storage as needed.
+ * A generic wrapper to Map and WeakMap that can use both non-primitives
+ * (objects and symbols) and primitives as keys, creating the underlying
+ * storage as needed.
  */
 export default class WeakishMap<A, B> implements GenericMap<A, B> {
   private weakMap?: WeakMap<object, B>;
   private map?: Map<A, B>;
 
   set(k: A, v: B): this {
-    if (isObject(k)) {
+    if (isNotPrimitive(k)) {
       if (!this.weakMap) {
         this.weakMap = new WeakMap();
       }
@@ -25,7 +26,7 @@ export default class WeakishMap<A, B> implements GenericMap<A, B> {
   }
 
   get(k: A): B | undefined {
-    if (isObject(k) && this.weakMap) {
+    if (isNotPrimitive(k) && this.weakMap) {
       return this.weakMap.get(k);
     }
     if (this.map) {
@@ -34,7 +35,7 @@ export default class WeakishMap<A, B> implements GenericMap<A, B> {
   }
 
   has(k: A): boolean {
-    if (isObject(k) && this.weakMap) {
+    if (isNotPrimitive(k) && this.weakMap) {
       return this.weakMap.has(k);
     }
     if (this.map) {

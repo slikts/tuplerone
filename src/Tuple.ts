@@ -19,7 +19,7 @@ import {
   CompositeSymbol7,
   CompositeSymbol8,
 } from './types';
-import { assignArraylike, arraylikeToIterable, getDefaultLazy, isObject } from './helpers';
+import { assignArraylike, arraylikeToIterable, getDefaultLazy, isNotPrimitive } from './helpers';
 
 export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, Iterable<A> {
   [i: number]: A;
@@ -146,12 +146,12 @@ const initWeakish = () => new WeakishMap();
 let tuple0: Tuple0;
 
 /**
- * Tries to use the first object from value list as the root key and throws
- * if there's no objects.
+ * Tries to use the first non-primitive from value list as the root key and throws
+ * if there's only primitives.
  */
-export const getLeaf = (values: any[]): WeakishMap<any, any> => {
-  const rootValue = values.find(isObject);
-  if (!rootValue) {
+export const getLeaf = (values: any[], unsafe?: boolean): WeakishMap<any, any> => {
+  const rootValue = values.find(isNotPrimitive);
+  if (!rootValue && !unsafe) {
     // Throw since it's not possible to weak-reference objects by primitives, only by other objects
     throw TypeError('At least one value must be of type object');
   }
@@ -164,6 +164,9 @@ export const getLeaf = (values: any[]): WeakishMap<any, any> => {
 const unsafeCache = new Map();
 const initUnsafe = () => new Map();
 class UnsafeTuple<A> extends Tuple<A> {}
+/**
+ * A memory-leaky, slightly more efficient version of `getLeaf()`.
+ */
 export const getUnsafeLeaf = (values: any[]): Map<any, any> =>
   values.reduce((prev, curr) => getDefaultLazy(curr, initUnsafe, prev), unsafeCache);
 

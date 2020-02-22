@@ -24,10 +24,10 @@ export const getDefault = <A, B>(key: A, defaultValue: B, target: GenericMap<A, 
 };
 
 /**
- * Tests if a value is an object.
+ * Tests if a value has an identity.
  */
-export const isObject = (x: any): x is object =>
-  x !== null && (typeof x === 'object' || typeof x === 'function');
+export const isNotPrimitive = (x: any): x is object =>
+  x !== null && (typeof x === 'object' || typeof x === 'function' || typeof x === 'symbol');
 
 export const forEach = <A>(iterator: Iterator<A>, callback: (value: A) => void) => {
   do {
