@@ -2,11 +2,13 @@ import Tuple from './Tuple';
 import { isObject } from './helpers';
 
 // tslint:disable-next-line: variable-name
-const DeepCompositeSymbol: typeof Tuple.symbol = ((object: any) => {
-  const entries = Object.entries(object);
+const DeepCompositeSymbol = ((object: any, keyFilter?: (key: string) => boolean) => {
+  const entries = keyFilter
+    ? Object.entries(object).filter(entry => keyFilter(entry[0]))
+    : Object.entries(object);
   // Recursively replace non-tuple object values with tuples
   entries.forEach(update);
-  return Tuple.unsafeSymbol(...Array.prototype.concat.apply([], entries));
+  return Tuple.unsafeSymbol(...flatten(entries));
 }) as any;
 
 const update = (entry: any) => {
@@ -15,5 +17,7 @@ const update = (entry: any) => {
     entry[1] = DeepCompositeSymbol(v);
   }
 };
+
+const flatten = (entries: any[][]) => Array.prototype.concat.apply([], entries);
 
 export default DeepCompositeSymbol;

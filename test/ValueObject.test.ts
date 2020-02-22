@@ -30,6 +30,7 @@ describe(ValueObject.name, () => {
     o.b = 3;
     const vO2 = ValueObject(o);
 
+    expect(vO2.b).toBe(o.b);
     expect(vO1).not.toBe(vO2);
     expect(ValueObject(vO2)).toBe(ValueObject(vO2));
   });
