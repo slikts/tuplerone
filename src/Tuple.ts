@@ -157,7 +157,7 @@ export const getLeaf = (values: any[]): WeakishMap<any, any> => {
   }
   // If the first value is not an object, pad the values with the first object
   const root = rootValue === values[0] ? cache : getDefaultLazy(rootValue, initWeakish, cache);
-  return values.reduce((p, c) => getDefaultLazy(c, initWeakish, p), root);
+  return values.reduce((prev, curr) => getDefaultLazy(curr, initWeakish, prev), root);
 };
 
 // Unsafe tuples aren't garbage collected so it's more efficient to just use a normal map
@@ -165,7 +165,7 @@ const unsafeCache = new Map();
 const initUnsafe = () => new Map();
 class UnsafeTuple<A> extends Tuple<A> {}
 export const getUnsafeLeaf = (values: any[]): Map<any, any> =>
-  values.reduce((p, c) => getDefaultLazy(c, initUnsafe, p), unsafeCache);
+  values.reduce((prev, curr) => getDefaultLazy(curr, initUnsafe, prev), unsafeCache);
 
 export const { tuple, symbol, unsafe, unsafeSymbol } = Tuple;
 
