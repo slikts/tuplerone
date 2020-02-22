@@ -1,4 +1,5 @@
-import Tuple from '../src/Tuple';
+import Tuple, { getLeaf } from '../src/Tuple';
+import WeakishMap from '../src/WeakishMap';
 
 describe(Tuple.name, () => {
   const a = {};
@@ -18,5 +19,11 @@ describe(Tuple.name, () => {
 
   it('can take spread params', () => {
     expect(tuple(...([1, a] as const))).toEqual([1, a]);
+  });
+});
+
+describe('getLeaf', () => {
+  it('supports unsafe param', () => {
+    expect(getLeaf([1, 2, 3], true)).toBeInstanceOf(WeakishMap);
   });
 });

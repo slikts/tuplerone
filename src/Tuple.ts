@@ -19,7 +19,7 @@ import {
   CompositeSymbol7,
   CompositeSymbol8,
 } from './types';
-import { assignArraylike, arraylikeToIterable, getDefaultLazy, isNotPrimitive } from './helpers';
+import { assignArraylike, arraylikeToIterable, getDefaultLazy, isObject } from './helpers';
 
 export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, Iterable<A> {
   [i: number]: A;
@@ -150,7 +150,7 @@ let tuple0: Tuple0;
  * if there's only primitives.
  */
 export const getLeaf = (values: any[], unsafe?: boolean): WeakishMap<any, any> => {
-  const rootValue = values.find(isNotPrimitive);
+  const rootValue = values.find(isObject);
   if (!rootValue && !unsafe) {
     // Throw since it's not possible to weak-reference objects by primitives, only by other objects
     throw TypeError('At least one value must be of type object');

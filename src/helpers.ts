@@ -24,10 +24,12 @@ export const getDefault = <A, B>(key: A, defaultValue: B, target: GenericMap<A, 
 };
 
 /**
- * Tests if a value has an identity.
+ * Tests if a value is an object.
+ *
+ * Doesn't test for symbols because symbols are invalid as `WeakMap` keys.
  */
-export const isNotPrimitive = (x: any): x is object =>
-  x !== null && (typeof x === 'object' || typeof x === 'function' || typeof x === 'symbol');
+export const isObject = (x: any): x is object =>
+  x !== null && (typeof x === 'object' || typeof x === 'function');
 
 export const forEach = <A>(iterator: Iterator<A>, callback: (value: A) => void) => {
   do {
