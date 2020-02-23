@@ -17,7 +17,7 @@ export const shallow = Symbol('shallow');
 
 const update = (entry: [string, any], filter?: any) => {
   const value = entry[1];
-  if (!value[shallow] && isObject(value) && !(value instanceof Tuple)) {
+  if (isObject(value) && !(value as any)[shallow] && !(value instanceof Tuple)) {
     entry[1] = DeepCompositeSymbol(value, filter);
   }
 };
