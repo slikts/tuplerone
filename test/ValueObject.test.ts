@@ -34,4 +34,9 @@ describe(ValueObject.name, () => {
     expect(vO1).not.toBe(vO2);
     expect(ValueObject(vO2)).toBe(ValueObject(vO2));
   });
+
+  it('works with primitives', () => {
+    expect(() => ValueObject(null)).not.toThrow();
+    expect(() => ValueObject(undefined)).not.toThrow();
+  });
 });
