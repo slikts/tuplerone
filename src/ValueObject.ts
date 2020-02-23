@@ -5,8 +5,11 @@ import DeepCompositeSymbol from './DeepCompositeSymbol';
  * https://github.com/tc39/proposal-record-tuple
  */
 // tslint:disable-next-line: variable-name
-const ValueObject = <A extends object>(object: A, keyFilter?: (key: string) => boolean): A => {
-  const key = DeepCompositeSymbol(object, keyFilter);
+const ValueObject = <A extends object>(
+  object: A,
+  filter?: (entry: [string, any]) => boolean,
+): A => {
+  const key = DeepCompositeSymbol(object, filter);
   if (cache.has(key)) {
     return cache.get(key) as A;
   }
