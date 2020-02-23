@@ -1,5 +1,5 @@
 import { unsafe, tuple, unsafeSymbol, symbol } from './Tuple';
-import DeepCompositeSymbol from './DeepCompositeSymbol';
+import DeepCompositeSymbol, { shallow } from './DeepCompositeSymbol';
 import ValueObject from './ValueObject';
 
 export { symbol as CompositeSymbol } from './Tuple';

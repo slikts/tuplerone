@@ -13,10 +13,12 @@ const DeepCompositeSymbol = (object: any, filter?: (entry: [string, any]) => boo
   return Tuple.unsafeSymbol(...flatten(entries));
 };
 
-const update = (entry: any, filter?: any) => {
-  const v = entry[1];
-  if (isObject(v) && !(v instanceof Tuple)) {
-    entry[1] = DeepCompositeSymbol(v, filter);
+export const shallow = Symbol('shallow');
+
+const update = (entry: [string, any], filter?: any) => {
+  const value = entry[1];
+  if (!value[shallow] && isObject(value) && !(value instanceof Tuple)) {
+    entry[1] = DeepCompositeSymbol(value, filter);
   }
 };
 
