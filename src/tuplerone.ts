@@ -1,9 +1,10 @@
 import { unsafe, tuple, unsafeSymbol, symbol } from './Tuple';
-import DeepCompositeSymbol, { shallow } from './DeepCompositeSymbol';
+import DeepCompositeSymbol from './DeepCompositeSymbol';
 import ValueObject from './ValueObject';
 
 export { symbol as CompositeSymbol } from './Tuple';
 export { memoize } from './memoize';
+export { shallow } from './DeepCompositeSymbol';
 
 /**
  * A tuple whose members are allowed to all be primitive,
