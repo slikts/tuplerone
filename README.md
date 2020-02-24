@@ -1,7 +1,7 @@
 <h1 align="center"><a href="https://github.com/slikts/tuplerone"><img width="550" src="https://raw.githubusercontent.com/slikts/tuplerone/master/logo.svg?sanitize=true" alt="tuplerone"></a></h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/slikts/tuplerone"><img src="https://img.shields.io/npm/v/tuplerone.svg?style=flat" alt="View this project on npm"></a>
+  <a href="https://www.npmjs.com/package/tuplerone"><img src="https://img.shields.io/npm/v/tuplerone.svg?style=flat" alt="View this project on npm"></a>
   <a href="https://travis-ci.org/slikts/tuplerone"><img src="https://img.shields.io/travis/slikts/tuplerone.svg" alt="Travis"></a>
   <a href="https://coveralls.io/github/slikts/tuplerone"><img src="https://img.shields.io/coveralls/slikts/tuplerone.svg" alt="Coveralls"></a>
   <a href="https://david-dm.org/slikts/tuplerone?type=dev"><img src="https://david-dm.org/slikts/tuplerone/dev-status.svg" alt="Dev Dependencies"></a>
