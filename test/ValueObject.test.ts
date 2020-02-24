@@ -1,4 +1,4 @@
-import { ValueObject } from '../src/tuplerone';
+import { ValueObject, shallow } from '../src/tuplerone';
 
 describe(ValueObject.name, () => {
   it('constructs', () => {
@@ -38,5 +38,14 @@ describe(ValueObject.name, () => {
   it('works with primitives', () => {
     expect(() => ValueObject(null)).not.toThrow();
     expect(() => ValueObject(undefined)).not.toThrow();
+  });
+
+  it('can be short-circuited if circular', () => {
+    const a: any = {};
+    const b = { a };
+    a.b = b;
+    expect(() => ValueObject(a)).toThrow();
+    a[shallow] = true;
+    expect(() => ValueObject(a)).not.toThrow();
   });
 });
