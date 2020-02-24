@@ -13,11 +13,21 @@ const DeepCompositeSymbol = (object: any, filter?: (entry: [string, any]) => boo
   return Tuple.unsafeSymbol(...flatten(entries));
 };
 
-export const shallow = Symbol('shallow');
+export const shallowKey = Symbol('shallow');
+export const shallowCache = new WeakSet<object>();
+export const shallow = <A extends object>(a: A): A => {
+  shallowCache.add(a);
+  return a;
+};
 
 const update = (entry: [string, any], filter?: any) => {
   const value = entry[1];
-  if (isObject(value) && !(value as any)[shallow] && !(value instanceof Tuple)) {
+  if (
+    isObject(value) &&
+    !(value as any)[shallowKey] &&
+    !(value instanceof Tuple) &&
+    !shallowCache.has(value)
+  ) {
     entry[1] = DeepCompositeSymbol(value, filter);
   }
 };

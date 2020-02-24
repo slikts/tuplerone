@@ -1,4 +1,4 @@
-import { ValueObject, shallow } from '../src/tuplerone';
+import { ValueObject, shallowKey, shallow } from '../src/tuplerone';
 
 describe(ValueObject.name, () => {
   it('constructs', () => {
@@ -45,7 +45,15 @@ describe(ValueObject.name, () => {
     const b = { a };
     a.b = b;
     expect(() => ValueObject(a)).toThrow();
-    a[shallow] = true;
+    a[shallowKey] = true;
     expect(() => ValueObject(a)).not.toThrow();
+  });
+
+  it('can be short-circuited using a WeakSet registry', () => {
+    const a: any = {};
+    const b = { a };
+    a.b = b;
+    expect(() => ValueObject(a)).toThrow();
+    expect(() => ValueObject(shallow(a))).not.toThrow();
   });
 });

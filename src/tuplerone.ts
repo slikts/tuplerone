@@ -4,7 +4,7 @@ import ValueObject from './ValueObject';
 
 export { symbol as CompositeSymbol } from './Tuple';
 export { memoize } from './memoize';
-export { shallow } from './DeepCompositeSymbol';
+export { shallowKey, shallow } from './DeepCompositeSymbol';
 
 /**
  * A tuple whose members are allowed to all be primitive,
