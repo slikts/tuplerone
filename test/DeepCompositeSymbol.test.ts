@@ -34,4 +34,11 @@ describe(DeepCompositeSymbol.name, () => {
     expect(DeepCompositeSymbol(o1, filter)).toBe(DeepCompositeSymbol(o2, filter));
     expect(DeepCompositeSymbol(o1)).not.toBe(DeepCompositeSymbol(o2));
   });
+
+  it('works with empty objects', () => {
+    expect(DeepCompositeSymbol([])).toBe(DeepCompositeSymbol([]));
+    expect(DeepCompositeSymbol({})).toBe(DeepCompositeSymbol({}));
+    expect(DeepCompositeSymbol({})).not.toBe(DeepCompositeSymbol({ a: 1 }));
+    expect(DeepCompositeSymbol([])).not.toBe(DeepCompositeSymbol([1]));
+  });
 });

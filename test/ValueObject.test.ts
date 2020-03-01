@@ -56,4 +56,11 @@ describe(ValueObject.name, () => {
     expect(() => ValueObject(a)).toThrow();
     expect(() => ValueObject(shallow(a))).not.toThrow();
   });
+
+  it('works with empty objects', () => {
+    expect(ValueObject([])).toBe(ValueObject([]));
+    expect(ValueObject({})).toBe(ValueObject({}));
+    expect(ValueObject({})).not.toBe(ValueObject({ a: 1 }));
+    expect(ValueObject([])).not.toBe(ValueObject([1]));
+  });
 });
