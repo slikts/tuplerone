@@ -1,5 +1,6 @@
 {
   "name": "tuplerone",
+  "version": "0.0.0",
   "description": "A yet another tuple implementation",
   "keywords": [
     "tuple",
@@ -31,7 +32,8 @@
   "scripts": {
     "lint": "tslint -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
     "prebuild": "rimraf dist",
-    "build": "tsc --module commonjs && rollup -c rollup.config.ts && npm run build:doc",
+    "build": "tsc && rollup -c rollup.config.ts",
+    "postbuild": "npm run build:doc",
     "build:doc": "typedoc --excludeNotExported --out docs --target es6 --theme minimal --mode file src",
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest",
@@ -117,7 +119,7 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-slikts": "^2.0.4",
     "typedoc": "^0.16.10",
-    "typescript": "^3.8.2",
+    "typescript": "^3.8.3",
     "typestrict": "1.0.2",
     "validate-commit-msg": "^2.14.0"
   },

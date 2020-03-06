@@ -115,7 +115,11 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
     return getDefaultLazy(symbolKey, () => Symbol(), getLeaf(values));
   }
 
-  // The exported member is cast as the same type as Tuple.tuple() to avoid duplicating the overloads
+  /**
+   * A tuple whose members are allowed to all be primitive,
+   * so it can't be garbage-collected and should only be used
+   * in advanced contexts.
+   */
   static unsafe(...values: any[]): any {
     return getDefaultLazy(
       tupleKey,
@@ -170,7 +174,10 @@ class UnsafeTuple<A> extends Tuple<A> {}
 export const getUnsafeLeaf = (values: any[]): Map<any, any> =>
   values.reduce((prev, curr) => getDefaultLazy(curr, initUnsafe, prev), unsafeCache);
 
-export const { tuple, symbol, unsafe, unsafeSymbol } = Tuple;
+export const { tuple, symbol } = Tuple;
+
+export const unsafe = Tuple.unsafe as typeof tuple;
+export const unsafeSymbol = Tuple.unsafeSymbol as typeof tuple;
 
 // Expose constructor to be used for `instanceof`
 tuple.constructor = Tuple;
