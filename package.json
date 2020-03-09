@@ -95,7 +95,7 @@
     "colors": "^1.4.0",
     "commitizen": "^4.0.3",
     "coveralls": "^3.0.9",
-    "cross-env": "^7.0.0",
+    "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
