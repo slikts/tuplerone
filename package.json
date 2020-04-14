@@ -91,7 +91,7 @@
     "@types/jest": "^25.2.1",
     "@types/node": "^13.11.1",
     "@wessberg/rollup-plugin-ts": "^1.2.23",
-    "babel-jest": "^25.2.6",
+    "babel-jest": "^25.3.0",
     "colors": "^1.4.0",
     "commitizen": "^4.0.4",
     "coveralls": "^3.0.11",
