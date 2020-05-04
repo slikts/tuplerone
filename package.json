@@ -93,7 +93,7 @@
     "@wessberg/rollup-plugin-ts": "^1.2.23",
     "babel-jest": "^25.4.0",
     "colors": "^1.4.0",
-    "commitizen": "^4.0.4",
+    "commitizen": "^4.0.5",
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "cz-conventional-changelog": "^3.1.0",
