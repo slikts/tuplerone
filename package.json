@@ -88,7 +88,7 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "@types/jest": "^25.2.1",
+    "@types/jest": "^25.2.2",
     "@types/node": "^14.0.1",
     "@wessberg/rollup-plugin-ts": "^1.2.23",
     "babel-jest": "^26.0.1",
