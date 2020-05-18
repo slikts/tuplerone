@@ -89,7 +89,7 @@
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.5",
+    "@types/node": "^14.0.1",
     "@wessberg/rollup-plugin-ts": "^1.2.23",
     "babel-jest": "^26.0.1",
     "colors": "^1.4.0",
