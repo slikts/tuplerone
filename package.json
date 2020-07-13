@@ -90,7 +90,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.4",
     "@types/node": "^14.0.22",
-    "@wessberg/rollup-plugin-ts": "^1.2.27",
+    "@wessberg/rollup-plugin-ts": "^1.2.28",
     "babel-jest": "^26.1.0",
     "colors": "^1.4.0",
     "commitizen": "^4.1.2",
