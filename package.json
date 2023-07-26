@@ -13,9 +13,20 @@
     "hashing",
     "value objects"
   ],
-  "main": "dist/tuplerone.umd.js",
-  "module": "dist/tuplerone.es5.js",
-  "typings": "dist/types/tuplerone.d.ts",
+  "source": "src/tuplerone.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/tuplerone.esm.js"
+      },
+      "require": {
+        "default": "./dist/tuplerone.cjs"
+      }
+    }
+  },
+  "types": "./dist/tuplerone.d.ts",
+  "main": "./dist/tuplerone.cjs",
   "files": [
     "dist"
   ],
@@ -34,7 +45,9 @@
     "test": "jest",
     "postinstall": "husky install",
     "prepack": "pinst --disable",
-    "postpack": "pinst --enable"
+    "postpack": "pinst --enable",
+    "build": "microbundle",
+    "dev": "microbundle watch"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -97,6 +110,7 @@
     "jest": "^29.6.1",
     "lint-staged": "^13.2.3",
     "lodash.camelcase": "^4.3.0",
+    "microbundle": "^0.15.1",
     "pinst": "^3.0.0",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6",
