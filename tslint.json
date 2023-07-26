@@ -1,7 +1,0 @@
-{
-  "extends": ["tslint-config-slikts", "tslint-config-prettier"],
-  "rules": {
-    "function-name": false,
-    "semicolon": [true, "always"]
-  }
-}
