@@ -38,6 +38,7 @@ export const forEach = <A>(iterator: Iterator<A>, callback: (value: A) => void) 
       break;
     }
     callback(value);
+    // eslint-disable-next-line no-constant-condition
   } while (true);
 };
 

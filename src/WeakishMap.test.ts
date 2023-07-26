@@ -34,11 +34,6 @@ describe(WeakishMap.name, () => {
   });
 
   it('can set twice', () => {
-    expect(
-      new WeakishMap()
-        .set('a', 1)
-        .set('b', 2)
-        .get('b'),
-    ).toBe(2);
+    expect(new WeakishMap().set('a', 1).set('b', 2).get('b')).toBe(2);
   });
 });

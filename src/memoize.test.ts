@@ -22,7 +22,7 @@ describe(memoize.name, () => {
   });
 
   it('supports setting receiver', () => {
-    const f = memoize(function(this: any) {
+    const f = memoize(function (this: any) {
       return this;
     });
     expect(f.call(123)).toBe(123);

@@ -51,7 +51,7 @@ describe(Tuple.name, () => {
     expect(Tuple().length).toBe(0);
     expect(Tuple({}).length).toBe(1);
     expect(Tuple({}, {}).length).toBe(2);
-  })
+  });
 });
 
 describe('tuple symbol', () => {
