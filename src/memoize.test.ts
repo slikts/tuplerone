@@ -1,4 +1,4 @@
-import { memoize } from '../src/memoize';
+import { memoize } from './memoize';
 
 describe(memoize.name, () => {
   it('returns a function', () => {
@@ -6,7 +6,7 @@ describe(memoize.name, () => {
   });
 
   it('returns the same object', () => {
-    const f = memoize((a: any) => ({}));
+    const f = memoize((a: any) => ({ a }));
     const o = f(1);
     expect(f(1)).toBe(o);
     expect(f(1)).toBe(o);
@@ -14,7 +14,7 @@ describe(memoize.name, () => {
   });
 
   it('supports multiple arguments', () => {
-    const f = memoize((a: any, b: any, c: any) => ({}));
+    const f = memoize((a: any, b: any, c: any) => ({ a, b, c }));
     const o = f(1, 2, 3);
     expect(f(1, 2, 3)).toBe(o);
     expect(f(1, 2, 3)).toBe(o);

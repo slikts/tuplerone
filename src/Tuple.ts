@@ -21,15 +21,16 @@ import {
 } from './types';
 import { assignArraylike, arraylikeToIterable, getDefaultLazy, isObject } from './helpers';
 
-export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, Iterable<A> {
+export default class Tuple<A> extends Array implements ArrayLike<A>, Iterable<A> {
   [i: number]: A;
-  length: number = 0;
+  length: number;
 
   /**
-   * @throws {TypeError} Will throw if called non-locally; use the tuple() method instead.
+   * @throws {@link TypeError} Will throw if called non-locally; use the tuple() method instead.
    */
   constructor(iterable: Iterable<A>, confirm: typeof localToken) {
     super();
+    this.length = 0;
     // TODO: make configurable or remove? it currently breaks subclassing
     if (confirm !== localToken) {
       throw TypeError('The `Tuple.tuple()` method must be used to construct');

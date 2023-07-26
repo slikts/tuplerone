@@ -1,4 +1,4 @@
-import { Tuple, CompositeSymbol } from '../src/tuplerone';
+import { Tuple, CompositeSymbol } from './tuplerone';
 
 describe(Tuple.name, () => {
   const a = Object('a');
@@ -46,6 +46,12 @@ describe(Tuple.name, () => {
     expect(Tuple(a, 1, 2)).not.toBe(Tuple(a, 1));
     expect(Tuple(1, a, 2)).not.toBe(Tuple(1, a));
   });
+
+  it('sets length', () => {
+    expect(Tuple().length).toBe(0);
+    expect(Tuple({}).length).toBe(1);
+    expect(Tuple({}, {}).length).toBe(2);
+  })
 });
 
 describe('tuple symbol', () => {

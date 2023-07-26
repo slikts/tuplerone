@@ -1,4 +1,4 @@
-import { UnsafeTuple } from '../src/tuplerone';
+import { UnsafeTuple } from './tuplerone';
 
 describe(UnsafeTuple.name, () => {
   it('constructs', () => {

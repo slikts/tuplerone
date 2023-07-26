@@ -1,5 +1,5 @@
-import Tuple, { getLeaf } from '../src/Tuple';
-import WeakishMap from '../src/WeakishMap';
+import Tuple, { getLeaf } from './Tuple';
+import WeakishMap from './WeakishMap';
 
 describe(Tuple.name, () => {
   const a = {};
