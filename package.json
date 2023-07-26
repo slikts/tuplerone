@@ -50,24 +50,12 @@
     "dev": "microbundle watch"
   },
   "lint-staged": {
-    "{src,test}/**/*.ts": [
+    "src/**/*.ts": [
       "prettier --write",
       "git add"
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    },
-    "validate-commit-msg": {
-      "types": "conventional-commit-types",
-      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
-    }
-  },
   "jest": {
-    "coveragePathIgnorePatterns": [
-      "/src/index.ts"
-    ],
     "coverageThreshold": {
       "global": {
         "branches": 100,
@@ -113,15 +101,15 @@
     "microbundle": "^0.15.1",
     "pinst": "^3.0.0",
     "prettier": "^3.0.0",
-    "typescript": "^5.1.6",
-    "validate-commit-msg": "^2.14.0"
+    "semantic-release": "^21.0.7",
+    "typescript": "^5.1.6"
   },
   "bugs": "https://github.com/slikts/tuplerone/issues",
   "husky": {
-    "hooks": {
-      "commit-msg": "validate-commit-msg",
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run test:prod && npm run build"
+    "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
     }
   }
 }
