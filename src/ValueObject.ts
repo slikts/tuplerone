@@ -4,7 +4,6 @@ import DeepCompositeSymbol from './DeepCompositeSymbol';
  * Works somewhat similarly to Record in the Record & Tuple proposal:
  * https://github.com/tc39/proposal-record-tuple
  */
-// tslint:disable-next-line: variable-name
 const ValueObject = <A extends object>(
   object: A,
   filter?: (entry: [string, any]) => boolean,

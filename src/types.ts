@@ -91,7 +91,6 @@ export interface Tuple8<A, B, C, D, E, F, G, H> extends Tuple<A | B | C | D | E 
 export type CompositeSymbol<T> = {
   t: T;
 } & symbol;
-// tslint:disable-next-line: variable-name
 export const CompositeSymbol0: CompositeSymbol<[never]> = Symbol('CompositeSymbol0') as any;
 export type CompositeSymbol1<A> = CompositeSymbol<[A]>;
 export type CompositeSymbol2<A, B> = CompositeSymbol<[A, B]>;
