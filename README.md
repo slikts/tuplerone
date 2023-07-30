@@ -253,14 +253,6 @@ Tuples can be constructed without the `new` keyword to make them behave like oth
 Tuple() instanceof Tuple.constructor; // → true
 ```
 
-## License
-
-MIT
-
-## Author
-
-slikts <dabas@untu.ms>
-
 [weakmap]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
 [map]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 [tuples]: https://en.wiktionary.org/wiki/tuple
@@ -281,3 +273,5 @@ slikts <dabas@untu.ms>
 [variadic generics]: https://github.com/microsoft/TypeScript/issues/5453
 [sandbox]: https://codesandbox.io/s/tuplerone-dm90w?expanddevtools=1
 [value object]: https://en.wikipedia.org/wiki/Value_object
+[composite-symbol]: https://github.com/loilo/composite-symbol
+[richer-keys]: https://github.com/tc39/proposal-richer-keys

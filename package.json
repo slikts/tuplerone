@@ -13,20 +13,14 @@
     "hashing",
     "value objects"
   ],
-  "source": "src/tuplerone.ts",
-  "type": "module",
   "exports": {
     ".": {
-      "import": {
-        "default": "./dist/tuplerone.esm.js"
-      },
-      "require": {
-        "default": "./dist/tuplerone.cjs"
-      }
-    }
+      "types": "./dist/Tuple.d.ts",
+      "require": "./dist/Tuple.js",
+      "import": "./dist/Tuple.mjs"
+    },
+    "./package.json": "./package.json"
   },
-  "types": "./dist/tuplerone.d.ts",
-  "main": "./dist/tuplerone.cjs",
   "files": [
     "dist"
   ],
@@ -36,9 +30,6 @@
     "url": "git+https://github.com/slikts/tuplerone.git"
   },
   "license": "MIT",
-  "engines": {
-    "node": ">=6.0.0"
-  },
   "scripts": {
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
@@ -46,8 +37,7 @@
     "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
-    "build": "microbundle",
-    "dev": "microbundle watch"
+    "build": "nanobundle build"
   },
   "lint-staged": {
     "src/**/*.ts": [
@@ -99,11 +89,13 @@
     "lint-staged": "^13.2.3",
     "lodash.camelcase": "^4.3.0",
     "microbundle": "^0.15.1",
+    "nanobundle": "^1.6.0",
     "pinst": "^3.0.0",
     "prettier": "^3.0.0",
     "semantic-release": "^21.0.7",
     "typedoc": "^0.24.8",
-    "typescript": "^5.1.6"
+    "typescript": "5.2.0-beta",
+    "v8-natives": "^1.2.5"
   },
   "bugs": "https://github.com/slikts/tuplerone/issues",
   "husky": {
@@ -112,5 +104,6 @@
         "pre-commit": "lint-staged"
       }
     }
-  }
+  },
+  "packageManager": "yarn@4.0.0-rc.48"
 }
