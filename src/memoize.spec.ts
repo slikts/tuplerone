@@ -1,6 +1,6 @@
 import { memoize } from './memoize';
 
-describe(memoize.name, () => {
+describe('memoize()', () => {
   it('returns a function', () => {
     expect(memoize(() => {})).toBeInstanceOf(Function);
   });
@@ -12,6 +12,11 @@ describe(memoize.name, () => {
     expect(f(1)).toBe(o);
     expect(f(2)).not.toBe(o);
   });
+
+  it('names memoized function', () => {
+    const named = () => {}
+    expect(memoize(named).name).toBe('named')
+  })
 
   it('supports multiple arguments', () => {
     const f = memoize((a: any, b: any, c: any) => ({ a, b, c }));
