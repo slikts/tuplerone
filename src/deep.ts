@@ -18,11 +18,11 @@ const _get = <A>(edge: A): A | symbol => {
     case "undefined":
     case "function":
       return edge
-    default:
-      if (Array.isArray(edge)) {
+      default:
+        if (Array.isArray(edge)) {
         return getSymbol(edge.map(_get))
       }
-      return getSymbol(Object.entries(edge as {})
-        .flatMap((value, i): unknown => i % 2 ? _get(value) : value))
+      return getSymbol(Object.entries(edge as {}).flat()
+        .map((value, i) => i % 2 ? _get(value) : value))
   }
 }
