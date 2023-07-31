@@ -9,6 +9,7 @@ const TupleConstructor = class Tuple<A extends readonly unknown[]> extends Array
   }
 }
 
+// TODO: add isRef checks
 export const isRef = Symbol('isRef')
 
 interface Referable {
@@ -27,10 +28,6 @@ export function Tuple<A extends unknown[]>(...path: A): Readonly<A> {
   if (path.length === 0) {
     // Shortcut for 0-tuples
     return tuple0 as any;
-  }
-
-  for (const edge of path) {
-    if (typeof edge === 'object' && !edge?.[isRef]) {}
   }
 
   const node = getNode(path)

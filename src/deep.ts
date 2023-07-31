@@ -22,7 +22,7 @@ const _get = <A>(edge: A): A | symbol => {
         if (Array.isArray(edge)) {
         return getSymbol(edge.map(_get))
       }
-      return getSymbol(Object.entries(edge as {}).flat()
+      return getSymbol(Object.entries(edge as object).flat()
         .map((value, i) => i % 2 ? _get(value) : value))
   }
 }
