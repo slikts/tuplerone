@@ -53,4 +53,9 @@ describe(`Tuple`, () => {
     // @ts-ignore
     expect(() => void tuple.push(1)).toThrow()
   })
+
+  it('throws on new operator', () => {
+    // @ts-ignore
+    expect(() => void new Tuple()).toThrow()
+  })
 });

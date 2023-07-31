@@ -16,7 +16,7 @@ describe('DeepCompositeSymbol', () => {
   });
 
   it('supports arrays', () => {
-    expect(getDeepSymbol([1,2,3])).toStrictEqual(getDeepSymbol([1,2,3]))
+    expect(getDeepSymbol(['1',2,3])).toStrictEqual(getDeepSymbol(['1',2,3]))
     expect(getDeepSymbol([1,2,3,4])).not.toStrictEqual(getDeepSymbol([1,2,3]))
   })
 
@@ -31,4 +31,8 @@ describe('DeepCompositeSymbol', () => {
   it("doesn't equal structurally different object", () => {
     expect(getDeepSymbol({ a: 1, b: 2 })).not.toStrictEqual(getDeepSymbol({ a: 1, b: 3 }));
   });
+
+  it('throws on primitives', () => {
+    expect(() => void getDeepSymbol(1)).toThrow()
+  })
 });
