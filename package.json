@@ -15,9 +15,9 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/Tuple.d.ts",
-      "require": "./dist/Tuple.js",
-      "import": "./dist/Tuple.mjs"
+      "types": "./dist/tuplerone.d.ts",
+      "require": "./dist/tuplerone.js",
+      "import": "./dist/tuplerone.mjs"
     },
     "./package.json": "./package.json"
   },
