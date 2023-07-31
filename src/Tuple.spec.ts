@@ -1,4 +1,4 @@
-import { Tuple } from './Tuple';
+import { Tuple } from './Tuple.ts';
 
 describe(`Tuple`, () => {
   const a = Object('a');

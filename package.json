@@ -13,14 +13,16 @@
     "hashing",
     "value objects"
   ],
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/tuplerone.d.ts",
-      "require": "./dist/tuplerone.js",
-      "import": "./dist/tuplerone.mjs"
-    },
-    "./package.json": "./package.json"
+      "import": "./dist/tuplerone.js",
+      "require": "./dist/tuplerone.cjs"
+    }
   },
+  "types": "./dist/tuplerone.d.ts",
+  "main": "./dist/tuplerone.cjs",
   "files": [
     "dist"
   ],

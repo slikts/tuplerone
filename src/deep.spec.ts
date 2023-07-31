@@ -1,4 +1,4 @@
-import { getDeepSymbol } from './deep';
+import { getDeepSymbol } from './deep.ts';
 
 describe('DeepCompositeSymbol', () => {
   it('returns symbol', () => {

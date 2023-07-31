@@ -1,5 +1,5 @@
-import { getNode, prune, getSymbol, clear } from './graph';
-import { Node } from './Node';
+import { getNode, prune, getSymbol, clear } from './graph.ts';
+import { Node } from './Node.ts';
 
 describe('graph', () => {
   afterEach(() => {

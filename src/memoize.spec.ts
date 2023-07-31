@@ -1,4 +1,4 @@
-import { memoize } from './memoize';
+import { memoize } from './memoize.ts';
 
 describe('memoize()', () => {
   it('returns a function', () => {

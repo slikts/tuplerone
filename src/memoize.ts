@@ -1,4 +1,4 @@
-import { getNode } from './graph';
+import { getNode } from './graph.ts';
 
 const cache = new WeakMap();
 

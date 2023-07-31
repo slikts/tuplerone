@@ -1,4 +1,4 @@
-import { getNode, registry } from './graph';
+import { getNode, registry } from './graph.ts';
 
 const TupleConstructor = class Tuple<A extends readonly unknown[]> extends Array {
   constructor(values: A) {

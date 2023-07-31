@@ -1,4 +1,4 @@
-import { getSymbol } from './graph';
+import { getSymbol } from './graph.ts';
 
 export const getDeepSymbol = (target: unknown): symbol => {
   const result = _get(target);

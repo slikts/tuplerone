@@ -1,5 +1,5 @@
 // import { Tuple } from './Tuple'
-import { Node } from './Node';
+import { Node } from './Node.ts';
 
 const root = new Node();
 
