@@ -101,16 +101,18 @@ Directed acyclic graphs (DAGs) are a data structure that allows efficiently mapp
 
 ## Installation
 
-
 ```sh
 npm install tuplerone
 ```
+
 ```sh
 yarn add tuplerone
 ```
+
 ```js
-import { Tuple } from "https://cdn.skypack.dev/tuplerone"
+import { Tuple } from 'https://cdn.skypack.dev/tuplerone';
 ```
+
 ```html
 <script src="https://unpkg.com/tuplerone/dist/tuplerone.umd.js"></script>
 ```

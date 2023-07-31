@@ -7,22 +7,22 @@ describe(`Tuple`, () => {
 
   it('constructs', () => {
     expect(Tuple(1, {})).toBeInstanceOf(Tuple);
-    expect(Tuple.name).toBe('Tuple')
+    expect(Tuple.name).toBe('Tuple');
   });
 
   it('is array', () => {
-    expect(Array.isArray(Tuple())).toBe(true)
-  })
+    expect(Array.isArray(Tuple())).toBe(true);
+  });
 
   it('supports 0-tuples', () => {
-    expect(Tuple()).toStrictEqual(Tuple())
-    expect(Tuple()).not.toStrictEqual(Tuple(1))
-  })
+    expect(Tuple()).toStrictEqual(Tuple());
+    expect(Tuple()).not.toStrictEqual(Tuple(1));
+  });
 
   it('supports objects', () => {
-    const o = {}
-    expect(Tuple(o, 1, 2)).toStrictEqual(Tuple(o, 1, 2))
-  })
+    const o = {};
+    expect(Tuple(o, 1, 2)).toStrictEqual(Tuple(o, 1, 2));
+  });
 
   it('1-tuple objects compare', () => {
     expect(Tuple(a)).toStrictEqual(Tuple(a));
@@ -49,13 +49,13 @@ describe(`Tuple`, () => {
   });
 
   it('is frozen', () => {
-    const tuple = Tuple()
+    const tuple = Tuple();
     // @ts-ignore
-    expect(() => void tuple.push(1)).toThrow()
-  })
+    expect(() => void tuple.push(1)).toThrow();
+  });
 
   it('throws on new operator', () => {
     // @ts-ignore
-    expect(() => void new Tuple()).toThrow()
-  })
+    expect(() => void new Tuple()).toThrow();
+  });
 });

@@ -14,9 +14,9 @@ describe('memoize()', () => {
   });
 
   it('names memoized function', () => {
-    const named = () => {}
-    expect(memoize(named).name).toBe('named')
-  })
+    const named = () => {};
+    expect(memoize(named).name).toBe('named');
+  });
 
   it('supports multiple arguments', () => {
     const f = memoize((a: any, b: any, c: any) => ({ a, b, c }));

@@ -1,19 +1,18 @@
-import { getNode, registry } from './graph'
-
+import { getNode, registry } from './graph';
 
 const TupleConstructor = class Tuple<A extends readonly unknown[]> extends Array {
   constructor(values: A) {
     super();
-    this.push(...values)
+    this.push(...values);
     Object.freeze(this);
   }
-}
+};
 
 // TODO: add isRef checks
-export const isRef = Symbol('isRef')
+export const isRef = Symbol('isRef');
 
 interface Referable {
-  [isRef]: boolean
+  [isRef]: boolean;
 }
 
 declare global {
@@ -22,7 +21,7 @@ declare global {
 
 export function Tuple<A extends unknown[]>(...path: A): Readonly<A> {
   if (new.target) {
-    throw new TypeError('Tuple is not a constructor')
+    throw new TypeError('Tuple is not a constructor');
   }
 
   if (path.length === 0) {
@@ -30,16 +29,16 @@ export function Tuple<A extends unknown[]>(...path: A): Readonly<A> {
     return tuple0 as any;
   }
 
-  const node = getNode(path)
-  const derefed = node.tuple?.deref()
+  const node = getNode(path);
+  const derefed = node.tuple?.deref();
   if (derefed) {
-    return derefed as A
+    return derefed as A;
   }
-  const tuple = new TupleConstructor<A>(path)
-  node.tuple = new WeakRef(tuple)
-  registry.register(tuple, path)
+  const tuple = new TupleConstructor<A>(path);
+  node.tuple = new WeakRef(tuple);
+  registry.register(tuple, path);
 
-  return tuple as A
+  return tuple as A;
 }
 
 // Allow `instanceof` checks with the helper function as if it were a constructor
@@ -47,9 +46,9 @@ Object.defineProperties(Tuple, {
   [Symbol.hasInstance]: {
     value: (instance: unknown) => instance instanceof TupleConstructor,
     writable: false,
-    configurable: false
-  }
-})
+    configurable: false,
+  },
+});
 
 // 0-tuple singleton
 const tuple0 = new TupleConstructor([]);
