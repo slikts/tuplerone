@@ -13,6 +13,9 @@
     "hashing",
     "value objects"
   ],
+  "workspaces": [
+    "demo"
+  ],
   "type": "module",
   "exports": {
     ".": {
@@ -39,7 +42,8 @@
     "postinstall": "husky install",
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
-    "build": "nanobundle build"
+    "build": "nanobundle build",
+    "demo": "yarn workspace demo"
   },
   "lint-staged": {
     "src/**/*.ts": [
