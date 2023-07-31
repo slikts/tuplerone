@@ -5084,6 +5084,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dotenv-cli@npm:^7.2.1":
+  version: 7.2.1
+  resolution: "dotenv-cli@npm:7.2.1"
+  dependencies:
+    cross-spawn: "npm:^7.0.3"
+    dotenv: "npm:^16.0.0"
+    dotenv-expand: "npm:^10.0.0"
+    minimist: "npm:^1.2.6"
+  bin:
+    dotenv: cli.js
+  checksum: 8ca27fd44ba261b974a0342ec831a714fa1cb6d6e98d4b5db8e94f111951af1fb129a64d007264b1901337c43a8ef877071f1836b6992944fd6970c16367aee0
+  languageName: node
+  linkType: hard
+
+"dotenv-expand@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "dotenv-expand@npm:10.0.0"
+  checksum: b41eb278bc96b92cbf3037ca5f3d21e8845bf165dc06b6f9a0a03d278c2bd5a01c0cfbb3528ae3a60301ba1a8a9cace30e748c54b460753bc00d4c014b675597
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^16.0.0":
+  version: 16.3.1
+  resolution: "dotenv@npm:16.3.1"
+  checksum: dbb778237ef8750e9e3cd1473d3c8eaa9cc3600e33a75c0e36415d0fa0848197f56c3800f77924c70e7828f0b03896818cd52f785b07b9ad4d88dba73fbba83f
+  languageName: node
+  linkType: hard
+
 "duplexer2@npm:~0.1.0":
   version: 0.1.4
   resolution: "duplexer2@npm:0.1.4"
@@ -8895,7 +8923,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.2.0, minimist@npm:^1.2.5":
+"minimist@npm:^1.2.0, minimist@npm:^1.2.5, minimist@npm:^1.2.6":
   version: 1.2.8
   resolution: "minimist@npm:1.2.8"
   checksum: 908491b6cc15a6c440ba5b22780a0ba89b9810e1aea684e253e43c4e3b8d56ec1dcdd7ea96dde119c29df59c936cde16062159eae4225c691e19c70b432b6e6f
@@ -12308,6 +12336,7 @@ __metadata:
     commitizen: "npm:^4.3.0"
     coveralls: "npm:^3.1.1"
     cz-conventional-changelog: "npm:^3.3.0"
+    dotenv-cli: "npm:^7.2.1"
     eslint: "npm:^8.46.0"
     eslint-plugin-jest: "npm:^27.2.3"
     eslint-plugin-tsdoc: "npm:^0.2.17"
@@ -12322,7 +12351,6 @@ __metadata:
     semantic-release: "npm:^21.0.7"
     typedoc: "npm:^0.24.8"
     typescript: "npm:5.2.0-dev.20230731"
-    v8-natives: "npm:^1.2.5"
   languageName: unknown
   linkType: soft
 
@@ -12671,13 +12699,6 @@ __metadata:
   version: 3.0.1
   resolution: "v8-compile-cache-lib@npm:3.0.1"
   checksum: 88d3423a52b6aaf1836be779cab12f7016d47ad8430dffba6edf766695e6d90ad4adaa3d8eeb512cc05924f3e246c4a4ca51e089dccf4402caa536b5e5be8961
-  languageName: node
-  linkType: hard
-
-"v8-natives@npm:^1.2.5":
-  version: 1.2.5
-  resolution: "v8-natives@npm:1.2.5"
-  checksum: 9fcb4694bdf1c8c6112f7cc471b81e90e125433557211826d5d434d265e2cd879667baa62ee8a60dca6a627369306d424d0790d9cd0aaaa7a1b69fff9c881fa8
   languageName: node
   linkType: hard
 

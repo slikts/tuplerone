@@ -39,6 +39,7 @@ const RAW_RUNTIME_STATE =
           ["commitizen", "npm:4.3.0"],\
           ["coveralls", "npm:3.1.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
+          ["dotenv-cli", "npm:7.2.1"],\
           ["eslint", "npm:8.46.0"],\
           ["eslint-plugin-jest", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:27.2.3"],\
           ["eslint-plugin-tsdoc", "npm:0.2.17"],\
@@ -52,8 +53,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.0.0"],\
           ["semantic-release", "npm:21.0.7"],\
           ["typedoc", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:0.24.8"],\
-          ["typescript", "patch:typescript@npm%3A5.2.0-dev.20230731#optional!builtin<compat/typescript>::version=5.2.0-dev.20230731&hash=14eedb"],\
-          ["v8-natives", "npm:1.2.5"]\
+          ["typescript", "patch:typescript@npm%3A5.2.0-dev.20230731#optional!builtin<compat/typescript>::version=5.2.0-dev.20230731&hash=14eedb"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -8561,6 +8561,37 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["dotenv", [\
+      ["npm:16.3.1", {\
+        "packageLocation": "./.yarn/cache/dotenv-npm-16.3.1-e6d380a398-dbb778237e.zip/node_modules/dotenv/",\
+        "packageDependencies": [\
+          ["dotenv", "npm:16.3.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["dotenv-cli", [\
+      ["npm:7.2.1", {\
+        "packageLocation": "./.yarn/cache/dotenv-cli-npm-7.2.1-dba9b4a768-8ca27fd44b.zip/node_modules/dotenv-cli/",\
+        "packageDependencies": [\
+          ["dotenv-cli", "npm:7.2.1"],\
+          ["cross-spawn", "npm:7.0.3"],\
+          ["dotenv", "npm:16.3.1"],\
+          ["dotenv-expand", "npm:10.0.0"],\
+          ["minimist", "npm:1.2.8"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["dotenv-expand", [\
+      ["npm:10.0.0", {\
+        "packageLocation": "./.yarn/cache/dotenv-expand-npm-10.0.0-fa5b032ad9-b41eb278bc.zip/node_modules/dotenv-expand/",\
+        "packageDependencies": [\
+          ["dotenv-expand", "npm:10.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["duplexer", [\
       ["npm:0.1.1", {\
         "packageLocation": "./.yarn/cache/duplexer-npm-0.1.1-d906abcf74-fc7937c4a4.zip/node_modules/duplexer/",\
@@ -16957,6 +16988,7 @@ const RAW_RUNTIME_STATE =
           ["commitizen", "npm:4.3.0"],\
           ["coveralls", "npm:3.1.1"],\
           ["cz-conventional-changelog", "npm:3.3.0"],\
+          ["dotenv-cli", "npm:7.2.1"],\
           ["eslint", "npm:8.46.0"],\
           ["eslint-plugin-jest", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:27.2.3"],\
           ["eslint-plugin-tsdoc", "npm:0.2.17"],\
@@ -16970,8 +17002,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.0.0"],\
           ["semantic-release", "npm:21.0.7"],\
           ["typedoc", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:0.24.8"],\
-          ["typescript", "patch:typescript@npm%3A5.2.0-dev.20230731#optional!builtin<compat/typescript>::version=5.2.0-dev.20230731&hash=14eedb"],\
-          ["v8-natives", "npm:1.2.5"]\
+          ["typescript", "patch:typescript@npm%3A5.2.0-dev.20230731#optional!builtin<compat/typescript>::version=5.2.0-dev.20230731&hash=14eedb"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -17336,15 +17367,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/v8-compile-cache-lib-npm-3.0.1-4886071ece-88d3423a52.zip/node_modules/v8-compile-cache-lib/",\
         "packageDependencies": [\
           ["v8-compile-cache-lib", "npm:3.0.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["v8-natives", [\
-      ["npm:1.2.5", {\
-        "packageLocation": "./.yarn/cache/v8-natives-npm-1.2.5-214b1d7074-9fcb4694bd.zip/node_modules/v8-natives/",\
-        "packageDependencies": [\
-          ["v8-natives", "npm:1.2.5"]\
         ],\
         "linkType": "HARD"\
       }]\

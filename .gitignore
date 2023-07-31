@@ -9,6 +9,7 @@ compiled
 .awcache
 .rpt2_cache
 docs
+.env
 
 .yarn/*
 !.yarn/cache
