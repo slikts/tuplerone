@@ -98,7 +98,7 @@
     "microbundle": "^0.15.1",
     "nanobundle": "^1.6.0",
     "pinst": "^3.0.0",
-    "prettier": "^3.0.0",
+    "prettier": "2.8.8",
     "semantic-release": "^21.0.7",
     "typedoc": "^0.24.8",
     "typescript": "5.2.0-beta"

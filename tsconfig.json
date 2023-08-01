@@ -11,8 +11,7 @@
     "emitDeclarationOnly": true,
     "allowImportingTsExtensions": true,
     "outDir": "dist",
-    "rootDir": "src",
-    "types": ["jest"]
+    "rootDir": "src"
   },
   "include": ["src/**/*.ts"]
 }

@@ -55,7 +55,7 @@ const RAW_RUNTIME_STATE =
           ["microbundle", "npm:0.15.1"],\
           ["nanobundle", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:1.6.0"],\
           ["pinst", "npm:3.0.0"],\
-          ["prettier", "npm:3.0.0"],\
+          ["prettier", "npm:2.8.8"],\
           ["semantic-release", "npm:21.0.7"],\
           ["typedoc", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:0.24.8"],\
           ["typescript", "patch:typescript@npm%3A5.2.0-beta#optional!builtin<compat/typescript>::version=5.2.0-beta&hash=14eedb"]\
@@ -16263,10 +16263,10 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["prettier", [\
-      ["npm:3.0.0", {\
-        "packageLocation": "./.yarn/cache/prettier-npm-3.0.0-7ffbcce680-3992926382.zip/node_modules/prettier/",\
+      ["npm:2.8.8", {\
+        "packageLocation": "./.yarn/cache/prettier-npm-2.8.8-430828a36c-00cdb6ab02.zip/node_modules/prettier/",\
         "packageDependencies": [\
-          ["prettier", "npm:3.0.0"]\
+          ["prettier", "npm:2.8.8"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -18519,7 +18519,7 @@ const RAW_RUNTIME_STATE =
           ["microbundle", "npm:0.15.1"],\
           ["nanobundle", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:1.6.0"],\
           ["pinst", "npm:3.0.0"],\
-          ["prettier", "npm:3.0.0"],\
+          ["prettier", "npm:2.8.8"],\
           ["semantic-release", "npm:21.0.7"],\
           ["typedoc", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:0.24.8"],\
           ["typescript", "patch:typescript@npm%3A5.2.0-beta#optional!builtin<compat/typescript>::version=5.2.0-beta&hash=14eedb"]\
