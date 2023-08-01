@@ -2,6 +2,7 @@ import { Node } from './Node.ts';
 
 const root = new Node();
 
+/* istanbul ignore next */
 export const registry = new FinalizationRegistry((path: unknown[]) => void prune(path));
 
 export const getNode = (path: unknown[]): Node =>
