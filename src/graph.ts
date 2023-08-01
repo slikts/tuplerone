@@ -31,7 +31,7 @@ export const prune = (path: unknown[]): void => {
   for (let i = nodes.length - 1; i > 0; i--) {
     const [node, edge] = nodes[i];
     const [parent] = nodes[i - 1];
-    if (node.size || node.tuple?.deref() || node.symbol?.deref()) {
+    if (node.size || node.tuple?.deref() || node.symbol?.deref() || node.object?.deref()) {
       break;
     }
     parent.delete(edge);

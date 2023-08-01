@@ -42,12 +42,10 @@ export function Tuple<A extends unknown[]>(...path: A): Readonly<A> {
 }
 
 // Allow `instanceof` checks with the helper function as if it were a constructor
-Object.defineProperties(Tuple, {
-  [Symbol.hasInstance]: {
-    value: (instance: unknown) => instance instanceof TupleConstructor,
-    writable: false,
-    configurable: false,
-  },
+Object.defineProperty(Tuple, Symbol.hasInstance, {
+  value: (instance: unknown) => instance instanceof TupleConstructor,
+  writable: false,
+  configurable: false,
 });
 
 // 0-tuple singleton
