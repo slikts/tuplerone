@@ -2,3 +2,5 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 yarn install --immutable --immutable-cache
+yarn test --coverage
+yarn tsc
