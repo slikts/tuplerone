@@ -111,12 +111,5 @@
     "typescript": "5.2.0-beta"
   },
   "bugs": "https://github.com/slikts/tuplerone/issues",
-  "husky": {
-    "husky": {
-      "hooks": {
-        "pre-commit": "lint-staged"
-      }
-    }
-  },
   "packageManager": "yarn@4.0.0-rc.48"
 }
