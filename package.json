@@ -19,6 +19,11 @@
       "types": "./dist/tuplerone.d.ts",
       "import": "./dist/tuplerone.js",
       "require": "./dist/tuplerone.cjs"
+    },
+    "./graph": {
+      "types": "./dist/graph.d.ts",
+      "import": "./dist/graph.js",
+      "require": "./dist/graph.cjs"
     }
   },
   "types": "./dist/tuplerone.d.ts",
