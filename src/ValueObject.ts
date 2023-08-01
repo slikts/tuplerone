@@ -1,13 +1,13 @@
 import { getNode, registry } from './graph.ts';
-import { isRef, cache as shallowCache } from './shallow.ts'
+import { isRef, cache as shallowCache } from './shallow.ts';
 
 export function ValueObject<A extends object>(source: A): DeepReadonly<A> {
   if (new.target) {
     throw new TypeError('ValueObject is not a constructor');
   }
-  
+
   if (shallowCache.has(source) || source?.[isRef]) {
-    return source
+    return source;
   }
 
   const entries = Object.entries(source).map(([key, value]) => {

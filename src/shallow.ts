@@ -9,8 +9,8 @@ declare global {
 }
 
 export const shallow = <A extends object>(target: A): A => {
-  cache.add(target)
-  return target
-}
+  cache.add(target);
+  return target;
+};
 
-export const cache = new WeakSet<object>()
+export const cache = new WeakSet<object>();
