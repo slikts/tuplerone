@@ -3093,6 +3093,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/is-ci@npm:^3":
+  version: 3.0.0
+  resolution: "@types/is-ci@npm:3.0.0"
+  dependencies:
+    ci-info: "npm:^3.1.0"
+  checksum: 7c1f1f16c1fa2134de7400d82766c83fa76057261ba890628af77a09382ebb92d945bb077b98cfcf3d40ab1469c9ffbd2278112867edbe57aa655f53547eb139
+  languageName: node
+  linkType: hard
+
 "@types/istanbul-lib-coverage@npm:*, @types/istanbul-lib-coverage@npm:^2.0.0, @types/istanbul-lib-coverage@npm:^2.0.1":
   version: 2.0.4
   resolution: "@types/istanbul-lib-coverage@npm:2.0.4"
@@ -4335,7 +4344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^3.2.0, ci-info@npm:^3.6.1, ci-info@npm:^3.7.1, ci-info@npm:^3.8.0":
+"ci-info@npm:^3.1.0, ci-info@npm:^3.2.0, ci-info@npm:^3.6.1, ci-info@npm:^3.7.1, ci-info@npm:^3.8.0":
   version: 3.8.0
   resolution: "ci-info@npm:3.8.0"
   checksum: b00e9313c1f7042ca8b1297c157c920d6d69f0fbad7b867910235676df228c4b4f4df33d06cacae37f9efba7a160b0a167c6be85492b419ef71d85660e60606b
@@ -7190,6 +7199,17 @@ __metadata:
   version: 1.2.7
   resolution: "is-callable@npm:1.2.7"
   checksum: 48a9297fb92c99e9df48706241a189da362bff3003354aea4048bd5f7b2eb0d823cd16d0a383cece3d76166ba16d85d9659165ac6fcce1ac12e6c649d66dbdb9
+  languageName: node
+  linkType: hard
+
+"is-ci@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "is-ci@npm:3.0.1"
+  dependencies:
+    ci-info: "npm:^3.2.0"
+  bin:
+    is-ci: bin.js
+  checksum: 192c66dc7826d58f803ecae624860dccf1899fc1f3ac5505284c0a5cf5f889046ffeb958fa651e5725d5705c5bcb14f055b79150ea5fcad7456a9569de60260e
   languageName: node
   linkType: hard
 
@@ -12598,6 +12618,7 @@ __metadata:
     "@types/babel__core": "npm:^7.20.1"
     "@types/babel__preset-env": "npm:^7.9.2"
     "@types/eslint": "npm:^8.44.1"
+    "@types/is-ci": "npm:^3"
     "@types/jest": "npm:^29.5.3"
     "@types/node": "npm:^20.4.5"
     "@typescript-eslint/eslint-plugin": "npm:^6.2.0"
@@ -12610,6 +12631,7 @@ __metadata:
     eslint-plugin-jest: "npm:^27.2.3"
     eslint-plugin-tsdoc: "npm:^0.2.17"
     husky: "npm:^8.0.3"
+    is-ci: "npm:^3.0.1"
     jest: "npm:^29.6.2"
     lint-staged: "npm:^13.2.3"
     lodash.camelcase: "npm:^4.3.0"

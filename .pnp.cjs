@@ -34,6 +34,7 @@ const RAW_RUNTIME_STATE =
           ["@types/babel__core", "npm:7.20.1"],\
           ["@types/babel__preset-env", "npm:7.9.2"],\
           ["@types/eslint", "npm:8.44.1"],\
+          ["@types/is-ci", "npm:3.0.0"],\
           ["@types/jest", "npm:29.5.3"],\
           ["@types/node", "npm:20.4.5"],\
           ["@typescript-eslint/eslint-plugin", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:6.2.0"],\
@@ -46,6 +47,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-jest", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:27.2.3"],\
           ["eslint-plugin-tsdoc", "npm:0.2.17"],\
           ["husky", "npm:8.0.3"],\
+          ["is-ci", "npm:3.0.1"],\
           ["jest", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:29.6.2"],\
           ["lint-staged", "npm:13.2.3"],\
           ["lodash.camelcase", "npm:4.3.0"],\
@@ -6006,6 +6008,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/is-ci", [\
+      ["npm:3.0.0", {\
+        "packageLocation": "./.yarn/cache/@types-is-ci-npm-3.0.0-7dabaf4b67-7c1f1f16c1.zip/node_modules/@types/is-ci/",\
+        "packageDependencies": [\
+          ["@types/is-ci", "npm:3.0.0"],\
+          ["ci-info", "npm:3.8.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/istanbul-lib-coverage", [\
       ["npm:2.0.4", {\
         "packageLocation": "./.yarn/cache/@types-istanbul-lib-coverage-npm-2.0.4-734954bb56-a25d7589ee.zip/node_modules/@types/istanbul-lib-coverage/",\
@@ -10824,6 +10836,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/is-callable-npm-1.2.7-808a303e61-48a9297fb9.zip/node_modules/is-callable/",\
         "packageDependencies": [\
           ["is-callable", "npm:1.2.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["is-ci", [\
+      ["npm:3.0.1", {\
+        "packageLocation": "./.yarn/cache/is-ci-npm-3.0.1-d9aea361e1-192c66dc78.zip/node_modules/is-ci/",\
+        "packageDependencies": [\
+          ["is-ci", "npm:3.0.1"],\
+          ["ci-info", "npm:3.8.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -17282,6 +17304,7 @@ const RAW_RUNTIME_STATE =
           ["@types/babel__core", "npm:7.20.1"],\
           ["@types/babel__preset-env", "npm:7.9.2"],\
           ["@types/eslint", "npm:8.44.1"],\
+          ["@types/is-ci", "npm:3.0.0"],\
           ["@types/jest", "npm:29.5.3"],\
           ["@types/node", "npm:20.4.5"],\
           ["@typescript-eslint/eslint-plugin", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:6.2.0"],\
@@ -17294,6 +17317,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-jest", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:27.2.3"],\
           ["eslint-plugin-tsdoc", "npm:0.2.17"],\
           ["husky", "npm:8.0.3"],\
+          ["is-ci", "npm:3.0.1"],\
           ["jest", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:29.6.2"],\
           ["lint-staged", "npm:13.2.3"],\
           ["lodash.camelcase", "npm:4.3.0"],\
