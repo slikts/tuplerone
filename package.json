@@ -13,9 +13,6 @@
     "hashing",
     "value objects"
   ],
-  "workspaces": [
-    "demo"
-  ],
   "type": "module",
   "exports": {
     ".": {
@@ -77,6 +74,8 @@
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-typescript": "^7.22.5",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
     "@types/babel__core": "^7.20.1",
     "@types/babel__preset-env": "^7.9.2",
     "@types/eslint": "^8.44.1",

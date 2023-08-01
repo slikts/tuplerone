@@ -277,14 +277,3 @@ Tuple() instanceof Tuple.constructor; // → true
 [value object]: https://en.wikipedia.org/wiki/Value_object
 [composite-symbol]: https://github.com/loilo/composite-symbol
 [richer-keys]: https://github.com/tc39/proposal-richer-keys
-
-```mermaid
-graph TD
-root-->b
-b-->c
-c-->d
-c-->e
-root-->1
-1-->2
-root-->c1[c]
-```
