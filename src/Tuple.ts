@@ -8,17 +8,6 @@ const TupleConstructor = class Tuple<A extends readonly unknown[]> extends Array
   }
 };
 
-// TODO: add isRef checks
-export const isRef = Symbol('isRef');
-
-interface Referable {
-  [isRef]: boolean;
-}
-
-declare global {
-  interface Object extends Referable {}
-}
-
 export function Tuple<A extends unknown[]>(...path: A): Readonly<A> {
   if (new.target) {
     throw new TypeError('Tuple is not a constructor');

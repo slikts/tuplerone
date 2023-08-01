@@ -1,4 +1,5 @@
 import { ValueObject } from "./ValueObject.ts";
+import { shallow, isRef } from "./shallow.ts";
 
 describe('ValueObject', () => {
   it('works on flat objects', () => {
@@ -23,5 +24,15 @@ describe('ValueObject', () => {
   it('works on sub-objects', () => {
     const { a } = ValueObject({ a: { b:  1 } })
     expect(a).toStrictEqual(ValueObject({ b: 1 }))
+  })
+
+  it('supports circular objects', () => {
+    const a: any = {}
+    const b = { a }
+    a.b = b
+    expect(() => ValueObject(a)).toThrow()
+    a[isRef] = true
+    expect(ValueObject(a)).toBe(a)
+    expect(ValueObject(shallow(b))).toBe(b)
   })
 })
