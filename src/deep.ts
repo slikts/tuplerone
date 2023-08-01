@@ -9,23 +9,15 @@ export const getDeepSymbol = (target: unknown): symbol => {
 };
 
 const _get = <A>(edge: A): A | symbol => {
-  switch (typeof edge) {
-    case 'string':
-    case 'symbol':
-    case 'number':
-    case 'boolean':
-    case 'bigint':
-    case 'undefined':
-    case 'function':
-      return edge;
-    default:
-      if (Array.isArray(edge)) {
-        return getSymbol(edge.map(_get));
-      }
-      return getSymbol(
-        Object.entries(edge as object)
-          .flat()
-          .map((value, i) => (i % 2 ? _get(value) : value)),
-      );
+  if (typeof edge === 'object') {
+    if (Array.isArray(edge)) {
+      return getSymbol(edge.map(_get));
+    }
+    return getSymbol(
+      Object.entries(edge as object)
+        .flat()
+        .map((value, i) => (i % 2 ? _get(value) : value)),
+    );
   }
+  return edge;
 };
