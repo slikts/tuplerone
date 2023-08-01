@@ -40,7 +40,8 @@
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
     "build": "nanobundle build",
-    "demo": "yarn workspace demo"
+    "demo": "yarn workspace demo",
+    "docs": "typedoc"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
