@@ -12516,6 +12516,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tsc-files@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "tsc-files@npm:1.1.4"
+  peerDependencies:
+    typescript: ">=3"
+  bin:
+    tsc-files: cli.js
+  checksum: 4acae1dcfe635f3153051707ed747acd095f7fb67ebb767133f80fe6a9bad572eecb062ac2077e06fcfff547e4bbc4eb9e04b64305f0dd11d62ff1d3eb638601
+  languageName: node
+  linkType: hard
+
 "tsconfck@npm:^2.1.0":
   version: 2.1.2
   resolution: "tsconfck@npm:2.1.2"
@@ -12607,6 +12618,7 @@ __metadata:
     pinst: "npm:^3.0.0"
     prettier: "npm:2.8.8"
     semantic-release: "npm:^21.0.7"
+    tsc-files: "npm:^1.1.4"
     typedoc: "npm:^0.24.8"
     typescript: "npm:5.2.0-beta"
   languageName: unknown

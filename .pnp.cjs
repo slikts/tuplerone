@@ -54,6 +54,7 @@ const RAW_RUNTIME_STATE =
           ["pinst", "npm:3.0.0"],\
           ["prettier", "npm:2.8.8"],\
           ["semantic-release", "npm:21.0.7"],\
+          ["tsc-files", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:1.1.4"],\
           ["typedoc", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:0.24.8"],\
           ["typescript", "patch:typescript@npm%3A5.2.0-beta#optional!builtin<compat/typescript>::version=5.2.0-beta&hash=14eedb"]\
         ],\
@@ -17163,6 +17164,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["tsc-files", [\
+      ["npm:1.1.4", {\
+        "packageLocation": "./.yarn/cache/tsc-files-npm-1.1.4-0dbf03a0d4-4acae1dcfe.zip/node_modules/tsc-files/",\
+        "packageDependencies": [\
+          ["tsc-files", "npm:1.1.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:1.1.4", {\
+        "packageLocation": "./.yarn/__virtual__/tsc-files-virtual-85aa104deb/0/cache/tsc-files-npm-1.1.4-0dbf03a0d4-4acae1dcfe.zip/node_modules/tsc-files/",\
+        "packageDependencies": [\
+          ["tsc-files", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:1.1.4"],\
+          ["@types/typescript", null],\
+          ["typescript", "patch:typescript@npm%3A5.2.0-beta#optional!builtin<compat/typescript>::version=5.2.0-beta&hash=14eedb"]\
+        ],\
+        "packagePeers": [\
+          "@types/typescript",\
+          "typescript"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["tsconfck", [\
       ["npm:2.1.2", {\
         "packageLocation": "./.yarn/cache/tsconfck-npm-2.1.2-ddaf839ffe-61df3b03b3.zip/node_modules/tsconfck/",\
@@ -17279,6 +17302,7 @@ const RAW_RUNTIME_STATE =
           ["pinst", "npm:3.0.0"],\
           ["prettier", "npm:2.8.8"],\
           ["semantic-release", "npm:21.0.7"],\
+          ["tsc-files", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:1.1.4"],\
           ["typedoc", "virtual:ff4ec6f67ea72ec87496e8e83a82c57147273b8ff043e18aba7272655a91d31c0a356307831b9a23a886f33ffdf7e46efd7f9bc6f900cc9fdb660a7a576f2177#npm:0.24.8"],\
           ["typescript", "patch:typescript@npm%3A5.2.0-beta#optional!builtin<compat/typescript>::version=5.2.0-beta&hash=14eedb"]\
         ],\

@@ -43,9 +43,10 @@
     "demo": "yarn workspace demo"
   },
   "lint-staged": {
+    "*": "prettier --ignore-unknown --write",
     "src/**/*.ts": [
-      "prettier --write",
-      "git add"
+      "eslint --fix",
+      "tsc-files"
     ]
   },
   "jest": {
@@ -99,6 +100,7 @@
     "pinst": "^3.0.0",
     "prettier": "2.8.8",
     "semantic-release": "^21.0.7",
+    "tsc-files": "^1.1.4",
     "typedoc": "^0.24.8",
     "typescript": "5.2.0-beta"
   },
