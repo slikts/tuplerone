@@ -1,4 +1,5 @@
 import { getDeepSymbol } from './deep.ts';
+import { shallow, isRef } from './shallow.ts';
 
 describe('DeepCompositeSymbol', () => {
   it('returns symbol', () => {
@@ -38,5 +39,13 @@ describe('DeepCompositeSymbol', () => {
 
   it('throws on primitives', () => {
     expect(() => void getDeepSymbol(1)).toThrow();
+  });
+
+  it('skips shallow', () => {
+    const o: Record<string, number> = shallow({ a: 1 });
+    expect(getDeepSymbol([o])).not.toStrictEqual(getDeepSymbol([{ a: 1 }]));
+    const s = getDeepSymbol([o]);
+    o.b = 2;
+    expect(s).toStrictEqual(getDeepSymbol([o]));
   });
 });

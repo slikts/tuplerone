@@ -1,4 +1,5 @@
 import { getSymbol } from './graph.ts';
+import { isRef, cache as shallowCache } from './shallow.ts';
 
 export const getDeepSymbol = (target: unknown): symbol => {
   const result = _get(target);
@@ -9,7 +10,10 @@ export const getDeepSymbol = (target: unknown): symbol => {
 };
 
 const _get = <A>(edge: A): A | symbol => {
-  if (typeof edge === 'object') {
+  if (typeof edge === 'object' && edge !== null) {
+    if (edge[isRef] || shallowCache.has(edge)) {
+      return edge;
+    }
     if (Array.isArray(edge)) {
       return getSymbol(edge.map(_get));
     }
