@@ -1,6 +1,11 @@
 import { getSymbol } from './graph.ts';
-import { isRef, cache as shallowCache } from './shallow.ts';
+import { isRef, shallowCache } from './shallow.ts';
 
+/**
+ * Get a unique symbol that deeply matches the value of the object.
+ *
+ * @alpha
+ */
 export const getDeepSymbol = (target: unknown): symbol => {
   const result = _get(target);
   if (typeof result !== 'symbol') {

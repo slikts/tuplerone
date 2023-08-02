@@ -8,6 +8,15 @@ const TupleConstructor = class Tuple<A extends readonly unknown[]> extends Array
   }
 };
 
+/**
+ * Creates and returns an immutable tuple based on the provided path of
+ * elements.
+ *
+ * @example
+ * ```ts
+ * Tuple(1, 2, 'a') === Tuple(1, 2, 'a') // true
+ * ```
+ */
 export function Tuple<A extends unknown[]>(...path: A): Readonly<A> {
   if (new.target) {
     throw new TypeError('Tuple is not a constructor');

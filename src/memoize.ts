@@ -2,6 +2,11 @@ import { getNode } from './graph.ts';
 
 const cache = new WeakMap();
 
+/**
+ * Returns a function that returns the same result given the same arguments.
+ *
+ * @alpha
+ */
 export const memoize = <A extends (...args: unknown[]) => unknown>(fn: A): A => {
   const memoized = function (this: unknown, ...args: unknown[]) {
     const node = getNode([memoized, this, ...args]);

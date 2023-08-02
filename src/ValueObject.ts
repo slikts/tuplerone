@@ -1,6 +1,12 @@
 import { getNode, registry } from './graph.ts';
-import { isRef, cache as shallowCache } from './shallow.ts';
+import { isRef, shallowCache } from './shallow.ts';
 
+/**
+ * Creates a deep immutable representation of the input object, also known as a
+ * "value object".
+ *
+ * @alpha
+ */
 export function ValueObject<A extends object>(source: A): DeepReadonly<A> {
   if (new.target) {
     throw new TypeError('ValueObject is not a constructor');
@@ -10,6 +16,7 @@ export function ValueObject<A extends object>(source: A): DeepReadonly<A> {
     return source;
   }
 
+  // Recursively map entries
   const entries = Object.entries(source).map(([key, value]) => {
     if (typeof value === 'object' && value !== null) {
       return [key, ValueObject(value)];
