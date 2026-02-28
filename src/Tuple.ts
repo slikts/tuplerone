@@ -22,9 +22,6 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
   /**
    * Constructs a tuple.
    */
-  /**
-   * Constructs a tuple.
-   */
   static tuple<const T extends readonly unknown[]>(...values: T): TupleN<T> {
     // Special case for 0-tuples
     if (values.length === 0) {
@@ -34,14 +31,26 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
       }
       return tuple0 as any;
     }
-    return getDefaultLazy(
-      tupleKey,
-      () => new Tuple(values, localToken),
-      getLeaf(values as any),
-    ) as any;
+    const leaf = getLeaf(values as any);
+    const ref = leaf.get(tupleKey) as WeakRef<any> | undefined;
+    let tuple = ref && ref.deref();
+    if (!tuple) {
+      tuple = new Tuple(values, localToken) as any;
+      leaf.set(tupleKey, new WeakRef(tuple));
+      registry.register(tuple, values as readonly unknown[]);
+    }
+    return tuple;
   }
   static symbol<const T extends readonly unknown[]>(...values: T): CompositeSymbol<T> {
-    return getDefaultLazy(symbolKey, () => Symbol(), getLeaf(values as any));
+    const leaf = getLeaf(values as any);
+    const ref = leaf.get(symbolKey) as WeakRef<any> | undefined;
+    let sym = ref && ref.deref();
+    if (!sym) {
+      sym = Symbol() as CompositeSymbol<T>;
+      leaf.set(symbolKey, new WeakRef(sym));
+      registry.register(sym, values as readonly unknown[]);
+    }
+    return sym;
   }
 
   // The exported member is cast as the same type as Tuple.tuple() to avoid duplicating the overloads
@@ -84,6 +93,40 @@ export const getLeaf = (values: any[], unsafe?: boolean): WeakishMap<any, any> =
   const root = rootValue === values[0] ? cache : getDefaultLazy(rootValue, initWeakish, cache);
   return values.reduce((prev, curr) => getDefaultLazy(curr, initWeakish, prev), root);
 };
+
+export const prune = (values: readonly any[]) => {
+  const rootValue = values.find(isWeakMapKey);
+  if (!rootValue) return;
+
+  const stack: [WeakishMap<any, any>, any][] = [];
+  let current: WeakishMap<any, any> | undefined = cache;
+
+  if (rootValue !== values[0]) {
+    stack.push([current, rootValue]);
+    current = current.get(rootValue) as WeakishMap<any, any> | undefined;
+    if (!current) return;
+  }
+
+  for (const val of values) {
+    stack.push([current, val]);
+    current = current.get(val) as WeakishMap<any, any> | undefined;
+    if (!current) return;
+  }
+
+  let node = current;
+  for (let i = stack.length - 1; i >= 0; i--) {
+    const [parent, key] = stack[i];
+    if (node.isEmpty()) {
+      parent.delete(key);
+      node = parent;
+    } else {
+      break;
+    }
+  }
+};
+
+/* istanbul ignore next */
+export const registry = new FinalizationRegistry<readonly unknown[]>((path) => void prune(path));
 
 // Unsafe tuples aren't garbage collected so it's more efficient to just use a normal map
 const unsafeCache = new Map();

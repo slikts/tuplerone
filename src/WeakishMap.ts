@@ -9,8 +9,12 @@ import { isWeakMapKey } from './helpers';
 export default class WeakishMap<A, B> implements GenericMap<A, B> {
   #weakMap?: WeakMap<any, B>;
   #map?: Map<A, B>;
+  #size = 0;
 
   set(k: A, v: B): this {
+    if (!this.has(k)) {
+      this.#size++;
+    }
     if (isWeakMapKey(k)) {
       if (!this.#weakMap) {
         this.#weakMap = new WeakMap();
@@ -42,5 +46,21 @@ export default class WeakishMap<A, B> implements GenericMap<A, B> {
       return this.#map.has(k);
     }
     return false;
+  }
+
+  delete(k: A): boolean {
+    if (this.has(k)) {
+      this.#size--;
+      if (isWeakMapKey(k)) {
+        return this.#weakMap!.delete(k);
+      } else {
+        return this.#map!.delete(k);
+      }
+    }
+    return false;
+  }
+
+  isEmpty(): boolean {
+    return this.#size === 0;
   }
 }
