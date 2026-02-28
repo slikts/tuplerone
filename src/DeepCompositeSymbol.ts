@@ -9,7 +9,7 @@ import { isObject } from './helpers';
 const DeepCompositeSymbol = (object: any, filter?: (entry: [string, any]) => boolean) => {
   const entries = filter ? Object.entries(object).filter(filter) : Object.entries(object);
   // Recursively replace non-tuple object values with tuples
-  entries.forEach(entry => update(entry, filter));
+  entries.forEach((entry) => update(entry, filter));
   return Tuple.unsafeSymbol(...flatten(entries));
 };
 

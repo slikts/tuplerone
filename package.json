@@ -29,6 +29,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
+    "lint": "eslint 'src/**/*.ts'",
     "build": "tsdown",
     "release": "pnpm build && changeset publish",
     "start": "tsdown --watch",
@@ -39,23 +40,23 @@
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "lint-staged": {
-    "{src,test}/**/*.ts": [
-      "prettier --write",
-      "git add"
+    "src/**/*.ts": [
+      "pnpm lint --fix",
+      "prettier --write"
     ]
-  },
-  "prettier": {
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "all"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
     "@types/node": "^16.4.10",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
     "@vitest/coverage-v8": "^4.0.18",
     "colors": "^1.4.0",
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.3",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
     "husky": "^6.0.0",
     "lint-staged": "^13.2.2",
     "prettier": "^2.3.2",
@@ -63,11 +64,7 @@
     "replace-in-file": "^6.2.0",
     "ts-node": "^9.1.1",
     "tsdown": "0.21.0-beta.2",
-    "tslint": "^5.20.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-config-slikts": "^2.0.4",
     "typescript": "6.0.0-beta",
-    "typestrict": "1.0.2",
     "vitest": "^4.0.18"
   },
   "bugs": "https://github.com/slikts/tuplerone/issues",
