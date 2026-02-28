@@ -23,7 +23,7 @@ import { assignArraylike, arraylikeToIterable, getDefaultLazy, isObject } from '
 
 export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, Iterable<A> {
   [i: number]: A;
-  length: number = 0;
+  declare length: number;
 
   /**
    * @throws {TypeError} Will throw if called non-locally; use the tuple() method instead.
