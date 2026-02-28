@@ -1,6 +1,6 @@
 import Tuple, { getLeaf } from '../src/Tuple';
 import WeakishMap from '../src/WeakishMap';
-
+import { describe, it, expect } from 'vitest';
 describe(Tuple.name, () => {
   const a = {};
   const { tuple } = Tuple;

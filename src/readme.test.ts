@@ -1,5 +1,5 @@
 import { Tuple, Tuple0, Tuple1, Tuple2 } from '../src/tuplerone';
-
+import { describe, it, expect } from 'vitest';
 // Dummy object
 const o = {};
 describe('readme examples', () => {

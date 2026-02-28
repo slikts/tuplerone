@@ -1,6 +1,7 @@
 {
   "name": "tuplerone",
   "description": "A yet another tuple implementation",
+  "version": "0.0.1",
   "keywords": [
     "tuple",
     "weakmap",

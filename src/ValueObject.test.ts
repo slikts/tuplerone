@@ -1,5 +1,5 @@
 import { ValueObject } from '../src/tuplerone';
-
+import { describe, it, expect } from 'vitest';
 describe(ValueObject.name, () => {
   it('constructs', () => {
     expect(typeof ValueObject({ a: 1, b: 2 })).toBe('object');
