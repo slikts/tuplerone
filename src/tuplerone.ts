@@ -18,7 +18,7 @@ export const UnsafeCompositeSymbol = unsafeSymbol as typeof tuple;
 
 export { DeepCompositeSymbol, ValueObject, tuple as Tuple };
 
-export {
+export type {
   Tuple0,
   Tuple1,
   Tuple2,
@@ -28,7 +28,9 @@ export {
   Tuple6,
   Tuple7,
   Tuple8,
-  CompositeSymbol as CompositeSymbolType,
+} from './types';
+export type { CompositeSymbol as CompositeSymbolType } from './types';
+export type {
   CompositeSymbol0,
   CompositeSymbol1,
   CompositeSymbol2,
