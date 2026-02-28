@@ -1,6 +1,5 @@
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default [
   {
@@ -25,5 +24,4 @@ export default [
       '@typescript-eslint/no-unused-expressions': 'off',
     },
   },
-  eslintPluginPrettierRecommended,
 ];
