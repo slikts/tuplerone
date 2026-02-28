@@ -30,6 +30,7 @@
   },
   "scripts": {
     "build": "tsdown",
+    "release": "pnpm build && changeset publish",
     "start": "tsdown --watch",
     "test": "vitest run",
     "test:watch": "vitest",

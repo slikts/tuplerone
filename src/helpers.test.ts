@@ -1,5 +1,7 @@
 import { isObject, getDefault, getDefaultLazy } from '../src/helpers';
 
+import { describe, it, expect } from 'vitest';
+
 describe('helpers', () => {
   it('isNotPrimitive', () => {
     expect(isObject({})).toBe(true);

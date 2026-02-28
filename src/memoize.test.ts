@@ -1,5 +1,5 @@
 import { memoize } from '../src/memoize';
-
+import { describe, it, expect } from 'vitest';
 describe(memoize.name, () => {
   it('returns a function', () => {
     expect(memoize(() => {})).toBeInstanceOf(Function);
@@ -22,7 +22,7 @@ describe(memoize.name, () => {
   });
 
   it('supports setting receiver', () => {
-    const f = memoize(function(this: any) {
+    const f = memoize(function (this: any) {
       return this;
     });
     expect(f.call(123)).toBe(123);
