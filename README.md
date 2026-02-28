@@ -242,8 +242,6 @@ Yet tuples don't support mutative `Array` prototype methods like `Array.sort()`,
 
 The advantage of subclassing `Array` is ergonomic console representation (it's represented as an array would be), which is based on `Array.isArray()` and so requires subclassing `Array`.
 
-
-
 ### `instanceof` doesn't work as expected
 
 Tuples can be constructed without the `new` keyword to make them behave like other primitive values
@@ -252,8 +250,6 @@ Tuples can be constructed without the `new` keyword to make them behave like oth
 ```js
 Tuple() instanceof Tuple.constructor; // → true
 ```
-
-
 
 [weakmap]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
 [map]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
