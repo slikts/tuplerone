@@ -1,4 +1,4 @@
-import { GenericMap, Indexable } from './types';
+import type { GenericMap, Indexable } from './types';
 
 /**
  * Gets a map element, lazily initializing it with a default value.
@@ -9,7 +9,7 @@ export const getDefaultLazy = <A, B>(key: A, init: () => B, target: GenericMap<A
     target.set(key, value);
     return value;
   }
-  return <B>target.get(key);
+  return target.get(key)!;
 };
 
 /**
@@ -20,16 +20,14 @@ export const getDefault = <A, B>(key: A, defaultValue: B, target: GenericMap<A, 
     target.set(key, defaultValue);
     return defaultValue;
   }
-  return <B>target.get(key);
+  return target.get(key)!;
 };
 
 /**
- * Tests if a value is an object.
- *
- * Doesn't test for symbols because symbols are invalid as `WeakMap` keys.
+ * Tests if a value is an object or symbol, suitable for use as a WeakMap key.
  */
-export const isObject = (x: any): x is object =>
-  x !== null && (typeof x === 'object' || typeof x === 'function');
+export const isWeakMapKey = (x: unknown): x is object | symbol =>
+  x !== null && (typeof x === 'object' || typeof x === 'function' || typeof x === 'symbol');
 
 export const forEach = <A>(iterator: Iterator<A>, callback: (value: A) => void) => {
   do {

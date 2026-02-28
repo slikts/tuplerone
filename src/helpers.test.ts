@@ -1,12 +1,13 @@
-import { isObject, getDefault, getDefaultLazy } from '../src/helpers';
+import { isWeakMapKey, getDefault, getDefaultLazy } from '../src/helpers';
 
 import { describe, it, expect } from 'vitest';
 
 describe('helpers', () => {
-  it('isNotPrimitive', () => {
-    expect(isObject({})).toBe(true);
-    expect(isObject('a')).toBe(false);
-    expect(isObject(() => {})).toBe(true);
+  it('isWeakMapKey', () => {
+    expect(isWeakMapKey({})).toBe(true);
+    expect(isWeakMapKey('a')).toBe(false);
+    expect(isWeakMapKey(() => {})).toBe(true);
+    expect(isWeakMapKey(Symbol('s'))).toBe(true);
   });
 
   it('getDefault', () => {

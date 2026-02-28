@@ -1,5 +1,5 @@
 import Tuple from './Tuple';
-import { isObject } from './helpers';
+import { isWeakMapKey } from './helpers';
 
 /**
  * Recursively creates a "composite key" (like a "value identity") for
@@ -15,7 +15,7 @@ const DeepCompositeSymbol = (object: any, filter?: (entry: [string, any]) => boo
 
 const update = (entry: any, filter?: any) => {
   const v = entry[1];
-  if (isObject(v) && !(v instanceof Tuple)) {
+  if (isWeakMapKey(v) && !(v instanceof Tuple)) {
     entry[1] = DeepCompositeSymbol(v, filter);
   }
 };
