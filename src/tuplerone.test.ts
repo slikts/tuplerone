@@ -26,6 +26,12 @@ describe(Tuple.name, () => {
     expect(Tuple(a, 1, 2)).toBe(Tuple(a, 1, 2));
   });
 
+  it('root symbol tuple compares', () => {
+    const sym = Symbol('root');
+    expect(Tuple(sym, 1, 2)).toBe(Tuple(sym, 1, 2));
+    expect(Tuple(sym, 1, 2)).not.toBe(Tuple(sym, 1, 3));
+  });
+
   it('non-root object tuple compares', () => {
     expect(Tuple(1, 2, a)).toBe(Tuple(1, 2, a));
   });
@@ -40,6 +46,10 @@ describe(Tuple.name, () => {
 
   it('3-tuple different roots not compare', () => {
     expect(Tuple(a, 1, 2)).not.toBe(Tuple(a, 2, 1));
+  });
+
+  it('0-tuple throws if unsafe is explicitly tested with primitive getLeaf', () => {
+    expect(() => Tuple(1, 2, 3)).toThrowError(/WeakMap key/);
   });
 
   it('overlapping not compare', () => {
