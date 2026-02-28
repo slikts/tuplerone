@@ -37,7 +37,7 @@ export function ValueObject<A extends object>(
   const frozen = Object.freeze(Object.fromEntries(mapped)) as DeepReadonly<A>;
   cache.set(key, frozen);
   return frozen;
-};
+}
 
 const cache = new Map<symbol, object>();
 

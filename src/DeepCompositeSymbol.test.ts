@@ -26,12 +26,16 @@ describe(DeepCompositeSymbol.name, () => {
   });
 
   it('supports deep nesting', () => {
-    expect(DeepCompositeSymbol([1, [2, 3]])).toBe(DeepCompositeSymbol([1, DeepCompositeSymbol([2, 3])]));
+    expect(DeepCompositeSymbol([1, [2, 3]])).toBe(
+      DeepCompositeSymbol([1, DeepCompositeSymbol([2, 3])]),
+    );
     expect(DeepCompositeSymbol({ a: { b: 1, c: 2 } })).toBe(
       DeepCompositeSymbol({ a: DeepCompositeSymbol({ b: 1, c: 2 }) }),
     );
     expect(DeepCompositeSymbol([1, { a: 1 }])).toBe(DeepCompositeSymbol([1, { a: 1 }]));
-    expect(DeepCompositeSymbol([1, { a: 1 }])).toBe(DeepCompositeSymbol([1, DeepCompositeSymbol({ a: 1 })]));
+    expect(DeepCompositeSymbol([1, { a: 1 }])).toBe(
+      DeepCompositeSymbol([1, DeepCompositeSymbol({ a: 1 })]),
+    );
     expect(DeepCompositeSymbol({ a: 1, b: [2, 3] })).toBe(
       DeepCompositeSymbol({ a: 1, b: DeepCompositeSymbol([2, 3]) }),
     );

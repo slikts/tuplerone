@@ -1,4 +1,5 @@
 import { Tuple, CompositeSymbol } from '../src/tuplerone';
+import { describe, it, expect } from 'vitest';
 
 describe(Tuple.name, () => {
   const a = Object('a');

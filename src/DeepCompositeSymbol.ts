@@ -7,10 +7,7 @@ import { isRef, shallowCache } from './shallow';
  * an object's entries (key-value pairs).
  */
 // tslint:disable-next-line: variable-name
-const DeepCompositeSymbol = (
-  object: any,
-  filter?: (entry: [string, any]) => boolean,
-) => {
+const DeepCompositeSymbol = (object: any, filter?: (entry: [string, any]) => boolean) => {
   if (shallowCache.has(object) || object[isRef]) {
     return Tuple.unsafeSymbol(object);
   }
