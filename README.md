@@ -109,10 +109,10 @@ Directed acyclic graphs (DAGs) are a data structure that allows efficiently mapp
 npm install tuplerone
 ```
 
-### yarn
+### pnpm
 
 ```
-yarn add tuplerone
+pnpm add tuplerone
 ```
 
 ### CDN
@@ -244,9 +244,7 @@ Yet tuples don't support mutative `Array` prototype methods like `Array.sort()`,
 
 The advantage of subclassing `Array` is ergonomic console representation (it's represented as an array would be), which is based on `Array.isArray()` and so requires subclassing `Array`.
 
-### Limited number of arities
 
-The tuples are currently typed up to 8-tuple (octuple) because TypeScript doesn't yet support [variadic generics]. The types are implemented using function overloads.
 
 ### `instanceof` doesn't work as expected
 
