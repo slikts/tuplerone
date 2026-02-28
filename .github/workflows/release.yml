@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+      - next
+      - next-next
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
