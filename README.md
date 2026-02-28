@@ -1,10 +1,8 @@
 <h1 align="center"><a href="https://github.com/slikts/tuplerone"><img width="550" src="https://raw.githubusercontent.com/slikts/tuplerone/master/logo.svg?sanitize=true" alt="tuplerone"></a></h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/slikts/tuplerone"><img src="https://img.shields.io/npm/v/tuplerone.svg?style=flat" alt="View this project on npm"></a>
-  <a href="https://travis-ci.org/slikts/tuplerone"><img src="https://img.shields.io/travis/slikts/tuplerone.svg" alt="Travis"></a>
+  <a href="https://img.shields.io/npm/v/tuplerone.svg?style=flat"><img src="https://img.shields.io/npm/v/tuplerone.svg?style=flat" alt="View this project on npm"></a>
   <a href="https://coveralls.io/github/slikts/tuplerone"><img src="https://img.shields.io/coveralls/slikts/tuplerone.svg" alt="Coveralls"></a>
-  <a href="https://david-dm.org/slikts/tuplerone?type=dev"><img src="https://david-dm.org/slikts/tuplerone/dev-status.svg" alt="Dev Dependencies"></a>
   <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a>
   <img src="https://badgen.net/dependabot/slikts/tuplerone" alt="Dependabot">
 </p>
@@ -255,13 +253,7 @@ Tuples can be constructed without the `new` keyword to make them behave like oth
 Tuple() instanceof Tuple.constructor; // → true
 ```
 
-## License
 
-MIT
-
-## Author
-
-slikts <dabas@untu.ms>
 
 [weakmap]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
 [map]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
