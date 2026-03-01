@@ -1,4 +1,4 @@
-import { isWeakMapKey, getDefault, getDefaultLazy } from '../src/helpers';
+import { isWeakMapKey, getDefault, getDefaultLazy } from './helpers';
 
 import { describe, it, expect } from 'vitest';
 
@@ -23,5 +23,11 @@ describe('helpers', () => {
   it('getDefaultLazy', () => {
     const m = new Map();
     expect(getDefaultLazy(1, () => 2, m)).toBe(2);
+  });
+
+  it('getDefaultLazy returns existing value without calling init', () => {
+    const m = new Map().set(1, 99);
+    const init = () => 2;
+    expect(getDefaultLazy(1, init, m)).toBe(99);
   });
 });
