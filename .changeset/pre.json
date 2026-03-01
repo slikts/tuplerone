@@ -2,7 +2,7 @@
   "mode": "pre",
   "tag": "next",
   "initialVersions": {
-    "tuplerone": "0.0.1"
+    "tuplerone": "3.3.3"
   },
   "changesets": []
 }
