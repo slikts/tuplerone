@@ -1,0 +1,21 @@
+# Lefthook Configuration
+
+pre-commit:
+  commands:
+    lint-staged:
+      run: pnpm exec lint-staged
+
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm exec commitlint --edit {1}
+
+pre-push:
+  parallel: true
+  jobs:
+    - name: build
+      run: pnpm --filter . run build
+    - name: lint
+      run: pnpm --filter . run lint
+    - name: test
+      run: pnpm --filter . run test:prod
