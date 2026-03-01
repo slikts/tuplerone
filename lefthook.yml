@@ -41,7 +41,7 @@ ci:
     - name: typecheck
       run: pnpm --filter . typecheck
 
-    - name: test + coverage
+    - name: test coverage
       run: pnpm --filter . test -- --coverage
 
     - name: build library
