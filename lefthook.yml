@@ -12,7 +12,7 @@ pre-push:
   parallel: true
   jobs:
     - name: checks
-      run: lefthook run ci
+      run: pnpm exec lefthook run ci
       glob: '**/*.{ts,md,json,mdx}'
 
 post-merge:
@@ -30,22 +30,22 @@ post-checkout:
 pre-rebase:
   commands:
     checks:
-      run: lefthook run ci
+      run: pnpm exec lefthook run ci
 
 ci:
   parallel: true
   jobs:
     - name: lint
-      run: pnpm --filter . lint
+      run: pnpm --filter . run lint
 
     - name: typecheck
-      run: pnpm --filter . typecheck
+      run: pnpm --filter . run typecheck
 
     - name: test coverage
-      run: pnpm --filter . test -- --coverage
+      run: pnpm --filter . run test -- --coverage
 
     - name: build library
-      run: pnpm --filter . build
+      run: pnpm --filter . run build
 
     - name: build docs
-      run: pnpm --filter docs build
+      run: pnpm --filter docs run build
