@@ -3,12 +3,13 @@ name: CI
 on:
   push:
     branches:
-      - master
       - main
   pull_request:
+    branches:
+      - main
 
 jobs:
-  build_and_test:
+  ci:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -16,32 +17,43 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: 22
+          fetch-depth: 0
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+      - name: Setup mise
+        uses: jdx/mise-action@v3
         with:
-          version: 10
+          install: true
+          cache: true
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run Format Check
-        run: pnpm --filter . format:check
+      - name: Lint
+        run: pnpm exec lefthook run ci --job lint
 
-      - name: Run Tests
-        run: pnpm --filter . test:prod --coverage.enabled true
+      - name: Typecheck
+        run: pnpm exec lefthook run ci --job typecheck
+
+      - name: Test & Coverage
+        run: pnpm exec lefthook run ci --job "test coverage"
+
+      - name: Build Library
+        run: pnpm exec lefthook run ci --job "build library"
+
+      - name: Build Docs
+        run: pnpm exec lefthook run ci --job "build docs"
 
       - name: Report Coverage
-        if: always()
         uses: davelosert/vitest-coverage-report-action@v2
+        with:
+          working-directory: .
 
-      - name: Run Lint
-        run: pnpm --filter . lint
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/out
 
-      - name: Run Build
-        run: pnpm --filter . build
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
