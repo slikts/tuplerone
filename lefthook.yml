@@ -38,8 +38,8 @@ ci:
     - name: lint
       run: pnpm --filter . run lint
 
-    - name: typecheck
-      run: pnpm --filter . run typecheck
+    - name: check types
+      run: pnpm --filter . run types:check
 
     - name: test coverage
       run: pnpm --filter . run test -- --coverage

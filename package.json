@@ -43,7 +43,7 @@
     "release": "pnpm build && changeset publish",
     "start": "tsdown --watch",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit",
+    "types:check": "tsc --noEmit",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "test:watch": "vitest",
