@@ -10,10 +10,8 @@ export { memoize } from './memoize';
  * so it can't be garbage-collected and should only be used
  * in advanced contexts.
  */
-// tslint:disable-next-line: variable-name
 export const UnsafeTuple = unsafe as typeof tuple;
 
-// tslint:disable-next-line: variable-name
 export const UnsafeCompositeSymbol = unsafeSymbol as typeof tuple;
 
 export { DeepCompositeSymbol, ValueObject, tuple as Tuple };

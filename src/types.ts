@@ -41,7 +41,6 @@ export type Tuple8<A, B, C, D, E, F, G, H> = TupleN<[A, B, C, D, E, F, G, H]>;
 export type CompositeSymbol<T extends readonly unknown[]> = {
   t: T;
 } & symbol;
-// tslint:disable-next-line: variable-name
 export const CompositeSymbol0: CompositeSymbol<readonly []> = Symbol('CompositeSymbol0') as any;
 export type CompositeSymbol1<A> = CompositeSymbol<[A]>;
 export type CompositeSymbol2<A, B> = CompositeSymbol<[A, B]>;

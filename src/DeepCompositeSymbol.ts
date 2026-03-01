@@ -6,7 +6,6 @@ import { isRef, shallowCache } from './shallow';
  * Recursively creates a "composite key" (like a "value identity") for
  * an object's entries (key-value pairs).
  */
-// tslint:disable-next-line: variable-name
 const DeepCompositeSymbol = (object: any, filter?: (entry: [string, any]) => boolean) => {
   if (shallowCache.has(object) || object[isRef]) {
     return Tuple.unsafeSymbol(object);
