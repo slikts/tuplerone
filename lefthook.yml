@@ -1,5 +1,3 @@
-# Lefthook Configuration
-
 pre-commit:
   commands:
     lint-staged:
@@ -13,9 +11,41 @@ commit-msg:
 pre-push:
   parallel: true
   jobs:
-    - name: build
-      run: pnpm --filter . run build
+    - name: checks
+      run: lefthook run ci
+      glob: '**/*.{ts,md,json,mdx}'
+
+post-merge:
+  commands:
+    pnpm-install:
+      run: pnpm install --frozen-lockfile
+      glob: '{pnpm-lock.yaml,**/package.json}'
+
+post-checkout:
+  commands:
+    pnpm-install:
+      run: pnpm install --frozen-lockfile
+      glob: '{pnpm-lock.yaml,**/package.json}'
+
+pre-rebase:
+  commands:
+    checks:
+      run: lefthook run ci
+
+ci:
+  parallel: true
+  jobs:
     - name: lint
-      run: pnpm --filter . run lint
-    - name: test
-      run: pnpm --filter . run test:prod
+      run: pnpm --filter . lint
+
+    - name: typecheck
+      run: pnpm --filter . typecheck
+
+    - name: test + coverage
+      run: pnpm --filter . test -- --coverage
+
+    - name: build library
+      run: pnpm --filter . build
+
+    - name: build docs
+      run: pnpm --filter docs build
