@@ -16,8 +16,18 @@ export const docs = defineDocs({
   },
 });
 
+import {
+  remarkAutoTypeTable,
+  createGenerator,
+  createFileSystemGeneratorCache,
+} from 'fumadocs-typescript';
+
+const generator = createGenerator({
+  cache: createFileSystemGeneratorCache('.next/fumadocs-typescript'),
+});
+
 export default defineConfig({
   mdxOptions: {
-    // MDX options
+    remarkPlugins: [[remarkAutoTypeTable, { generator }]],
   },
 });
