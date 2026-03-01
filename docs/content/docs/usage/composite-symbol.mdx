@@ -1,16 +1,49 @@
 ---
 title: CompositeSymbol
-description: Usage of the CompositeSymbol function.
+description: Create unique symbols from value sequences.
 ---
 
-### `CompositeSymbol(…values)`
+### `CompositeSymbol(...values)`
 
-It's possible to avoid creating an `Array`-like tuple for cases where iterating the tuple members isn't needed (for example, just to use it as a key):
+Creates a unique `symbol` from a sequence of values. Like `Tuple`, calling `CompositeSymbol` with the same arguments always returns the same symbol. Unlike `Tuple`, it doesn't create an array-like object -- just a symbol that can be used as a key.
 
 ```js
 import { CompositeSymbol } from 'tuplerone';
 
+CompositeSymbol(1, 2, {}) === CompositeSymbol(1, 2, {}); // → true
 typeof CompositeSymbol(1, 2, {}) === 'symbol'; // → true
 ```
 
-A symbol is more space efficient than a tuple and can be used as a key for plain objects.
+### When to use CompositeSymbol vs Tuple
+
+Use `CompositeSymbol` when you only need a composite key and don't need to iterate or access the individual values. Since it produces a `symbol` instead of an array-like object, it's more space-efficient and can be used as a key for plain objects:
+
+```js
+const key = CompositeSymbol(obj1, obj2);
+const lookup = { [key]: 'value' };
+lookup[CompositeSymbol(obj1, obj2)]; // → 'value'
+```
+
+Use `Tuple` when you need to access individual members by index or iterate over them.
+
+### Types
+
+Typed variants are available from `CompositeSymbol0` through `CompositeSymbol8`, along with the `CompositeSymbolType` type alias:
+
+```ts
+import { CompositeSymbol, CompositeSymbol2 } from 'tuplerone';
+```
+
+### `UnsafeCompositeSymbol`
+
+Like [`UnsafeTuple`](/docs/caveats#unsafetuple), there is an `UnsafeCompositeSymbol` variant that allows all-primitive arguments at the cost of not being garbage-collectable:
+
+```js
+import { UnsafeCompositeSymbol } from 'tuplerone';
+
+UnsafeCompositeSymbol(1, 2, 3) === UnsafeCompositeSymbol(1, 2, 3); // → true
+```
+
+### Caveats
+
+The same [WeakMap key requirement](/docs/caveats) applies: at least one argument must be an object (unless using `UnsafeCompositeSymbol`).

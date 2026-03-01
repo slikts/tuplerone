@@ -1,0 +1,50 @@
+---
+title: memoize
+description: Function memoization using tuplerone's internal DAG.
+---
+
+### `memoize(fn, cache?)`
+
+Wraps a function so that repeated calls with the same arguments return the cached result. Uses tuplerone's internal WeakMap-based DAG for argument matching, so it supports object arguments and participates in garbage collection.
+
+```ts
+import { memoize } from 'tuplerone';
+
+const expensive = memoize((a: number, b: number) => {
+  // expensive computation
+  return { result: a + b };
+});
+
+expensive(1, 2) === expensive(1, 2); // → true (same object reference)
+expensive(1, 2) === expensive(2, 3); // → false
+```
+
+### Receiver (`this`) binding
+
+The `this` context is included in the memoization key, so the same function called on different receivers produces different cached results:
+
+```ts
+const f = memoize(function (this: any) {
+  return this;
+});
+
+f.call(obj1) === f.call(obj1); // → true
+f.call(obj1) === f.call(obj2); // → false
+```
+
+### Custom cache
+
+Pass a custom `WeakMap` to isolate the cache from other memoized functions:
+
+```ts
+const cache = new WeakMap();
+const f = memoize(fn, cache);
+```
+
+By default, all memoized functions share a single global cache. Using a custom cache can be useful for cache isolation or manual clearing.
+
+### Behavior notes
+
+- **Exceptions are not cached.** If the wrapped function throws, the next call will re-execute it rather than replaying the error.
+- **Async functions** return the same `Promise` reference for cached calls.
+- The memoized function wrapper itself is part of the cache key, preventing cross-contamination when multiple memoized functions share the same cache.

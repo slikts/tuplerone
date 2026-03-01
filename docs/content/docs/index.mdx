@@ -3,6 +3,63 @@ title: Introduction
 description: A lightweight, efficient tuple and value object implementation for JavaScript and TypeScript.
 ---
 
-import Readme from '../../../README.md';
+## What is tuplerone?
 
-<Readme />
+In JavaScript, objects with the same contents are not equal by default:
+
+```js
+[1, 2, 3] === [1, 2, 3]; // → false
+```
+
+tuplerone solves this by caching object creation so that the same arguments always produce the same reference. This gives you value semantics using plain `===`:
+
+```js
+import { Tuple } from 'tuplerone';
+
+Tuple(1, 2, 3) === Tuple(1, 2, 3); // → true
+```
+
+This is useful for memoization (e.g. React's `memo()`), using multiple values as composite `Map` keys, and anywhere you need structural equality without deep comparison.
+
+## Quick start
+
+```bash
+npm install tuplerone
+```
+
+```js
+import { Tuple, CompositeSymbol, ValueObject } from 'tuplerone';
+
+// Tuple: array-like value type
+const a = { id: 1 };
+const b = { id: 2 };
+Tuple(a, b) === Tuple(a, b); // → true
+
+// CompositeSymbol: lightweight key from multiple values
+const key = CompositeSymbol(a, b);
+typeof key === 'symbol'; // → true
+
+// ValueObject: frozen object with value semantics
+ValueObject({ x: 1 }) === ValueObject({ x: 1 }); // → true
+```
+
+## Features
+
+- **Tiny** -- under 1KB compressed, zero dependencies
+- **Well-typed** -- full TypeScript support (works from JavaScript too)
+- **Well-tested** -- full test coverage
+- **Efficient** -- WeakMap-based directed acyclic graph for O(1) lookups
+- **Immutable** -- all objects are frozen with `Object.freeze()`
+- **Iterable** -- tuples support `for-of`, spread, and destructuring
+
+## Exports
+
+| Export | Description |
+|---|---|
+| [`Tuple`](/docs/usage/tuple) | Array-like value type with structural equality |
+| [`CompositeSymbol`](/docs/usage/composite-symbol) | Create unique symbols from value sequences |
+| [`DeepCompositeSymbol`](/docs/usage/deep-composite-symbol) | Recursive composite key for nested objects |
+| [`ValueObject`](/docs/usage/value-object) | Frozen object with deep value semantics |
+| [`memoize`](/docs/usage/memoize) | Function memoization using the internal DAG |
+| [`UnsafeTuple`](/docs/caveats#unsafetuple) | Tuple variant that allows all-primitive values |
+| `UnsafeCompositeSymbol` | CompositeSymbol variant for all-primitive values |

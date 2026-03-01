@@ -3,7 +3,9 @@ title: Tuple
 description: Usage of the main Tuple function.
 ---
 
-### `Tuple(…values)`
+### `Tuple(...values)`
+
+Creates an immutable, array-like tuple with value semantics. Calling `Tuple` with the same arguments always returns the same object reference, so `===` works for structural equality.
 
 ```js
 import { Tuple } from 'tuplerone';
@@ -37,7 +39,18 @@ Tuple(a, b).length; // → 2
 Tuple(a, b)[0] = c; // throws an error
 ```
 
-The tuple function caches or memoizes its arguments to produce the same tuple object for the same arguments.
+The tuple function caches its arguments to produce the same tuple object for the same arguments.
+
+### Properties
+
+Tuple objects are:
+
+- **Immutable** -- properties cannot be added, removed or changed, enforced with `Object.freeze()`
+- **Array-like** -- members can be accessed by index, and there's a `length` property
+- **Iterable** -- members can be iterated using `for-of` loops or spread syntax
+- **Array subclass** -- `Array.isArray(Tuple())` returns `true`, giving ergonomic console output
+
+Note that despite being an `Array` subclass, mutative `Array` prototype methods like `sort()` will throw since tuples are frozen. See [Caveats](/docs/caveats) for more details.
 
 ### Types
 
@@ -59,4 +72,4 @@ Tuple(o) === Tuple(o, 1); // TS compile error due to different arities
 Tuple(...([1, 2, 3] as const)); // → Tuple3<1, 2, 3>
 ```
 
-In editors like VS Code, the type information is also available when the library is consumed as JavaScript.
+Typed tuple variants are available from `Tuple0` through `Tuple8`. In editors like VS Code, the type information is also available when the library is consumed as JavaScript.

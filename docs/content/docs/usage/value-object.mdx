@@ -1,11 +1,11 @@
 ---
 title: ValueObject
-description: Usage of the ValueObject function.
+description: Create frozen, value-semantic objects.
 ---
 
-### `ValueObject(object)`
+### `ValueObject(object, filter?)`
 
-Tuplerone also includes a simple [value object](https://en.wikipedia.org/wiki/Value_object) implementation:
+Creates a deeply frozen object with value semantics. Two objects with the same structure produce the same reference:
 
 ```js
 import { ValueObject } from 'tuplerone';
@@ -13,4 +13,38 @@ import { ValueObject } from 'tuplerone';
 ValueObject({ a: 1, b: { c: 2 } }) === ValueObject({ a: 1, b: { c: 2 } }); // → true
 ```
 
-Note that the passed objects are frozen with [`Object.freeze()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze).
+The passed objects are deeply frozen with `Object.freeze()`, and the return type is `DeepReadonly<A>`.
+
+### Deep value semantics
+
+Nested objects are also converted to value objects, so sub-objects maintain value semantics:
+
+```js
+const { a } = ValueObject({ a: { b: 1 } });
+a === ValueObject({ b: 1 }); // → true
+```
+
+### Filtering keys
+
+Pass a filter function to ignore certain entries:
+
+```js
+const filter = ([key]) => !key.startsWith('_');
+
+ValueObject({ a: 1, _meta: 'x' }, filter)
+  === ValueObject({ a: 1, _meta: 'y' }, filter); // → true
+```
+
+The filter is applied recursively to nested objects.
+
+### How it works
+
+`ValueObject` uses [`DeepCompositeSymbol`](/docs/usage/deep-composite-symbol) internally to compute a structural identity key for the object. If a value object with the same structure has already been created, the cached version is returned.
+
+### Not a constructor
+
+`ValueObject` is a plain function and cannot be called with `new`:
+
+```js
+new ValueObject({}); // throws TypeError
+```

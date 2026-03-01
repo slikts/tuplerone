@@ -14,11 +14,9 @@ Tuple(1, 2); // throws TypeError
 Tuple(1, 2, {}); // works
 ```
 
-`WeakMap` is an ES2015 feature which is difficult to polyfill (the polyfills don't support frozen objects), but this applies less to environments like node or browser extensions.
-
 #### `UnsafeTuple`
 
-There is an `UnsafeTuple` type for advanced use cases where the values not being garbage-collectable is acceptable, so it doesn't require having an object member:
+There is an `UnsafeTuple` for advanced use cases where the values not being garbage-collectable is acceptable, so it doesn't require having an object member:
 
 ```js
 import { UnsafeTuple as Tuple } from 'tuplerone';
@@ -26,11 +24,13 @@ import { UnsafeTuple as Tuple } from 'tuplerone';
 Tuple(1, 2, 3) === Tuple(1, 2, 3); // → true
 ```
 
+Similarly, [`UnsafeCompositeSymbol`](/docs/usage/composite-symbol#unsafecompositesymbol) is available for `CompositeSymbol` with the same trade-off.
+
 ### Can't be compared with operators like `<` or `>`
 
 tuplerone tuples are not supported by the relation comparison operators like `<`, whereas in a language like Python the following (comparing tuples by arity) would evaluate to true: `(1,) < (1, 2)`.
 
-### `Array`-like but there's no `Array` prototypes methods
+### `Array`-like but there's no `Array` prototype methods
 
 Tuples subclass `Array`:
 

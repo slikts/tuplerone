@@ -1,4 +1,4 @@
 {
   "title": "Usage",
-  "pages": ["tuple", "composite-symbol", "value-object"]
+  "pages": ["tuple", "composite-symbol", "deep-composite-symbol", "value-object", "memoize"]
 }
