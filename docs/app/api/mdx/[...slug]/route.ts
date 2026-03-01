@@ -5,7 +5,9 @@ export const revalidate = false;
 
 export async function GET(_req: Request, props: { params: Promise<{ slug?: string[] }> }) {
   const params = await props.params;
-  const page = source.getPage(params.slug);
+  const slug =
+    params.slug && params.slug.length === 1 && params.slug[0] === 'index' ? [] : params.slug;
+  const page = source.getPage(slug);
   if (!page) notFound();
 
   return new Response(await getLLMText(page), {
@@ -17,5 +19,7 @@ export async function GET(_req: Request, props: { params: Promise<{ slug?: strin
 
 export async function generateStaticParams() {
   const params = await source.generateParams();
-  return [{ slug: [] }, ...params];
+  return params.map((p) => ({
+    slug: p.slug.length === 0 ? ['index'] : p.slug,
+  }));
 }
