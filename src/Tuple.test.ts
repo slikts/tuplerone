@@ -1,6 +1,6 @@
-import Tuple, { getLeaf, prune } from '../src/Tuple';
-import WeakishMap from '../src/WeakishMap';
+import Tuple from './Tuple';
 import { describe, it, expect } from 'vitest';
+
 describe(Tuple.name, () => {
   const a = {};
   const { tuple } = Tuple;
@@ -20,33 +20,28 @@ describe(Tuple.name, () => {
   it('can take spread params', () => {
     expect(tuple(...([1, a] as const))).toEqual([1, a]);
   });
-});
 
-describe('prune', () => {
-  it('prunes unused paths', () => {
-    const root = {};
-    getLeaf([root, 1, 2, 3]);
-    getLeaf([root, 4]);
-    prune([root, 1, 2, 3]);
-    const leaf = getLeaf([root]) as any;
-    // Map should no longer have 1, but still have 4
-    expect(leaf.has(1)).toBe(false);
-    expect(leaf.has(4)).toBe(true);
+  it('constructs 0-tuple singleton', () => {
+    expect(tuple()).toBeInstanceOf(Tuple);
+    expect(tuple()).toBe(tuple()); // same reference
+    expect(tuple().length).toBe(0);
   });
 
-  it('skips pruning used paths', () => {
-    const root = {};
-    getLeaf([root, 1, 2, 3]);
-    // Simulate setting a value at [root, 1, 2]
-    getLeaf([root, 1, 2]).set(Symbol(), new WeakRef({}));
-    prune([root, 1, 2, 3]);
-    const leaf = getLeaf([root, 1]) as any;
-    expect(leaf.has(2)).toBe(true);
+  it('symbol() returns a unique symbol for the same values', () => {
+    const { symbol } = Tuple;
+    expect(typeof symbol(a)).toBe('symbol');
+    expect(symbol(a)).toBe(symbol(a)); // same reference
   });
-});
 
-describe('getLeaf', () => {
-  it('supports unsafe param', () => {
-    expect(getLeaf([1, 2, 3], true)).toBeInstanceOf(WeakishMap);
+  it('unsafe() returns a tuple for all-primitive values', () => {
+    const { unsafe } = Tuple;
+    expect(unsafe(1, 2)).toBeInstanceOf(Tuple);
+    expect(unsafe(1, 2)).toBe(unsafe(1, 2)); // same reference
+  });
+
+  it('unsafeSymbol() returns a symbol for all-primitive values', () => {
+    const { unsafeSymbol } = Tuple;
+    expect(typeof unsafeSymbol(1, 2)).toBe('symbol');
+    expect(unsafeSymbol(1, 2)).toBe(unsafeSymbol(1, 2));
   });
 });
