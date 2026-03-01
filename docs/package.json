@@ -10,6 +10,7 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@takumi-rs/image-response": "^0.68.17",
     "fumadocs-core": "16.6.8",
     "fumadocs-mdx": "14.2.9",
     "fumadocs-ui": "16.6.8",
@@ -18,7 +19,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwind-merge": "^3.5.0",
-    "@takumi-rs/image-response": "^0.69.5"
+    "tuplerone": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.1",

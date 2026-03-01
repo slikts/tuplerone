@@ -14,9 +14,17 @@
     "hashing",
     "value objects"
   ],
-  "main": "dist/tuplerone.cjs",
-  "module": "dist/tuplerone.js",
-  "typings": "dist/tuplerone.d.ts",
+  "type": "module",
+  "exports": {
+    ".": "./src/tuplerone.ts",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": "./dist/tuplerone.mjs",
+      "./package.json": "./package.json"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -41,7 +49,8 @@
     "docs:build": "pnpm --filter docs build",
     "docs:start": "pnpm --filter docs start",
     "deploy-docs": "ts-node tools/gh-pages-publish",
-    "report-coverage": "cat ./coverage/lcov.info | coveralls"
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "prepare": "husky"
   },
   "lint-staged": {
     "src/**/*.ts": [
@@ -69,14 +78,8 @@
     "replace-in-file": "^8.4.0",
     "tsdown": "0.21.0-beta.2",
     "tsx": "^4.21.0",
-    "typescript": "6.0.0-beta",
+    "typescript": "5.9.3",
     "vitest": "^4.0.18"
   },
-  "bugs": "https://github.com/slikts/tuplerone/issues",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "pnpm test:prod && pnpm build"
-    }
-  }
+  "bugs": "https://github.com/slikts/tuplerone/issues"
 }
