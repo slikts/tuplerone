@@ -2,8 +2,6 @@
 
 <p align="center">
   <a href="https://img.shields.io/npm/v/tuplerone.svg?style=flat"><img src="https://img.shields.io/npm/v/tuplerone.svg?style=flat" alt="View this project on npm"></a>
-  <a href="https://coveralls.io/github/slikts/tuplerone"><img src="https://img.shields.io/coveralls/slikts/tuplerone.svg" alt="Coveralls"></a>
-  <a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a>
 </p>
 
 <p align="center">A lightweight, efficient tuple and value object implementation for JavaScript and TypeScript.</p>
@@ -36,23 +34,23 @@ Useful for memoization (e.g. React's [`memo()`][memo]), composite `Map` keys, an
 
 ## Features
 
-- **Tiny** -- [under 1KB][bundlephobia] compressed, zero dependencies
-- **Well-typed** -- full TypeScript support (works from JavaScript too)
-- **Well-tested** -- full test coverage
-- **Efficient** -- [`WeakMap`][weakmap]-based directed acyclic graph for lookups
-- **Immutable** -- tuples are frozen with [`Object.freeze()`][frozen]
-- **Iterable** -- supports [`for-of`][for-of], spread, and destructuring
+- **Tiny** — [under 1KB][bundlephobia] compressed, zero dependencies
+- **Well-typed** — full TypeScript support (works from JavaScript too)
+- **Well-tested** — full test coverage
+- **Efficient** — [`WeakMap`][weakmap]-based directed acyclic graph for lookups
+- **Immutable** — tuples are frozen with [`Object.freeze()`][frozen]
+- **Iterable** — supports [`for-of`][for-of], spread, and destructuring
 
 ## Exports
 
-| Export | Description |
-|---|---|
-| `Tuple` | Array-like value type with structural equality |
-| `CompositeSymbol` | Create unique symbols from value sequences |
-| `DeepCompositeSymbol` | Recursive composite key for nested objects |
-| `ValueObject` | Frozen object with deep value semantics |
-| `memoize` | Function memoization using the internal DAG |
-| `UnsafeTuple` | Tuple variant that allows all-primitive values |
+| Export                  | Description                                      |
+| ----------------------- | ------------------------------------------------ |
+| `Tuple`                 | Array-like value type with structural equality   |
+| `CompositeSymbol`       | Create unique symbols from value sequences       |
+| `DeepCompositeSymbol`   | Recursive composite key for nested objects       |
+| `ValueObject`           | Frozen object with deep value semantics          |
+| `memoize`               | Function memoization using the internal DAG      |
+| `UnsafeTuple`           | Tuple variant that allows all-primitive values   |
 | `UnsafeCompositeSymbol` | CompositeSymbol variant for all-primitive values |
 
 ## Installation

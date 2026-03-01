@@ -45,10 +45,10 @@ The tuple function caches its arguments to produce the same tuple object for the
 
 Tuple objects are:
 
-- **Immutable** -- properties cannot be added, removed or changed, enforced with `Object.freeze()`
-- **Array-like** -- members can be accessed by index, and there's a `length` property
-- **Iterable** -- members can be iterated using `for-of` loops or spread syntax
-- **Array subclass** -- `Array.isArray(Tuple())` returns `true`, giving ergonomic console output
+- **Immutable** — properties cannot be added, removed or changed, enforced with `Object.freeze()`
+- **Array-like** — members can be accessed by index, and there's a `length` property
+- **Iterable** — members can be iterated using `for-of` loops or spread syntax
+- **Array subclass** — `Array.isArray(Tuple())` returns `true`, giving ergonomic console output
 
 Note that despite being an `Array` subclass, mutative `Array` prototype methods like `sort()` will throw since tuples are frozen. See [Caveats](/docs/caveats) for more details.
 
