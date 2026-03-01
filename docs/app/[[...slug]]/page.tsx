@@ -19,9 +19,9 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
       <div className="flex flex-row gap-2 items-center border-b pb-6">
-        <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
+        <LLMCopyButton markdownUrl={`/api/mdx${page.url}`} />
         <ViewOptions
-          markdownUrl={`${page.url}.mdx`}
+          markdownUrl={`/api/mdx${page.url}`}
           githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/content/docs/${page.path}`}
         />
       </div>
@@ -38,7 +38,8 @@ export default async function Page(props: PageProps<'/[[...slug]]'>) {
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+  const params = await source.generateParams();
+  return [{ slug: [] }, ...params];
 }
 
 export async function generateMetadata(props: PageProps<'/[[...slug]]'>): Promise<Metadata> {
