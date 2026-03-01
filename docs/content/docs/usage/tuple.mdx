@@ -1,0 +1,62 @@
+---
+title: Tuple
+description: Usage of the main Tuple function.
+---
+
+### `Tuple(…values)`
+
+```js
+import { Tuple } from 'tuplerone';
+
+// Dummy objects
+const a = Object('a');
+const b = Object('b');
+const c = Object('c');
+
+// Structural equality testing using the identity operator
+Tuple(a, b, c) === Tuple(a, b, c); // → true
+Tuple(a, b) === Tuple(b, a); // → false
+
+// Mapping using a pair of values as key
+const map = new Map();
+map.set(Tuple(a, b), 123).get(Tuple(a, b)); // → 123
+
+// Nesting tuples
+Tuple(a, Tuple(b, c)) === Tuple(a, Tuple(b, c)); // → true
+
+// Using primitive values
+Tuple(1, 'a', a); // → Tuple(3) [1, "a", Object("a")]
+
+// Indexing
+Tuple(a, b)[1]; // → Object("b")
+
+// Checking arity
+Tuple(a, b).length; // → 2
+
+// Failing to mutate
+Tuple(a, b)[0] = c; // throws an error
+```
+
+The tuple function caches or memoizes its arguments to produce the same tuple object for the same arguments.
+
+### Types
+
+The library is well-typed using TypeScript:
+
+```ts
+import { Tuple, Tuple0, Tuple1, Tuple2 } from 'tuplerone';
+
+// Dummy object for use as key
+const o = {};
+
+const tuple0: Tuple0 = Tuple(); // 0-tuple
+const tuple1: Tuple1<typeof o> = Tuple(o); // 1-tuple
+const tuple2: Tuple2<typeof o, number> = Tuple(o, 1); // 2-tuple
+
+Tuple(o) === Tuple(o, 1); // TS compile error due to different arities
+
+// Spreading a TypeScript tuple:
+Tuple(...([1, 2, 3] as const)); // → Tuple3<1, 2, 3>
+```
+
+In editors like VS Code, the type information is also available when the library is consumed as JavaScript.

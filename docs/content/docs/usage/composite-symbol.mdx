@@ -1,0 +1,16 @@
+---
+title: CompositeSymbol
+description: Usage of the CompositeSymbol function.
+---
+
+### `CompositeSymbol(…values)`
+
+It's possible to avoid creating an `Array`-like tuple for cases where iterating the tuple members isn't needed (for example, just to use it as a key):
+
+```js
+import { CompositeSymbol } from 'tuplerone';
+
+typeof CompositeSymbol(1, 2, {}) === 'symbol'; // → true
+```
+
+A symbol is more space efficient than a tuple and can be used as a key for plain objects.

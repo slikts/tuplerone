@@ -1,0 +1,9 @@
+{
+  "pages": [
+    "index",
+    "theory",
+    "installation",
+    "usage",
+    "caveats"
+  ]
+}

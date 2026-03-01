@@ -1,0 +1,43 @@
+---
+title: Theory
+description: The underlying concepts of tuplerone.
+---
+
+[Tuples](https://en.wiktionary.org/wiki/tuple) are **finite ordered sequences of values** that serve two main purposes in programming languages:
+
+- grouping together heterogenous (mixed) data types within a static type system (this doesn't apply to a dynamically typed language like JavaScript)
+- simplifying value-semantic comparisons of lists, which is what this library is mainly about
+
+### Value semantics
+
+A simple way to explain value semantics is to look at the difference between primitive values (like numbers and strings) and object values in JavaScript. Primitives are value-semantic by default,
+meaning that the default comparison methods (`==`, `===` and `Object.is()`) compare primitive values by their contents, so, for example, any string is equal to any other string created with the same contents:
+
+```js
+'abc' === 'abc'; // → true, because both string literals create a value with the same contents
+```
+
+The contents of primitive values are also immutable (can't change at runtime), so the results of comparing primitive value equality can't be invalidated by the contents of the values changing.
+
+Meanwhile, each object value (instance) in JavaScript has a unique identity, so each instance is only equal to itself and not any other instances:
+
+```js
+[1, 2, 3] === [1, 2, 3]; // → false, because both array literals create separate array instances
+```
+
+Objects by default can't be thought of as their contents since the contents can change, and this is called reference semantics, since objects essentially represent a place in memory. The downside is that it makes reasoning about a program harder, since the programmer has to consider potential changes.
+
+A more direct practical consequence of reference semantics is that comparing instances requires _deep comparisons_, such as `_.isEqual()` in lodash or serializing the object values to JSON:
+
+```js
+let a = [1, 2, 3];
+let b = [1, 2, 3];
+let result = JSON.stringify(a) === JSON.stringify(b); // → true, because it's a deep comparison
+a.push(4); // a and b contents are now different, so the cached comparison result is invalid
+```
+
+Deep comparison results can't be reliably cached since the compared instances can change, and it's also less efficient than just being able to use `===` directly. An another thing that's not possible with reference semantics is combining different values to use as a composite key (such as with `Map` or `WeakMap`).
+
+### Directed acyclic graphs
+
+Directed acyclic graphs (DAGs) are a data structure that allows efficiently mapping a sequence of values to a unique object containing them, which is how this library is implemented. Specifically, it uses a `WeakMap` object (optionally a `Map` as well if mapping primitives) for each node, and the nodes are re-used for overlapping paths in the graph. Map access has constant time complexity, so the number of tuples created doesn't slow down access speed. Using `WeakMap` ensures that if the values used to create the tuple are dereferenced, the tuple object gets garbage collected.

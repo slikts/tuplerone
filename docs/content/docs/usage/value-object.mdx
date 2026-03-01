@@ -1,0 +1,16 @@
+---
+title: ValueObject
+description: Usage of the ValueObject function.
+---
+
+### `ValueObject(object)`
+
+Tuplerone also includes a simple [value object](https://en.wikipedia.org/wiki/Value_object) implementation:
+
+```js
+import { ValueObject } from 'tuplerone';
+
+ValueObject({ a: 1, b: { c: 2 } }) === ValueObject({ a: 1, b: { c: 2 } }); // → true
+```
+
+Note that the passed objects are frozen with [`Object.freeze()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze).
