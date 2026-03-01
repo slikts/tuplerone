@@ -4,8 +4,8 @@ export default defineConfig({
   test: {
     globals: true,
     coverage: {
-      provider: 'v8',
-      exclude: ['node_modules/', 'test/'],
+      reporter: ['text', 'json-summary', 'json'],
+      reportOnFailure: true,
       thresholds: {
         lines: 95,
         functions: 95,
