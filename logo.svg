@@ -1,17 +1,132 @@
 <svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 522.4 134">
   <style>
     .st1{fill:#5c6f73}
+    .animated-gradient {
+      animation: gradientShift 8s ease-in-out infinite;
+    }
+    @keyframes gradientShift {
+      0%, 100% {
+        stop-color: #d71586;
+      }
+      25% {
+        stop-color: #ff6b6b;
+      }
+      50% {
+        stop-color: #4ecdc4;
+      }
+      75% {
+        stop-color: #45b7d1;
+      }
+    }
+    @keyframes gradientShift2 {
+      0%, 100% {
+        stop-color: #ca338c;
+      }
+      25% {
+        stop-color: #ff8787;
+      }
+      50% {
+        stop-color: #6ee7df;
+      }
+      75% {
+        stop-color: #5fc9e3;
+      }
+    }
+    @keyframes gradientShift3 {
+      0%, 100% {
+        stop-color: #ab559b;
+      }
+      25% {
+        stop-color: #ffa5a5;
+      }
+      50% {
+        stop-color: #8ef5ed;
+      }
+      75% {
+        stop-color: #7dd8f1;
+      }
+    }
+    @keyframes gradientShift4 {
+      0%, 100% {
+        stop-color: #8f65a7;
+      }
+      25% {
+        stop-color: #ffc3c3;
+      }
+      50% {
+        stop-color: #b0faf5;
+      }
+      75% {
+        stop-color: #9be7ff;
+      }
+    }
+    @keyframes gradientShift5 {
+      0%, 100% {
+        stop-color: #766fb0;
+      }
+      25% {
+        stop-color: #9b88cc;
+      }
+      50% {
+        stop-color: #6699cc;
+      }
+      75% {
+        stop-color: #5a8fcc;
+      }
+    }
+    @keyframes gradientShift6 {
+      0%, 100% {
+        stop-color: #6175b7;
+      }
+      25% {
+        stop-color: #7a8fcc;
+      }
+      50% {
+        stop-color: #4a90e2;
+      }
+      75% {
+        stop-color: #5a9fd4;
+      }
+    }
+    @keyframes gradientShift7 {
+      0%, 100% {
+        stop-color: #5178bb;
+      }
+      25% {
+        stop-color: #6a8fcc;
+      }
+      50% {
+        stop-color: #3d7ec0;
+      }
+      75% {
+        stop-color: #4a8ecc;
+      }
+    }
+    @keyframes gradientShift8 {
+      0%, 100% {
+        stop-color: #4b79bd;
+      }
+      25% {
+        stop-color: #5a88cc;
+      }
+      50% {
+        stop-color: #3498db;
+      }
+      75% {
+        stop-color: #2980b9;
+      }
+    }
   </style>
   <g id="XMLID_2_">
     <linearGradient id="XMLID_94_" gradientUnits="userSpaceOnUse" x1="24.1981" y1="138.4575" x2="133.5203" y2="29.1353">
-      <stop offset=".05" stop-color="#d71586"/>
-      <stop offset=".1007" stop-color="#ca338c"/>
-      <stop offset=".2314" stop-color="#ab559b"/>
-      <stop offset=".364" stop-color="#8f65a7"/>
-      <stop offset=".4968" stop-color="#766fb0"/>
-      <stop offset=".63" stop-color="#6175b7"/>
-      <stop offset=".764" stop-color="#5178bb"/>
-      <stop offset=".9" stop-color="#4b79bd"/>
+      <stop offset=".05" stop-color="#d71586" class="animated-gradient" style="animation: gradientShift 8s ease-in-out infinite"/>
+      <stop offset=".1007" stop-color="#ca338c" class="animated-gradient" style="animation: gradientShift2 8s ease-in-out infinite"/>
+      <stop offset=".2314" stop-color="#ab559b" class="animated-gradient" style="animation: gradientShift3 8s ease-in-out infinite"/>
+      <stop offset=".364" stop-color="#8f65a7" class="animated-gradient" style="animation: gradientShift4 8s ease-in-out infinite"/>
+      <stop offset=".4968" stop-color="#766fb0" class="animated-gradient" style="animation: gradientShift5 8s ease-in-out infinite"/>
+      <stop offset=".63" stop-color="#6175b7" class="animated-gradient" style="animation: gradientShift6 8s ease-in-out infinite"/>
+      <stop offset=".764" stop-color="#5178bb" class="animated-gradient" style="animation: gradientShift7 8s ease-in-out infinite"/>
+      <stop offset=".9" stop-color="#4b79bd" class="animated-gradient" style="animation: gradientShift8 8s ease-in-out infinite"/>
     </linearGradient>
     <path id="XMLID_4_" d="M122.3 76.8L94.7 49.3 114.4 10 148 76.8h-25.7zm-35.5 23.6L59.1 72.9l19.8-39.3 33.6 66.8H86.8zM9.7 124l33.6-66.8L76.9 124H9.7z" fill-rule="evenodd" clip-rule="evenodd" fill="url(#XMLID_94_)"/>
   </g>
