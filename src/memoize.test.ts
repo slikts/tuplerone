@@ -6,7 +6,7 @@ describe(memoize.name, () => {
   });
 
   it('returns the same object', () => {
-    const f = memoize((a: any) => ({}));
+    const f = memoize((_a: unknown) => ({}));
     const o = f(1);
     expect(f(1)).toBe(o);
     expect(f(1)).toBe(o);
@@ -14,7 +14,7 @@ describe(memoize.name, () => {
   });
 
   it('supports multiple arguments', () => {
-    const f = memoize((a: any, b: any, c: any) => ({}));
+    const f = memoize((_a: unknown, _b: unknown, _c: unknown) => ({}));
     const o = f(1, 2, 3);
     expect(f(1, 2, 3)).toBe(o);
     expect(f(1, 2, 3)).toBe(o);
@@ -22,7 +22,7 @@ describe(memoize.name, () => {
   });
 
   it('supports setting receiver', () => {
-    const f = memoize(function (this: any) {
+    const f = memoize(function (this: unknown) {
       return this;
     });
     expect(f.call(123)).toBe(123);
@@ -30,8 +30,8 @@ describe(memoize.name, () => {
 
   it('receiver is memoized', () => {
     let n = 0;
-    const f = memoize((x: any) => {
-      n += x;
+    const f = memoize((x: unknown) => {
+      n += x as number;
       return n;
     });
     const o = {};
@@ -56,7 +56,7 @@ describe(memoize.name, () => {
 
   it('supports mapping primitive this values properly', () => {
     let calls = 0;
-    const f = memoize(function (this: any) {
+    const f = memoize(function (this: unknown) {
       calls++;
       return this;
     });

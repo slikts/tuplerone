@@ -5,7 +5,8 @@ describe(Tuple.name, () => {
   const a = {};
   const { tuple } = Tuple;
   it('constructor throws', () => {
-    expect(() => new (Tuple as any)([1, {}], null)).toThrow();
+    // @ts-expect-error -- testing that the constructor throws when localToken is missing
+    expect(() => new Tuple([1, {}], null)).toThrow();
   });
 
   it('static method constructs', () => {

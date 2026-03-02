@@ -30,7 +30,7 @@ describe('prune', () => {
     getLeaf([root, 1, 2, 3]);
     getLeaf([root, 4]);
     prune([root, 1, 2, 3]);
-    const leaf = getLeaf([root]) as any;
+    const leaf = getLeaf([root]);
     expect(leaf.has(1)).toBe(false);
     expect(leaf.has(4)).toBe(true);
   });
@@ -40,7 +40,7 @@ describe('prune', () => {
     getLeaf([root, 1, 2, 3]);
     getLeaf([root, 1, 2]).set(Symbol(), new WeakRef({}));
     prune([root, 1, 2, 3]);
-    const leaf = getLeaf([root, 1]) as any;
+    const leaf = getLeaf([root, 1]);
     expect(leaf.has(2)).toBe(true);
   });
 
