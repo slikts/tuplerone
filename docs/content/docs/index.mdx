@@ -3,8 +3,6 @@ title: Introduction
 description: A lightweight, efficient tuple and value object implementation for JavaScript and TypeScript.
 ---
 
-<img src="./logo.svg" alt="tuplerone" />
-
 ## What is Tuplerone?
 
 In JavaScript, objects with the same contents are not equal by default:
@@ -17,7 +15,7 @@ Tuplerone solves this by caching object creation so that the same arguments alwa
 
 ```ts twoslash
 import { Tuple } from 'tuplerone';
-
+// ---cut---
 Tuple(1, 2, 3) === Tuple(1, 2, 3); // → true
 ```
 
@@ -45,14 +43,31 @@ typeof key === 'symbol'; // → true
 ValueObject({ x: 1 }) === ValueObject({ x: 1 }); // → true
 ```
 
+import { Cards, Card } from 'fumadocs-ui/components/card';
+import { Zap, Code2, ShieldCheck, Gauge, Lock, Repeat } from 'lucide-react';
+
 ## Features
 
-- **Tiny**—under 1KB compressed, zero dependencies
-- **Well-typed**—full TypeScript support (works from JavaScript too)
-- **Well-tested**—full test coverage
-- **Efficient**—WeakMap-based directed acyclic graph for O(1) lookups
-- **Immutable**—all objects are frozen with `Object.freeze()`
-- **Iterable**—tuples support `for-of`, spread, and destructuring
+<Cards className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+  <Card title="Tiny" icon={<Zap className="h-5 w-5" />}>
+    Under 1KB compressed, zero dependencies
+  </Card>
+  <Card title="Well-typed" icon={<Code2 className="h-5 w-5" />}>
+    Full TypeScript support
+  </Card>
+  <Card title="Well-tested" icon={<ShieldCheck className="h-5 w-5" />}>
+    Full test coverage
+  </Card>
+  <Card title="Efficient" icon={<Gauge className="h-5 w-5" />}>
+    `WeakMap`-based directed acyclic graph for O(1) lookups
+  </Card>
+  <Card title="Immutable" icon={<Lock className="h-5 w-5" />}>
+    All objects are frozen with `Object.freeze()`
+  </Card>
+  <Card title="Iterable" icon={<Repeat className="h-5 w-5" />}>
+    Tuples support `for-of`, spread, and destructuring
+  </Card>
+</Cards>
 
 ## Exports
 

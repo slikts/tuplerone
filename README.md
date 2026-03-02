@@ -41,24 +41,6 @@ Useful for memoization (e.g. React's [`memo()`][memo]), composite `Map` keys, an
 - **Immutable**—tuples are frozen with [`Object.freeze()`][frozen]
 - **Iterable**—supports [`for-of`][for-of], spread, and destructuring
 
-## Exports
-
-| Export                  | Description                                      |
-| ----------------------- | ------------------------------------------------ |
-| `Tuple`                 | Array-like value type with structural equality   |
-| `CompositeSymbol`       | Create unique symbols from value sequences       |
-| `DeepCompositeSymbol`   | Recursive composite key for nested objects       |
-| `ValueObject`           | Frozen object with deep value semantics          |
-| `memoize`               | Function memoization using the internal DAG      |
-| `UnsafeTuple`           | Tuple variant that allows all-primitive values   |
-| `UnsafeCompositeSymbol` | CompositeSymbol variant for all-primitive values |
-
-## Installation
-
-```
-npm install tuplerone
-```
-
 ## Documentation
 
 **[Read the full documentation][docs]**
