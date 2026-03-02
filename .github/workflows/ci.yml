@@ -32,20 +32,8 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint
-        run: pnpm exec lefthook run ci --job lint
-
-      - name: Typecheck
-        run: pnpm exec lefthook run ci --job typecheck
-
-      - name: Test & Coverage
-        run: pnpm exec lefthook run ci --job "test coverage"
-
-      - name: Build Library
-        run: pnpm exec lefthook run ci --job "build library"
-
-      - name: Build Docs
-        run: pnpm exec lefthook run ci --job "build docs"
+      - name: Check
+        run: pnpm exec lefthook run ci
 
       - name: Report Coverage
         uses: davelosert/vitest-coverage-report-action@v2
