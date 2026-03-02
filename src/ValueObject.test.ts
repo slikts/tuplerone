@@ -32,7 +32,7 @@ describe(ValueObject.name, () => {
   });
 
   it('supports circular objects', () => {
-    const a: any = {};
+    const a: Record<string, unknown> = {};
     const b = { a };
     a.b = b;
     expect(() => ValueObject(a)).toThrow();

@@ -1,4 +1,4 @@
-import { unsafe, tuple, unsafeSymbol, symbol } from './Tuple';
+import { unsafe, tuple, unsafeSymbol } from './Tuple';
 import DeepCompositeSymbol from './DeepCompositeSymbol';
 import ValueObject from './ValueObject';
 

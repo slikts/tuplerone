@@ -1,8 +1,8 @@
 import { Tuple0, TupleN, CompositeSymbol } from './types';
-import { assignArraylike, arraylikeToIterable, getDefaultLazy } from './helpers';
+import { assignArraylike } from './helpers';
 import { tupleKey, symbolKey, getLeaf, getUnsafeLeaf, registry } from './cache';
 
-export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, Iterable<A> {
+export default class Tuple<A> extends Array<A> implements ArrayLike<A>, Iterable<A> {
   [i: number]: A;
   declare length: number;
 
@@ -27,15 +27,15 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
     if (values.length === 0) {
       // Only construct if needed
       if (tuple0 === undefined) {
-        tuple0 = new Tuple([], localToken) as any;
+        tuple0 = new Tuple([], localToken) as unknown as Tuple0;
       }
-      return tuple0 as any;
+      return tuple0 as unknown as TupleN<T>;
     }
-    const leaf = getLeaf(values as any);
-    const ref = leaf.get(tupleKey) as WeakRef<any> | undefined;
+    const leaf = getLeaf(values as readonly unknown[]);
+    const ref = leaf.get(tupleKey) as WeakRef<TupleN<T>> | undefined;
     let tuple = ref && ref.deref();
     if (!tuple) {
-      tuple = new Tuple(values, localToken) as any;
+      tuple = new Tuple(values, localToken) as unknown as TupleN<T>;
       leaf.set(tupleKey, new WeakRef(tuple));
       registry.register(tuple, values as readonly unknown[]);
     }
@@ -43,8 +43,8 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
   }
 
   static symbol<const T extends readonly unknown[]>(...values: T): CompositeSymbol<T> {
-    const leaf = getLeaf(values as any);
-    const ref = leaf.get(symbolKey) as WeakRef<any> | undefined;
+    const leaf = getLeaf(values as readonly unknown[]);
+    const ref = leaf.get(symbolKey) as WeakRef<CompositeSymbol<T>> | undefined;
     let sym = ref && ref.deref();
     if (!sym) {
       sym = Symbol() as CompositeSymbol<T>;
@@ -55,20 +55,20 @@ export default class Tuple<A> extends (Array as any) implements ArrayLike<A>, It
   }
 
   // The exported member is cast as the same type as Tuple.tuple() to avoid duplicating the overloads
-  static unsafe(...values: any[]): any {
-    return getDefaultLazy(
-      tupleKey,
-      () => new UnsafeTuple(values, localToken),
-      getUnsafeLeaf(values),
-    );
+  static unsafe(...values: unknown[]): unknown {
+    const leaf = getUnsafeLeaf(values);
+    if (!leaf.has(tupleKey)) {
+      leaf.set(tupleKey, new UnsafeTuple(values, localToken));
+    }
+    return leaf.get(tupleKey);
   }
 
-  static unsafeSymbol(...values: any[]): any {
-    return getDefaultLazy(symbolKey, Symbol, getUnsafeLeaf(values));
-  }
-
-  [Symbol.iterator](): IterableIterator<A> {
-    return arraylikeToIterable(this);
+  static unsafeSymbol(...values: unknown[]): unknown {
+    const leaf = getUnsafeLeaf(values);
+    if (!leaf.has(symbolKey)) {
+      leaf.set(symbolKey, Symbol());
+    }
+    return leaf.get(symbolKey);
   }
 }
 
