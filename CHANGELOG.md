@@ -1,5 +1,13 @@
 # Tuplerone
 
+## 4.0.0-next.6
+
+### Patch Changes
+
+- 3971820: Add test coverage for forEach, assignArraylike, and arraylikeToIterable helpers
+- cc6b622: Eliminate all `any` types and replace with `unknown`, proper generics, or double-casts; tighten ESLint rules
+- cc6b622: Simplify GenericMap type definition and export TupleN type
+
 ## 4.0.0-next.5
 
 ### Minor Changes
