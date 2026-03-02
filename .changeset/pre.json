@@ -2,7 +2,12 @@
   "mode": "pre",
   "tag": "next",
   "initialVersions": {
-    "tuplerone": "3.3.3"
+    "tuplerone": "3.3.3",
+    "docs": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "memoize-cache-parameter",
+    "tuple-class-api-redesign",
+    "value-object-filter-support"
+  ]
 }
