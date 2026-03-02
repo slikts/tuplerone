@@ -54,3 +54,17 @@ import { ValueObject } from 'tuplerone';
 // @errors: 7009
 new ValueObject({}); // throws TypeError
 ```
+
+### API Reference
+
+<AutoTypeTable
+  path="../src/tuplerone.ts"
+  name="ValueObjectAPI"
+  type={`
+    import ValueObject from "./ValueObject";
+    export interface ValueObjectAPI {
+      ValueObject: typeof ValueObject;
+    }
+  `}
+/>
+```

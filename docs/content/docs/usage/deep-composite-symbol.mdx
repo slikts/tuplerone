@@ -44,3 +44,17 @@ The filter is applied recursively to nested objects as well.
 ### Relationship to ValueObject
 
 [`ValueObject`](/docs/usage/value-object) uses `DeepCompositeSymbol` internally to compute object identity. If you only need a key for lookups (without creating a frozen value object), `DeepCompositeSymbol` is the more lightweight option.
+
+### API Reference
+
+<AutoTypeTable
+  cwd
+  path="../src/tuplerone.ts"
+  name="DeepCompositeSymbolAPI"
+  type={`
+    import DeepCompositeSymbol from "./DeepCompositeSymbol";
+    export interface DeepCompositeSymbolAPI {
+      DeepCompositeSymbol: typeof DeepCompositeSymbol;
+    }
+  `}
+/>
