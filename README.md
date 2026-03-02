@@ -10,13 +10,13 @@
 
 In JavaScript, objects with the same contents aren't equal:
 
-```js
+```ts
 [1, 2, 3] === [1, 2, 3]; // → false
 ```
 
 tuplerone fixes this. The same arguments always produce the same object reference, so `===` just works:
 
-```js
+```ts twoslash
 import { Tuple } from 'tuplerone';
 
 const a = { id: 1 };
@@ -34,12 +34,12 @@ Useful for memoization (e.g. React's [`memo()`][memo]), composite `Map` keys, an
 
 ## Features
 
-- **Tiny** — [under 1KB][bundlephobia] compressed, zero dependencies
-- **Well-typed** — full TypeScript support (works from JavaScript too)
-- **Well-tested** — full test coverage
-- **Efficient** — [`WeakMap`][weakmap]-based directed acyclic graph for lookups
-- **Immutable** — tuples are frozen with [`Object.freeze()`][frozen]
-- **Iterable** — supports [`for-of`][for-of], spread, and destructuring
+- **Tiny**—[under 1KB][bundlephobia] compressed, zero dependencies
+- **Well-typed**—full TypeScript support (works from JavaScript too)
+- **Well-tested**—full test coverage
+- **Efficient**—[`WeakMap`][weakmap]-based directed acyclic graph for lookups
+- **Immutable**—tuples are frozen with [`Object.freeze()`][frozen]
+- **Iterable**—supports [`for-of`][for-of], spread, and destructuring
 
 ## Exports
 
