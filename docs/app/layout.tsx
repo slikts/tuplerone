@@ -11,6 +11,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
   },
+  title: {
+    default: 'Tuplerone',
+    template: '%s | Tuplerone',
+  },
+  description:
+    'A lightweight, efficient tuple and value object implementation for JavaScript and TypeScript.',
   metadataBase: new URL(
     process.env.NODE_ENV === 'development'
       ? 'http://localhost:3000'

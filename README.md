@@ -1,10 +1,8 @@
-<h1 align="center"><a href="https://github.com/slikts/tuplerone"></a></h1>
+<h1 align="center"><a href="https://github.com/slikts/tuplerone"><img width="550" src="https://raw.githubusercontent.com/slikts/tuplerone/master/logo.svg?sanitize=true" alt="tuplerone"></a></h1>
 
 <p align="center">
   <a href="https://img.shields.io/npm/v/tuplerone.svg?style=flat"><img src="https://img.shields.io/npm/v/tuplerone.svg?style=flat" alt="View this project on npm"></a>
 </p>
-
-<img width="550" src="./logo.svg" alt="tuplerone">
 
 <p align="center">A lightweight, efficient tuple and value object implementation for JavaScript and TypeScript.</p>
 
