@@ -44,7 +44,7 @@ ci:
       run: pnpm --filter . run types:check
 
     - name: test coverage
-      run: pnpm --filter . run test -- --coverage
+      run: pnpm --filter . run test:coverage
 
     - name: build library
       run: pnpm --filter . run build
