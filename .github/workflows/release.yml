@@ -16,15 +16,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup mise
+        uses: jdx/mise-action@v3
         with:
-          node-version: 20
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 8
+          install: true
+          cache: true
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
