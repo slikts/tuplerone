@@ -5,37 +5,47 @@ import { getDefaultLazy, isWeakMapKey } from './helpers';
 export const tupleKey = Symbol();
 export const symbolKey = Symbol();
 
-const cache = new WeakishMap();
+// The cache is a recursive DAG: each node stores child nodes keyed by value.
+// We use WeakishMap<unknown, unknown> to represent nodes at every level,
+// casting to the recursive type where getDefaultLazy needs it.
+type CacheNode = WeakishMap<unknown, unknown>;
+const asNodeMap = (m: CacheNode) => m as unknown as WeakishMap<unknown, CacheNode>;
 
-const initWeakish = () => new WeakishMap();
+const cache: CacheNode = new WeakishMap<unknown, unknown>();
 
-export const getLeaf = (values: any[], unsafe?: boolean): WeakishMap<any, any> => {
+const initWeakish = (): CacheNode => new WeakishMap<unknown, unknown>();
+
+export const getLeaf = (values: readonly unknown[], unsafe?: boolean): CacheNode => {
   const rootValue = values.find(isWeakMapKey);
   if (!rootValue && !unsafe) {
     // Throw since it's not possible to weak-reference primitives directly by other primitives
     throw TypeError('At least one value must be suitable as a WeakMap key (object or symbol)');
   }
   // If the first value is not an object/symbol, pad the values with the first object/symbol
-  const root = rootValue === values[0] ? cache : getDefaultLazy(rootValue, initWeakish, cache);
-  return values.reduce((prev, curr) => getDefaultLazy(curr, initWeakish, prev), root);
+  const root =
+    rootValue === values[0] ? cache : getDefaultLazy(rootValue, initWeakish, asNodeMap(cache));
+  return values.reduce<CacheNode>(
+    (prev, curr) => getDefaultLazy(curr, initWeakish, asNodeMap(prev)),
+    root,
+  );
 };
 
-export const prune = (values: readonly any[]) => {
+export const prune = (values: readonly unknown[]) => {
   const rootValue = values.find(isWeakMapKey);
   if (!rootValue) return;
 
-  const stack: [WeakishMap<any, any>, any][] = [];
-  let current: WeakishMap<any, any> | undefined = cache;
+  const stack: [CacheNode, unknown][] = [];
+  let current: CacheNode | undefined = cache;
 
   if (rootValue !== values[0]) {
     stack.push([current, rootValue]);
-    current = current.get(rootValue) as WeakishMap<any, any> | undefined;
+    current = current.get(rootValue) as CacheNode | undefined;
     if (!current) return;
   }
 
   for (const val of values) {
     stack.push([current, val]);
-    current = current.get(val) as WeakishMap<any, any> | undefined;
+    current = current.get(val) as CacheNode | undefined;
     if (!current) return;
   }
 
@@ -54,11 +64,17 @@ export const prune = (values: readonly any[]) => {
 export const registry = new FinalizationRegistry<readonly unknown[]>((path) => void prune(path));
 
 // Unsafe tuples aren't garbage collected so it's more efficient to just use a normal map
-const unsafeCache = new Map();
-const initUnsafe = () => new Map();
+type UnsafeCacheNode = Map<unknown, unknown>;
+const asUnsafeNodeMap = (m: UnsafeCacheNode) => m as unknown as Map<unknown, UnsafeCacheNode>;
+
+const unsafeCache: UnsafeCacheNode = new Map<unknown, unknown>();
+const initUnsafe = (): UnsafeCacheNode => new Map<unknown, unknown>();
 
 /**
  * A memory-leaky, slightly more efficient version of `getLeaf()`.
  */
-export const getUnsafeLeaf = (values: any[]): Map<any, any> =>
-  values.reduce((prev, curr) => getDefaultLazy(curr, initUnsafe, prev), unsafeCache);
+export const getUnsafeLeaf = (values: readonly unknown[]): UnsafeCacheNode =>
+  values.reduce<UnsafeCacheNode>(
+    (prev, curr) => getDefaultLazy(curr, initUnsafe, asUnsafeNodeMap(prev)),
+    unsafeCache,
+  );

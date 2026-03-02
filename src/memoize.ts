@@ -1,12 +1,14 @@
 import { getLeaf } from './Tuple';
 import { getDefaultLazy } from './helpers';
 
-const defaultCache = new WeakMap();
+type Fn = (this: unknown, ...args: readonly unknown[]) => unknown;
 
-export const memoize = <A extends Function>(fn: A, cache = defaultCache): A => {
-  const memoized: any = function (this: any, ...args: any[]) {
+const defaultCache = new WeakMap<object, unknown>();
+
+export const memoize = <A extends Fn>(fn: A, cache = defaultCache): A => {
+  const memoized: Fn = function (this: unknown, ...args: readonly unknown[]): unknown {
     const node = getLeaf([memoized, this, ...args]);
-    return getDefaultLazy(node, () => fn.apply(this, args), cache);
+    return getDefaultLazy(node, () => fn.apply(this, args as unknown[]) as unknown, cache);
   };
-  return memoized as A;
+  return memoized as unknown as A;
 };

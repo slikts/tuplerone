@@ -4,13 +4,11 @@
  */
 export const isRef = Symbol('isRef');
 
-interface Referable {
-  [isRef]?: boolean;
-}
-
 declare global {
   // Allow setting the isRef property on any object
-  interface Object extends Referable {}
+  interface Object {
+    [isRef]?: boolean;
+  }
 }
 
 /**

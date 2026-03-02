@@ -7,7 +7,7 @@ import { isWeakMapKey } from './helpers';
  * storage as needed.
  */
 export default class WeakishMap<A, B> implements GenericMap<A, B> {
-  #weakMap?: WeakMap<any, B>;
+  #weakMap?: WeakMap<object | symbol, B>;
   #map?: Map<A, B>;
   #size = 0;
 

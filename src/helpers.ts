@@ -54,22 +54,13 @@ export const assignArraylike = <A>(iterator: Iterator<A>, target: Indexable<A>):
 export const arraylikeToIterable = <A>(source: ArrayLike<A>): IterableIterator<A> => {
   let i = 0;
   return {
-    next() {
-      let done;
-      let value;
+    next(): IteratorResult<A> {
       if (i < source.length) {
-        done = false;
-        value = source[i];
+        const value = source[i];
         i += 1;
-      } else {
-        done = true;
-        // Issue: https://github.com/Microsoft/TypeScript/issues/2983
-        value = <any>undefined;
+        return { done: false, value };
       }
-      return {
-        done,
-        value,
-      };
+      return { done: true, value: undefined };
     },
 
     [Symbol.iterator]() {

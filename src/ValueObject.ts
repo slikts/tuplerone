@@ -11,17 +11,17 @@ export type DeepReadonly<A> = {
  */
 export function ValueObject<A extends object>(
   object: A,
-  filter?: (entry: [string, any]) => boolean,
+  filter?: (entry: [string, unknown]) => boolean,
 ): DeepReadonly<A> {
   if (new.target) {
     throw new TypeError('ValueObject is not a constructor');
   }
 
-  if (shallowCache.has(object) || (object as any)[isRef]) {
-    return object as any;
+  if (shallowCache.has(object) || object[isRef]) {
+    return object as unknown as DeepReadonly<A>;
   }
 
-  const key = DeepCompositeSymbol(object, filter);
+  const key = DeepCompositeSymbol(object, filter) as symbol;
   if (cache.has(key)) {
     return cache.get(key) as DeepReadonly<A>;
   }
@@ -35,7 +35,7 @@ export function ValueObject<A extends object>(
   });
 
   const frozen = Object.freeze(Object.fromEntries(mapped)) as DeepReadonly<A>;
-  cache.set(key, frozen);
+  cache.set(key, frozen as object);
   return frozen;
 }
 

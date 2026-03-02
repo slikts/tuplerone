@@ -1,5 +1,5 @@
 import { DeepCompositeSymbol } from '../src/tuplerone';
-import { isRef, shallow } from '../src/shallow';
+import { shallow } from '../src/shallow';
 import { describe, it, expect } from 'vitest';
 
 describe(DeepCompositeSymbol.name, () => {
@@ -50,7 +50,7 @@ describe(DeepCompositeSymbol.name, () => {
   it('allows filtering by key', () => {
     const o1 = { a: { c: 1 }, b: 2, _d: 3 };
     const o2 = { ...o1, _d: 4 };
-    const filter = ([key]: [string, any]) => !key.startsWith('_');
+    const filter = ([key]: [string, unknown]) => !key.startsWith('_');
     expect(DeepCompositeSymbol(o1, filter)).toBe(DeepCompositeSymbol(o2, filter));
     expect(DeepCompositeSymbol(o1)).not.toBe(DeepCompositeSymbol(o2));
   });
@@ -58,7 +58,7 @@ describe(DeepCompositeSymbol.name, () => {
   it('allows filtering by key recursively', () => {
     const o1 = { a: { c: 1 }, b: 2, _d: 3 };
     const o2 = { ...o1, a: { ...o1.a, _e: 4 } };
-    const filter = ([key]: [string, any]) => !key.startsWith('_');
+    const filter = ([key]: [string, unknown]) => !key.startsWith('_');
     expect(DeepCompositeSymbol(o1, filter)).toBe(DeepCompositeSymbol(o2, filter));
     expect(DeepCompositeSymbol(o1)).not.toBe(DeepCompositeSymbol(o2));
   });
