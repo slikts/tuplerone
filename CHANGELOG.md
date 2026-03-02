@@ -1,4 +1,4 @@
-# tuplerone
+# Tuplerone
 
 ## 4.0.0-next.5
 
