@@ -9,6 +9,8 @@ commit-msg:
       run: pnpm exec commitlint --edit {1}
 
 pre-push:
+  skip:
+    - CI
   parallel: true
   jobs:
     - name: checks
