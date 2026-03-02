@@ -8,7 +8,7 @@ const config = {
   images: {
     unoptimized: true,
   },
-  serverExternalPackages: ['@takumi-rs/image-response'],
+  serverExternalPackages: ['@takumi-rs/image-response', 'typescript', 'twoslash'],
 
   reactStrictMode: true,
 };
