@@ -7,6 +7,7 @@ import { createGenerator, createFileSystemGeneratorCache } from 'fumadocs-typesc
 
 const generator = createGenerator({
   cache: createFileSystemGeneratorCache('.next/fumadocs-typescript'),
+  tsconfigPath: '../tsconfig.json',
 });
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {

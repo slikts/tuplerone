@@ -24,7 +24,7 @@ import {
   createFileSystemGeneratorCache,
 } from 'fumadocs-typescript';
 import { createFileSystemTypesCache } from 'fumadocs-twoslash/cache-fs';
-import { rehypeCodeDefaultOptions } from 'fumadocs-core/mdx-plugins';
+import { rehypeCodeDefaultOptions, remarkImage, remarkNpm } from 'fumadocs-core/mdx-plugins';
 
 const generator = createGenerator({
   cache: createFileSystemGeneratorCache('.next/fumadocs-typescript'),
@@ -32,7 +32,7 @@ const generator = createGenerator({
 
 export default defineConfig({
   mdxOptions: {
-    remarkPlugins: [[remarkAutoTypeTable, { generator }]],
+    remarkPlugins: [[remarkAutoTypeTable, { generator }], remarkNpm, remarkImage],
     rehypeCodeOptions: {
       themes: {
         light: 'github-light',
@@ -45,6 +45,9 @@ export default defineConfig({
         }),
       ],
       langs: ['js', 'jsx', 'ts', 'tsx'],
+    },
+    remarkNpmOptions: {
+      persist: { id: 'package-manager' },
     },
   },
 });

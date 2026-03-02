@@ -13,7 +13,8 @@
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": "."
   },
   "include": ["src", "tools", "tsdown.config.ts", "vitest.config.ts", "eslint.config.mjs"]
 }
