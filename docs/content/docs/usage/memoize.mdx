@@ -7,7 +7,7 @@ description: Function memoization using tuplerone's internal DAG.
 
 Wraps a function so that repeated calls with the same arguments return the cached result. Uses tuplerone's internal WeakMap-based DAG for argument matching, so it supports object arguments and participates in garbage collection.
 
-```ts
+```ts twoslash
 import { memoize } from 'tuplerone';
 
 const expensive = memoize((a: number, b: number) => {
@@ -23,7 +23,11 @@ expensive(1, 2) === expensive(2, 3); // → false
 
 The `this` context is included in the memoization key, so the same function called on different receivers produces different cached results:
 
-```ts
+```ts twoslash
+import { memoize } from 'tuplerone';
+const obj1 = {};
+const obj2 = {};
+// ---cut---
 const f = memoize(function (this: any) {
   return this;
 });
@@ -36,7 +40,10 @@ f.call(obj1) === f.call(obj2); // → false
 
 Pass a custom `WeakMap` to isolate the cache from other memoized functions:
 
-```ts
+```ts twoslash
+import { memoize } from 'tuplerone';
+const fn = (a: object) => a;
+// ---cut---
 const cache = new WeakMap();
 const f = memoize(fn, cache);
 ```

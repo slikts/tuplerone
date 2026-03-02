@@ -7,7 +7,7 @@ description: Recursively create composite keys for objects based on their deep s
 
 Creates a unique `symbol` that represents the deep structural identity of an object. Two objects with the same nested key-value structure produce the same symbol.
 
-```ts
+```ts twoslash
 import { DeepCompositeSymbol } from 'tuplerone';
 
 DeepCompositeSymbol({ a: 1, b: 2 }) === DeepCompositeSymbol({ a: 1, b: 2 }); // → true
@@ -18,7 +18,9 @@ typeof DeepCompositeSymbol({ a: 1 }) === 'symbol'; // → true
 
 Nested objects and arrays are recursively resolved:
 
-```ts
+```ts twoslash
+import { DeepCompositeSymbol } from 'tuplerone';
+// ---cut---
 DeepCompositeSymbol({ a: { b: 1 } }) === DeepCompositeSymbol({ a: { b: 1 } }); // → true
 DeepCompositeSymbol([1, [2, 3]]) === DeepCompositeSymbol([1, [2, 3]]); // → true
 DeepCompositeSymbol({ a: 1, b: [2, 3] }) === DeepCompositeSymbol({ a: 1, b: [2, 3] }); // → true
@@ -28,11 +30,13 @@ DeepCompositeSymbol({ a: 1, b: [2, 3] }) === DeepCompositeSymbol({ a: 1, b: [2, 
 
 Pass a filter function to ignore certain entries when computing identity:
 
-```ts
+```ts twoslash
+import { DeepCompositeSymbol } from 'tuplerone';
+// ---cut---
 const filter = ([key]: [string, any]) => !key.startsWith('_');
 
-DeepCompositeSymbol({ a: 1, _internal: 2 }, filter)
-  === DeepCompositeSymbol({ a: 1, _internal: 99 }, filter); // → true
+DeepCompositeSymbol({ a: 1, _internal: 2 }, filter) ===
+  DeepCompositeSymbol({ a: 1, _internal: 99 }, filter); // → true
 ```
 
 The filter is applied recursively to nested objects as well.

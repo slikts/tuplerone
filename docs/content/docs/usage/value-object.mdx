@@ -7,7 +7,7 @@ description: Create frozen, value-semantic objects.
 
 Creates a deeply frozen object with value semantics. Two objects with the same structure produce the same reference:
 
-```js
+```ts twoslash
 import { ValueObject } from 'tuplerone';
 
 ValueObject({ a: 1, b: { c: 2 } }) === ValueObject({ a: 1, b: { c: 2 } }); // → true
@@ -19,7 +19,9 @@ The passed objects are deeply frozen with `Object.freeze()`, and the return type
 
 Nested objects are also converted to value objects, so sub-objects maintain value semantics:
 
-```js
+```ts twoslash
+import { ValueObject } from 'tuplerone';
+// ---cut---
 const { a } = ValueObject({ a: { b: 1 } });
 a === ValueObject({ b: 1 }); // → true
 ```
@@ -28,11 +30,12 @@ a === ValueObject({ b: 1 }); // → true
 
 Pass a filter function to ignore certain entries:
 
-```js
-const filter = ([key]) => !key.startsWith('_');
+```ts twoslash
+import { ValueObject } from 'tuplerone';
+// ---cut---
+const filter = ([key]: [string, any]) => !key.startsWith('_');
 
-ValueObject({ a: 1, _meta: 'x' }, filter)
-  === ValueObject({ a: 1, _meta: 'y' }, filter); // → true
+ValueObject({ a: 1, _meta: 'x' }, filter) === ValueObject({ a: 1, _meta: 'y' }, filter); // → true
 ```
 
 The filter is applied recursively to nested objects.
@@ -45,6 +48,9 @@ The filter is applied recursively to nested objects.
 
 `ValueObject` is a plain function and cannot be called with `new`:
 
-```js
+```ts twoslash
+import { ValueObject } from 'tuplerone';
+// ---cut---
+// @errors: 7009
 new ValueObject({}); // throws TypeError
 ```

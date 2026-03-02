@@ -5,9 +5,9 @@ description: Create unique symbols from value sequences.
 
 ### `CompositeSymbol(...values)`
 
-Creates a unique `symbol` from a sequence of values. Like `Tuple`, calling `CompositeSymbol` with the same arguments always returns the same symbol. Unlike `Tuple`, it doesn't create an array-like object — just a symbol that can be used as a key.
+Creates a unique `symbol` from a sequence of values. Like `Tuple`, calling `CompositeSymbol` with the same arguments always returns the same symbol. Unlike `Tuple`, it doesn't create an array-like object—just a symbol that can be used as a key.
 
-```js
+```ts twoslash
 import { CompositeSymbol } from 'tuplerone';
 
 CompositeSymbol(1, 2, {}) === CompositeSymbol(1, 2, {}); // → true
@@ -18,7 +18,11 @@ typeof CompositeSymbol(1, 2, {}) === 'symbol'; // → true
 
 Use `CompositeSymbol` when you only need a composite key and don't need to iterate or access the individual values. Since it produces a `symbol` instead of an array-like object, it's more space-efficient and can be used as a key for plain objects:
 
-```js
+```ts twoslash
+import { CompositeSymbol } from 'tuplerone';
+const obj1 = {};
+const obj2 = {};
+// ---cut---
 const key = CompositeSymbol(obj1, obj2);
 const lookup = { [key]: 'value' };
 lookup[CompositeSymbol(obj1, obj2)]; // → 'value'
@@ -30,7 +34,7 @@ Use `Tuple` when you need to access individual members by index or iterate over 
 
 Typed variants are available from `CompositeSymbol0` through `CompositeSymbol8`, along with the `CompositeSymbolType` type alias:
 
-```ts
+```ts twoslash
 import { CompositeSymbol, CompositeSymbol2 } from 'tuplerone';
 ```
 
@@ -38,7 +42,7 @@ import { CompositeSymbol, CompositeSymbol2 } from 'tuplerone';
 
 Like [`UnsafeTuple`](/docs/caveats#unsafetuple), there is an `UnsafeCompositeSymbol` variant that allows all-primitive arguments at the cost of not being garbage-collectable:
 
-```js
+```ts twoslash
 import { UnsafeCompositeSymbol } from 'tuplerone';
 
 UnsafeCompositeSymbol(1, 2, 3) === UnsafeCompositeSymbol(1, 2, 3); // → true

@@ -7,13 +7,13 @@ description: A lightweight, efficient tuple and value object implementation for 
 
 In JavaScript, objects with the same contents are not equal by default:
 
-```js
+```ts
 [1, 2, 3] === [1, 2, 3]; // → false
 ```
 
 tuplerone solves this by caching object creation so that the same arguments always produce the same reference. This gives you value semantics using plain `===`:
 
-```js
+```ts twoslash
 import { Tuple } from 'tuplerone';
 
 Tuple(1, 2, 3) === Tuple(1, 2, 3); // → true
@@ -27,7 +27,7 @@ This is useful for memoization (e.g. React's `memo()`), using multiple values as
 npm install tuplerone
 ```
 
-```js
+```ts twoslash
 import { Tuple, CompositeSymbol, ValueObject } from 'tuplerone';
 
 // Tuple: array-like value type
@@ -45,12 +45,12 @@ ValueObject({ x: 1 }) === ValueObject({ x: 1 }); // → true
 
 ## Features
 
-- **Tiny** — under 1KB compressed, zero dependencies
-- **Well-typed** — full TypeScript support (works from JavaScript too)
-- **Well-tested** — full test coverage
-- **Efficient** — WeakMap-based directed acyclic graph for O(1) lookups
-- **Immutable** — all objects are frozen with `Object.freeze()`
-- **Iterable** — tuples support `for-of`, spread, and destructuring
+- **Tiny**—under 1KB compressed, zero dependencies
+- **Well-typed**—full TypeScript support (works from JavaScript too)
+- **Well-tested**—full test coverage
+- **Efficient**—WeakMap-based directed acyclic graph for O(1) lookups
+- **Immutable**—all objects are frozen with `Object.freeze()`
+- **Iterable**—tuples support `for-of`, spread, and destructuring
 
 ## Exports
 

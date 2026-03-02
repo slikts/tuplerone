@@ -7,36 +7,36 @@ description: Usage of the main Tuple function.
 
 Creates an immutable, array-like tuple with value semantics. Calling `Tuple` with the same arguments always returns the same object reference, so `===` works for structural equality.
 
-```js
-import { Tuple } from 'tuplerone';
+```ts twoslash
+import { Tuple, Tuple2 } from 'tuplerone';
 
 // Dummy objects
-const a = Object('a');
-const b = Object('b');
-const c = Object('c');
+const a = { id: 'a' };
+const b = { id: 'b' };
+const c = { id: 'c' };
 
 // Structural equality testing using the identity operator
 Tuple(a, b, c) === Tuple(a, b, c); // → true
 Tuple(a, b) === Tuple(b, a); // → false
 
 // Mapping using a pair of values as key
-const map = new Map();
+const map = new Map<Tuple2<typeof a, typeof b>, number>();
 map.set(Tuple(a, b), 123).get(Tuple(a, b)); // → 123
 
 // Nesting tuples
 Tuple(a, Tuple(b, c)) === Tuple(a, Tuple(b, c)); // → true
 
 // Using primitive values
-Tuple(1, 'a', a); // → Tuple(3) [1, "a", Object("a")]
+Tuple(1, 'a', a); // → Tuple(3) [1, "a", { id: 'a' }]
 
 // Indexing
-Tuple(a, b)[1]; // → Object("b")
+Tuple(a, b)[1]; // → { id: 'b' }
 
 // Checking arity
 Tuple(a, b).length; // → 2
 
-// Failing to mutate
-Tuple(a, b)[0] = c; // throws an error
+// @errors: 2540
+Tuple(a, b)[0] = c; // throws an error because tuples are frozen and readonly
 ```
 
 The tuple function caches its arguments to produce the same tuple object for the same arguments.
@@ -45,10 +45,10 @@ The tuple function caches its arguments to produce the same tuple object for the
 
 Tuple objects are:
 
-- **Immutable** — properties cannot be added, removed or changed, enforced with `Object.freeze()`
-- **Array-like** — members can be accessed by index, and there's a `length` property
-- **Iterable** — members can be iterated using `for-of` loops or spread syntax
-- **Array subclass** — `Array.isArray(Tuple())` returns `true`, giving ergonomic console output
+- **Immutable**—properties cannot be added, removed or changed, enforced with `Object.freeze()`
+- **Array-like**—members can be accessed by index, and there's a `length` property
+- **Iterable**—members can be iterated using `for-of` loops or spread syntax
+- **Array subclass**—`Array.isArray(Tuple())` returns `true`, giving ergonomic console output
 
 Note that despite being an `Array` subclass, mutative `Array` prototype methods like `sort()` will throw since tuples are frozen. See [Caveats](/docs/caveats) for more details.
 

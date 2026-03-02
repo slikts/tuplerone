@@ -9,7 +9,10 @@ Since this is a userspace implementation, there are a number of limitations.
 
 Due to `WeakMap` being limited to using objects as keys, there must be at least one member of a tuple with the object type, or the tuples would leak memory. Trying to create tuples with only primitive members will throw an error.
 
-```ts
+```ts twoslash
+import { Tuple } from 'tuplerone';
+// ---cut---
+// @errors: 2345
 Tuple(1, 2); // throws TypeError
 Tuple(1, 2, {}); // works
 ```
@@ -18,7 +21,7 @@ Tuple(1, 2, {}); // works
 
 There is an `UnsafeTuple` for advanced use cases where the values not being garbage-collectable is acceptable, so it doesn't require having an object member:
 
-```js
+```ts twoslash
 import { UnsafeTuple as Tuple } from 'tuplerone';
 
 Tuple(1, 2, 3) === Tuple(1, 2, 3); // → true
@@ -34,7 +37,9 @@ tuplerone tuples are not supported by the relation comparison operators like `<`
 
 Tuples subclass `Array`:
 
-```typescript
+```ts twoslash
+import { Tuple } from 'tuplerone';
+// ---cut---
 Array.isArray(Tuple()); // → true
 ```
 
@@ -46,6 +51,8 @@ The advantage of subclassing `Array` is ergonomic console representation (it's r
 
 Tuples can be constructed without the `new` keyword to make them behave like other primitive values (`Symbol`, `Boolean`, `String`, `Number`) that also don't require `new` and also are value-semantic. This means that `instanceof` doesn't work the same as for other objects, but can still be used like so:
 
-```js
+```ts twoslash
+import { Tuple } from 'tuplerone';
+// ---cut---
 Tuple() instanceof Tuple.constructor; // → true
 ```
