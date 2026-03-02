@@ -3,7 +3,9 @@ title: Introduction
 description: A lightweight, efficient tuple and value object implementation for JavaScript and TypeScript.
 ---
 
-## What is tuplerone?
+<img src="./logo.svg" alt="tuplerone" />
+
+## What is Tuplerone?
 
 In JavaScript, objects with the same contents are not equal by default:
 
@@ -11,7 +13,7 @@ In JavaScript, objects with the same contents are not equal by default:
 [1, 2, 3] === [1, 2, 3]; // → false
 ```
 
-tuplerone solves this by caching object creation so that the same arguments always produce the same reference. This gives you value semantics using plain `===`:
+Tuplerone solves this by caching object creation so that the same arguments always produce the same reference. This gives you value semantics using plain `===`:
 
 ```ts twoslash
 import { Tuple } from 'tuplerone';
@@ -23,7 +25,7 @@ This is useful for memoization (e.g. React's `memo()`), using multiple values as
 
 ## Quick start
 
-```bash
+```npm
 npm install tuplerone
 ```
 
